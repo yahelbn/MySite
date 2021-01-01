@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile("build/index.html");
+  res.sendFile(path.join(__dirname, "build/index.html"));
 });
 
 app.listen(port, undefined, () => console.log("running"));
