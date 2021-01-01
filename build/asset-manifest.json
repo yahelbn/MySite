@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8f23ca67.chunk.css",
+    "main.js": "/static/js/main.6ae6f3f7.chunk.js",
+    "main.js.map": "/static/js/main.6ae6f3f7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4ecbe033.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4ecbe033.js.map",
+    "static/css/2.1d146257.chunk.css": "/static/css/2.1d146257.chunk.css",
+    "static/js/2.5a579275.chunk.js": "/static/js/2.5a579275.chunk.js",
+    "static/js/2.5a579275.chunk.js.map": "/static/js/2.5a579275.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.1d146257.chunk.css.map": "/static/css/2.1d146257.chunk.css.map",
+    "static/css/main.8f23ca67.chunk.css.map": "/static/css/main.8f23ca67.chunk.css.map",
+    "static/js/2.5a579275.chunk.js.LICENSE.txt": "/static/js/2.5a579275.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/Office.3268f15b.png",
+    "static/media/checklistpayment.11bffc3d.svg": "/static/media/checklistpayment.11bffc3d.svg",
+    "static/media/clock.50c46548.svg": "/static/media/clock.50c46548.svg",
+    "static/media/connection.c68a2214.svg": "/static/media/connection.c68a2214.svg",
+    "static/media/customerservice.c21e9d33.svg": "/static/media/customerservice.c21e9d33.svg",
+    "static/media/gradient.44e1312d.png": "/static/media/gradient.44e1312d.png",
+    "static/media/interactive.cb7f5a5c.svg": "/static/media/interactive.cb7f5a5c.svg",
+    "static/media/payday.6e448ea1.svg": "/static/media/payday.6e448ea1.svg",
+    "static/media/peoplewithcard.852eae74.svg": "/static/media/peoplewithcard.852eae74.svg",
+    "static/media/preferences.0fe41ba2.svg": "/static/media/preferences.0fe41ba2.svg",
+    "static/media/smartransaction.224c42a0.svg": "/static/media/smartransaction.224c42a0.svg",
+    "static/media/survey.77f43e73.svg": "/static/media/survey.77f43e73.svg",
+    "static/media/synchronize.933a4351.svg": "/static/media/synchronize.933a4351.svg",
+    "static/media/thunder.389cc150.svg": "/static/media/thunder.389cc150.svg",
+    "static/media/video.ecbb3d9a.mp4": "/static/media/video.ecbb3d9a.mp4",
+    "static/media/web.01ba4a3f.svg": "/static/media/web.01ba4a3f.svg",
+    "static/media/yahelphoto.fa62fad2.jpeg": "/static/media/yahelphoto.fa62fad2.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4ecbe033.js",
+    "static/css/2.1d146257.chunk.css",
+    "static/js/2.5a579275.chunk.js",
+    "static/css/main.8f23ca67.chunk.css",
+    "static/js/main.6ae6f3f7.chunk.js"
+  ]
+}
