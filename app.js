@@ -1,8 +1,21 @@
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 5000;
 
-app.get("/", function (req, res) {
-  res.send("Hello World");
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "build")));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "GET, POST");
+  next();
 });
 
-app.listen(3000, undefined, () => console.log("running"));
+app.get("/", (req, res) => {
+  res.sendFile("build/index.html");
+});
+
+app.listen(port, undefined, () => console.log("running"));
