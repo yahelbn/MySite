@@ -4,15 +4,15 @@ const path = require("path");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const { environments } = require("./config/constants.json");
+const { environments } = require("./src/config/constants.json");
 const port = process.env.PORT || 5000;
 
 /* import all routes */
-const findocs = require("./routes/findocs");
+const findocs = require("./src/routes/findocs");
 
 /* middlewares */
 /* Serve static files from the React app */
-app.use(express.static(path.join(__dirname, "../build")));
+app.use(express.static(path.join(__dirname, "build")));
 app.use(express.json());
 /* security package */
 app.use(helmet());
@@ -30,7 +30,7 @@ app.use("/api/findocs", findocs);
 
 /* gets you to react generated index file - root of your application */
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build/index.html"));
+  res.sendFile(path.join(__dirname, "build/index.html"));
 });
 
 /* startup */
