@@ -29,7 +29,7 @@ export const DataEnglish = {
     topLine: "Why Contoteq?",
     headLine: "Simplify the process of accounting between businesses",
     description:
-      "Contotech is a fintech platform established to streamline business processes between suppliers and customers from end to end. In the first place we bring a complete, automatic and simple solution to all payment and collection processes - AR In the future we will allow additional process management between suppliers and customers. The company was established by entrepreneurs with many years of experience in the world of small and medium businesses, fintech and online systems and finance.",
+      "Contoteq is a fintech platform established to streamline business processes between suppliers and customers from end to end. In the first place we bring a complete, automatic and simple solution to all payment and collection processes - AR In the future we will allow additional process management between suppliers and customers. The company was established by entrepreneurs with many years of experience in the world of small and medium businesses, fintech and online systems and finance.",
     buttonLabel: "Start Now",
     imgStart: false,
     img: smartransaction,
@@ -49,7 +49,7 @@ export const DataEnglish = {
     topLine: "How It Works?",
     headLine: "Interfaces in a simple way",
     description:
-      "The ContoTeq system operates as a SAAS online service and allows access to the process for both suppliers and customers. It is built on a number of main principles: 1. Maintaining full online real-time contact between the supplier and the customer at all stages of the process. 2. Full tracking of transaction and payment history, based on blockchain ledger, which allows reliable and secure tracking of every transaction performed. 3. Integrates advanced fintech technologies including NLP and OCR systems.",
+      "<br> The ContoTeq system operates as a SAAS online service and allows access to the process for both suppliers and customers. It is built on a number of main principles:</br> <br> 1. Maintaining full online real-time contact between the supplier and the customer at all stages of the process. </br> <br> 2. Full tracking of transaction and payment history, based on blockchain ledger, which allows reliable and secure tracking of every transaction performed.</br> <br> 3. Integrates advanced fintech technologies including NLP and OCR systems.</br>",
     buttonLabel: "Start Now",
     imgStart: true,
     img: checklistpayment,
@@ -179,7 +179,7 @@ export const DataEnglish = {
         icon: Icon1,
         servicesh2: "For suppliers",
         servicesp:
-          "Ongoing and easy management of business work processes with customers such as demand and collection of payments",
+          "Ongoing and easy management of business work processes with customers such as demand and collection of payments.",
       },
 
       {
@@ -187,7 +187,7 @@ export const DataEnglish = {
         icon: Icon2,
         servicesh2: "For customers",
         servicesp:
-          "Continuous monitoring of payment requirements: receipt, approval and execution; In front of a variety of suppliers.",
+          "Continuous monitoring of payment requirements: receipt, approval and execution In front of a variety of suppliers.",
       },
       // {
       //   rtl: false,

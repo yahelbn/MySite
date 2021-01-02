@@ -14,6 +14,11 @@ import {
   ImgWrap,
   Img,
 } from "./infoElements";
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2,
+} from "react-html-parser";
 
 const InfoSection = ({ content, locale }) => {
   const {
@@ -73,6 +78,8 @@ const InfoSection = ({ content, locale }) => {
     }
   }
 
+  const ConvertDescription = ReactHtmlParser(description);
+
   return (
     <>
       <InfoContainer lightBg={lightBg} id={id}>
@@ -82,7 +89,7 @@ const InfoSection = ({ content, locale }) => {
               <TextWrapper rtl={Boolean(rtl) ? true : false}>
                 <TopLine>{topLine} </TopLine>
                 <Heading lightText={lightText}>{headLine} </Heading>
-                <Subtitle darkText={darkText}>{description}</Subtitle>
+                <Subtitle darkText={darkText}>{ConvertDescription}</Subtitle>
                 <BtnWrap>{linkButton}</BtnWrap>
               </TextWrapper>
             </Column1>

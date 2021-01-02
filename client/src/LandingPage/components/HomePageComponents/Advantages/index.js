@@ -24,7 +24,10 @@ const Advantages = ({ content }) => {
   });
 
   return (
-    <ServicesContainer id="services">
+    <ServicesContainer
+      id="services"
+      rtl={Boolean(content.header.rtl) ? true : false}
+    >
       <ServicesH1 rtl={Boolean(content.header.rtl) ? true : false}>
         {content.header.content}
       </ServicesH1>

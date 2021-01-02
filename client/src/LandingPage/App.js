@@ -18,7 +18,7 @@ const App = (props) => {
   //     locale = urlLocale;
   //   }
   // });
-  console.log(process.env.REACT_APP_DEV_SERVER_URL);
+
   return (
     <div>
       <Switch>

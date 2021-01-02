@@ -43,10 +43,11 @@ const Home = (props) => {
       <HeroSection content={props.dataLanguages.heroSection} />
       <InfoSection content={props.dataLanguages.homeObjOne} />
       <InfoSection content={props.dataLanguages.homeObjTwo} />
-      <InfoSection content={props.dataLanguages.homeObjThree} />
       <Advantages content={props.dataLanguages.advantages} />
 
       <Services content={props.dataLanguages.services} />
+      <InfoSection content={props.dataLanguages.homeObjThree} />
+
       <CarouselFounders content={props.dataLanguages.whoweare} />
       <InfoSection
         content={props.dataLanguages.homeObjFour}
