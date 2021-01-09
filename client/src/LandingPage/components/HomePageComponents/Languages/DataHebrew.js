@@ -22,12 +22,12 @@ import Customerservice from "../../../images/svgs/customerservice.svg";
 
 export const DataHebrew = {
   homeObjOne: {
-    id: "whycontoteq",
+    id: "whoweare",
     lightBg: true,
     lightText: false,
     lightTextDesc: true,
-    topLine: "למה ContoTeq?",
-    headLine: "פישוט תהליך התחשבנות בין עסקים",
+    topLine: "מי אנחנו?",
+    //headLine: "פישוט תהליך התחשבנות בין עסקים",
     description:
       "קונטוטק היא פלטפורמת fintech שהוקמה על מנת ליעל תהליכים עסקיים בין ספקים ללקוחות מקצה לקצה.  בשלב הראשון אנו מביאים פתרון מלא, אוטומטי ופשוט לכלל תהליכי התשלום והגביה – AR בהמשך נאפשר ניהול תהליכים נוספים בין ספקים ללקוחות.החברה הוקמה על ידי יזמים שנים רבות של ניסיון בעולם של עסקים קטנים ובינוניים, מערכות fintech ואון-ליין ופיננסים.",
     buttonLabel: "התחל עכשיו",
@@ -38,16 +38,16 @@ export const DataHebrew = {
     primary: true,
     darkText: true,
     rtl: true,
-    routerlink: false,
+    routerlink: true,
   },
 
   homeObjTwo: {
-    id: "howitworks",
+    id: "technology",
     lightBg: false,
     lightText: true,
     lightTextDesc: false,
-    topLine: "איך זה עובד?",
-    headLine: "ממשק בצורה פשוטה",
+    topLine: "טכנולוגיה",
+    //headLine: "ממשק בצורה פשוטה",
     description:
       "מערכת קונטוטק פועלת כשירות SAAS אונליין ומאפשרת גישה לתהליך הן לספקים והן ללקוחות היא בנויה על בסיס מספר עקרונות עיקריים :<br> 1.שמירה על קשר מלא אונליין בזמן אמת בין הספק ללקוח בכל שלבי התהליך.<br> 2.מעקב מלא אחרי היסטוריית הפעולות והתשלומים, מבוסס blockchain ledger, אשר מאפשר מעקב אמין ומאובטח אחרי כל פעולה שבוצעה.<br> 3.משלבת טכנולוגיות fintech מתקדמות ובכללם מערכות NLP ו-OCR. ",
     buttonLabel: "התחל עכשיו",
@@ -58,7 +58,7 @@ export const DataHebrew = {
     primary: false,
     darkText: false,
     rtl: true,
-    routerlink: false,
+    routerlink: true,
   },
 
   homeObjThree: {
@@ -77,7 +77,7 @@ export const DataHebrew = {
     primary: true,
     darkText: true,
     rtl: true,
-    routerlink: false,
+    routerlink: true,
   },
 
   homeObjFour: {
@@ -85,9 +85,9 @@ export const DataHebrew = {
     lightBg: false,
     lightText: true,
     lightTextDesc: false,
-    topLine: "הרשם",
-    headLine: "הרשם עכשיו ללא תשלום",
-    description: "הרשם והתנסה בשירותים שלנו בעסקך או בתור לקוח.",
+    topLine: "הירשם",
+    headLine: "הירשם עכשיו ללא תשלום",
+    description: "הירשם והתנסה בשירותים שלנו בעסקך או בתור לקוח.",
     buttonLabel: "התחל עכשיו",
     imgStart: true,
     img: checklistpayment,
@@ -102,18 +102,42 @@ export const DataHebrew = {
   navBar: {
     rtl: true,
     links: [
-      { content: "למה Contoteq?", to: "whycontoteq" },
-      { content: "איך זה עובד?", to: "howitworks" },
+      {
+        content: "החברה",
+        dropdown: [
+          { content: "מי אנחנו", to: "whoweare" },
+          { content: "טכנולוגיה", to: "technology" },
+          { content: "הצוות", to: "inventors" },
+        ],
+      },
+      { content: "למה ContoTeq?", to: "advantages" },
+      { content: "שירותים שלנו", to: "services" },
+      // { content: "טכנולוגיה", to: "technology" },
       { content: "מחירים", to: "prices" },
-      { content: "הירשם", to: "signup" },
+      // { content: "הרשם", to: "signup" },
     ],
     loginbutton: "התחבר",
   },
 
   heroSection: {
     heroh1: "פעולות בין עסקים נהפכות לקלות יותר",
-    herop: "הרשם עכשיו והשתמש בחינם",
+    herop: "הירשם עכשיו והשתמש בחינם",
     button: "התחל עכשיו",
+  },
+  contactus: {
+    rtl: true,
+    formh1: "השירות יעלה לאוויר בקרוב",
+    formlabel1: "שם מלא",
+    forminput1: "text",
+    formlabel2: "אימייל",
+    forminput2: "email",
+    formlabel3: "טלפון",
+    forminput3: "text",
+    formbutton: "שלח",
+    text: "לכל שאלה ניתן לפנות ל",
+    email: "info@contoteq.com",
+
+    text2: "תודה על התעניינותך ,<br>  אנא השאר פרטים וניצור קשר בהקדם:",
   },
   signin: {
     rtl: true,
@@ -165,6 +189,73 @@ export const DataHebrew = {
     //text: "שכחתי סיסמא",
   },
 
+  prices: {
+    tab1: "לקוח",
+    tab2: "ספק",
+    header: {
+      content: "המחירים שלנו",
+      rtl: true,
+    },
+
+    cards: [
+      {
+        greymode: false,
+
+        rtl: true,
+        icon: Icon1,
+        servicesh2: "תוכנית ניסיונית",
+        servicesh3: "ניהול....",
+        price: "ללא תשלום",
+        servicesp:
+          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
+        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
+        primary: true,
+        dark: true,
+        dark2: true,
+        buttonLabel: "בחר",
+      },
+      {
+        greymode: true,
+
+        rtl: true,
+        icon: Icon1,
+        servicesh2: "תוכנית ניסיונית",
+        servicesh3: "ניהול....",
+        price: "ללא תשלום",
+        servicesp:
+          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
+        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
+        primary: true,
+        dark: true,
+        dark2: true,
+        buttonLabel: "בחר",
+      },
+      {
+        greymode: true,
+
+        rtl: true,
+        icon: Icon1,
+        servicesh2: "תוכנית ניסיונית",
+        servicesh3: "ניהול....",
+        price: "ללא תשלום",
+        servicesp:
+          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
+        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
+        primary: true,
+        dark: true,
+        dark2: true,
+        buttonLabel: "בחר",
+      },
+
+      // {
+      //   rtl: true,
+      //   icon: Icon3,
+      //   servicesh2: "מיכון מלא של תהליכי חיוב זיכוי בין מערכות וחברות",
+      //   servicesp: "התממשקותם של מערכות קיימות כגון:ORACLE,PRIORITY,SAP",
+      // },
+    ],
+  },
+
   services: {
     header: {
       content: "השירותים שלנו",
@@ -197,7 +288,7 @@ export const DataHebrew = {
   },
   advantages: {
     header: {
-      content: "היתרונות שלנו עבור העסק שלך",
+      content: "למה Contoteq?",
       rtl: true,
     },
 
@@ -263,7 +354,7 @@ export const DataHebrew = {
 
   whoweare: {
     header: {
-      content: "מי אנחנו?",
+      content: "הצוות",
       rtl: true,
     },
 

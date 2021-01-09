@@ -110,3 +110,44 @@ export const LanguageButton = styled(LinkS)`
 export const TextLanguage = styled.div`
   margin-left: 2px;
 `;
+
+export const SidebarMiniLink = styled(LinkS)`
+  padding-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  list-style: none;
+  transition: 0.2s ease-in-out;
+  color: #fff;
+  cursor: pointer;
+  direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
+
+  &:hover {
+    color: #01bf71;
+    transition: 0.2s ease-in-out;
+  }
+`;
+
+export const MiniSideBarContainer = styled.aside`
+  height: 100%;
+
+  /* position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: #0d0d0d;
+  display: grid;
+  align-items: center;
+  top: 0;
+  left: 0; */
+  transition: 3s ease-in-out;
+  display: grid;
+  align-items: center;
+  //transition: width 2s linear 1s;
+  top: 0;
+  left: 0;
+  opacity: ${({ toggleDropDown }) => (toggleDropDown ? "70%" : "0")};
+  top: ${({ toggleDropDown }) => (toggleDropDown ? "0" : "-70%")};
+`;

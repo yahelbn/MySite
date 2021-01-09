@@ -14,11 +14,7 @@ import {
   ImgWrap,
   Img,
 } from "./infoElements";
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 
 const InfoSection = ({ content, locale }) => {
   const {
@@ -44,10 +40,11 @@ const InfoSection = ({ content, locale }) => {
 
   function createButton() {
     if (routerlink) {
+      console.log(locale);
       return (
         <ButtonRouter
-          to={"/" + locale + "/signup"}
-          smooth={true}
+          to={"/" + locale + "/contactus"}
+          smooth={"true"}
           duration={500}
           spy="true"
           exact="true"
@@ -63,7 +60,7 @@ const InfoSection = ({ content, locale }) => {
       return (
         <Button
           to="home"
-          smooth={true}
+          smooth={"true"}
           duration={500}
           spy={true}
           exact="true"

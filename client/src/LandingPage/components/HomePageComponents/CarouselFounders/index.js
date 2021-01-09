@@ -34,7 +34,7 @@ const CarouselFounders = ({ content }) => {
   });
 
   return (
-    <CarouselFoundersContainer>
+    <CarouselFoundersContainer id="inventors">
       <CarouselH1 rtl={Boolean(header.rtl) ? true : false}>
         {header.content}
       </CarouselH1>

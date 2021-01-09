@@ -6,7 +6,7 @@ export const ServicesContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #dcd9c6;
+  background: #fff;
 
   @media screen and (max-width: 1000px) {
     height: 1600px;
@@ -87,7 +87,7 @@ export const ServicesIcon = styled.img`
 export const ServicesH1 = styled.h1`
   text-align: center;
   font-size: 2.2rem;
-  color: #fff;
+  color: black;
   margin-bottom: 64px;
   direction: ${({ rtl }) => (rtl ? `rtl` : `ltr`)};
   @media screen and (max-width: 480px) {

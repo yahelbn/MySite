@@ -22,12 +22,12 @@ import Customerservice from "../../../images/svgs/customerservice.svg";
 
 export const DataEnglish = {
   homeObjOne: {
-    id: "whycontoteq",
+    id: "whoweare",
     lightBg: true,
     lightText: false,
     lightTextDesc: true,
-    topLine: "Why Contoteq?",
-    headLine: "Simplify the process of accounting between businesses",
+    topLine: "about us",
+    //headLine: "Simplify the process of accounting between businesses",
     description:
       "Contoteq is a fintech platform established to streamline business processes between suppliers and customers from end to end. In the first place we bring a complete, automatic and simple solution to all payment and collection processes - AR In the future we will allow additional process management between suppliers and customers. The company was established by entrepreneurs with many years of experience in the world of small and medium businesses, fintech and online systems and finance.",
     buttonLabel: "Start Now",
@@ -38,16 +38,16 @@ export const DataEnglish = {
     primary: true,
     darkText: true,
     rtl: false,
-    routerlink: false,
+    routerlink: true,
   },
 
   homeObjTwo: {
-    id: "howitworks",
+    id: "technology",
     lightBg: false,
     lightText: true,
     lightTextDesc: false,
-    topLine: "How It Works?",
-    headLine: "Interfaces in a simple way",
+    topLine: "Technology",
+    //headLine: "Interfaces in a simple way",
     description:
       "<br> The ContoTeq system operates as a SAAS online service and allows access to the process for both suppliers and customers. It is built on a number of main principles:</br> <br> 1. Maintaining full online real-time contact between the supplier and the customer at all stages of the process. </br> <br> 2. Full tracking of transaction and payment history, based on blockchain ledger, which allows reliable and secure tracking of every transaction performed.</br> <br> 3. Integrates advanced fintech technologies including NLP and OCR systems.</br>",
     buttonLabel: "Start Now",
@@ -58,7 +58,7 @@ export const DataEnglish = {
     primary: false,
     darkText: false,
     rtl: false,
-    routerlink: false,
+    routerlink: true,
   },
 
   homeObjThree: {
@@ -78,7 +78,7 @@ export const DataEnglish = {
     primary: true,
     darkText: true,
     rtl: false,
-    routerlink: false,
+    routerlink: true,
   },
 
   homeObjFour: {
@@ -103,10 +103,18 @@ export const DataEnglish = {
   navBar: {
     rtl: false,
     links: [
-      { content: "Why ContoTeq?", to: "whycontoteq" },
-      { content: "How It Works?", to: "howitworks" },
+      {
+        content: "Company",
+        dropdown: [
+          { content: "About us", to: "whoweare" },
+          { content: "Technology", to: "technology" },
+          { content: "Inventors", to: "inventors" },
+        ],
+      },
+      { content: "Why ContoTeq?", to: "advantages" },
+      { content: "Our services", to: "services" },
+      // { content: "Technology", to: "technology" },
       { content: "Prices", to: "prices" },
-      { content: "Sign up", to: "signup" },
     ],
     loginbutton: "Log in",
   },
@@ -115,6 +123,21 @@ export const DataEnglish = {
     heroh1: "Transactions between businesses have become easier",
     herop: "Sign up now and use for free",
     button: "Start now",
+  },
+  contactus: {
+    rtl: false,
+    formh1: "The service will be up soon",
+    formlabel1: "Full name",
+    forminput1: "text",
+    formlabel2: "E-mail",
+    forminput2: "email",
+    formlabel3: "Phone",
+    forminput3: "text",
+    formbutton: "Send",
+    text: "For any question you can contact ",
+    email: "info@contoteq.com",
+    text2:
+      "Thank you for your interest,<br> please leave details and we will contact you soon:",
   },
   signin: {
     rtl: false,
@@ -167,6 +190,71 @@ export const DataEnglish = {
     //text: "שכחתי סיסמא",
   },
 
+  prices: {
+    tab1: "Customer",
+    tab2: "Vendor",
+    header: {
+      content: "Our prices",
+      rtl: false,
+    },
+
+    cards: [
+      {
+        greymode: false,
+        rtl: false,
+        icon: Icon1,
+        servicesh2: "תוכנית ניסיונית",
+        servicesh3: "ניהול....",
+        price: "ללא תשלום",
+        servicesp:
+          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
+        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
+        primary: true,
+        dark: true,
+        dark2: true,
+        buttonLabel: "בחר",
+      },
+      {
+        greymode: true,
+
+        rtl: false,
+        icon: Icon1,
+        servicesh2: "תוכנית ניסיונית",
+        servicesh3: "ניהול....",
+        price: "ללא תשלום",
+        servicesp:
+          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
+        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
+        primary: true,
+        dark: true,
+        dark2: true,
+        buttonLabel: "בחר",
+      },
+      {
+        greymode: true,
+
+        rtl: false,
+        icon: Icon1,
+        servicesh2: "תוכנית ניסיונית",
+        servicesh3: "ניהול....",
+        price: "ללא תשלום",
+        servicesp:
+          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
+        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
+        primary: true,
+        dark: true,
+        dark2: true,
+        buttonLabel: "בחר",
+      },
+
+      // {
+      //   rtl: true,
+      //   icon: Icon3,
+      //   servicesh2: "מיכון מלא של תהליכי חיוב זיכוי בין מערכות וחברות",
+      //   servicesp: "התממשקותם של מערכות קיימות כגון:ORACLE,PRIORITY,SAP",
+      // },
+    ],
+  },
   services: {
     header: {
       content: "Our services",
@@ -201,7 +289,7 @@ export const DataEnglish = {
   },
   advantages: {
     header: {
-      content: "Our benefits for your business",
+      content: "Why ContoTeq?",
       rtl: false,
     },
 
@@ -268,7 +356,7 @@ export const DataEnglish = {
 
   whoweare: {
     header: {
-      content: "Who we are?",
+      content: "Inventors",
       rtl: false,
     },
 
