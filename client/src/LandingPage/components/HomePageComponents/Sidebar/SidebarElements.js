@@ -40,10 +40,13 @@ export const SidebarMenu = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 80px);
+
   text-align: center;
 
   @media screen and (max-width: 480px) {
-    grid-template-rows: repeat(6, 60px);
+    // grid-template-rows: repeat(6, 60px);
+    grid-template-rows: ${({ toggleDropDown }) =>
+      toggleDropDown ? "repeat(6, 80px)" : "repeat(6, 60px)"};
   }
 `;
 
@@ -112,7 +115,7 @@ export const TextLanguage = styled.div`
 `;
 
 export const SidebarMiniLink = styled(LinkS)`
-  padding-top: 0px;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,8 +134,10 @@ export const SidebarMiniLink = styled(LinkS)`
 `;
 
 export const MiniSideBarContainer = styled.aside`
-  height: 100%;
-
+  height: 70%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 32px);
   /* position: fixed;
   z-index: 999;
   width: 100%;
@@ -148,6 +153,6 @@ export const MiniSideBarContainer = styled.aside`
   //transition: width 2s linear 1s;
   top: 0;
   left: 0;
-  opacity: ${({ toggleDropDown }) => (toggleDropDown ? "70%" : "0")};
-  top: ${({ toggleDropDown }) => (toggleDropDown ? "0" : "-70%")};
+  opacity: ${({ toggleDropDown }) => (toggleDropDown ? "100%" : "0")};
+  top: ${({ toggleDropDown }) => (toggleDropDown ? "0" : "-100%")};
 `;

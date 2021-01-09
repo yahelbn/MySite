@@ -14,6 +14,8 @@ import {
   SidebarMiniLink,
 } from "./SidebarElements";
 import { MdLanguage } from "react-icons/md";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { RiArrowUpSLine } from "react-icons/ri";
 
 const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
   const { rtl, links, loginbutton } = content;
@@ -41,6 +43,7 @@ const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
             rtl={Boolean(rtl) ? true : false}
           >
             {navItem.content}
+            {toggleDropDown ? <RiArrowUpSLine /> : <MdKeyboardArrowDown />}
           </SidebarLink>
           {toggleDropDown && (
             <MiniSideBarContainer toggleDropDown={toggleDropDown}>
@@ -70,7 +73,7 @@ const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
         <CloseIcon />
       </Icon>
       <SidebarWrapper>
-        <SidebarMenu>
+        <SidebarMenu toggleDropDown={toggleDropDown}>
           {renderSideBarLinks}
           <LanguageButton onClick={toggleLanguage}>
             <MdLanguage />
