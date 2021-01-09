@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SidebarContainer,
   CloseIcon,
@@ -10,24 +10,58 @@ import {
   SidebarLink,
   LanguageButton,
   TextLanguage,
+  MiniSideBarContainer,
+  SidebarMiniLink,
 } from "./SidebarElements";
 import { MdLanguage } from "react-icons/md";
 
 const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
   const { rtl, links, loginbutton } = content;
+  const [toggleDropDown, setToggleDropDown] = useState(false);
 
+  console.log(toggleDropDown);
   const renderSideBarLinks = links.map((navItem, index) => {
-    return (
-      <React.Fragment key={index}>
-        <SidebarLink
-          to={navItem.to}
-          onClick={toggle}
-          rtl={Boolean(rtl) ? true : false}
-        >
-          {navItem.content}
-        </SidebarLink>
-      </React.Fragment>
-    );
+    if (index === 0) {
+      const renderMiniSideBarLinks = navItem.dropdown.map((link) => {
+        return (
+          <SidebarMiniLink
+            to={link.to}
+            onClick={toggle}
+            rtl={Boolean(rtl) ? true : false}
+          >
+            {link.content}
+          </SidebarMiniLink>
+        );
+      });
+
+      return (
+        <React.Fragment key={index}>
+          <SidebarLink
+            onClick={({ toggle }, () => setToggleDropDown(!toggleDropDown))}
+            rtl={Boolean(rtl) ? true : false}
+          >
+            {navItem.content}
+          </SidebarLink>
+          {toggleDropDown && (
+            <MiniSideBarContainer toggleDropDown={toggleDropDown}>
+              {renderMiniSideBarLinks}
+            </MiniSideBarContainer>
+          )}
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment key={index}>
+          <SidebarLink
+            to={navItem.to}
+            onClick={toggle}
+            rtl={Boolean(rtl) ? true : false}
+          >
+            {navItem.content}
+          </SidebarLink>
+        </React.Fragment>
+      );
+    }
   });
 
   return (

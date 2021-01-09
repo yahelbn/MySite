@@ -17,9 +17,20 @@ import {
   NavBtn,
   LanguageButton,
   TextLanguage,
+  LinksDrop,
+  DropdownNew,
 } from "./NavbarElements";
+
+import { Button } from "styled-button-component";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownDivider,
+} from "styled-dropdown-component";
 const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   const [scrollNav, setScrollNav] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
   const { rtl, links, loginbutton } = content;
 
@@ -40,24 +51,84 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   };
 
   const renderNavBarLinks = links.map((navItem, index) => {
-    return (
-      <React.Fragment key={index}>
-        <NavItem>
-          <NavLinks
-            rtl={Boolean(rtl) ? true : false}
-            to={navItem.to}
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact="true"
-            offset={-80}
-            activeClass="active"
-          >
-            {navItem.content}
-          </NavLinks>
-        </NavItem>
-      </React.Fragment>
-    );
+    if (index === 0) {
+      const renderDropDownItems = navItem.dropdown.map((link, index) => {
+        return (
+          <React.Fragment key={index}>
+            <DropdownItem>
+              <LinksDrop
+                to={link.to}
+                smooth={"true"}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80}
+                activeClass="active"
+              >
+                {link.content}
+              </LinksDrop>
+            </DropdownItem>
+          </React.Fragment>
+        );
+      });
+
+      return (
+        <React.Fragment key={index}>
+          <NavItem>
+            <DropdownNew rtl={rtl}>
+              <Button
+                activeClass="active"
+                style={{
+                  backgroundColor: "transparent",
+                  letterSpacing: "0.04em",
+                  border: "0px",
+                }}
+                dropdownToggle
+                onClick={() => setHidden(!hidden)}
+              >
+                {navItem.content + "  "}
+              </Button>
+              <DropdownMenu
+                style={{ direction: "rtl" }}
+                hidden={hidden}
+                toggle={() => setHidden(!hidden)}
+              >
+                {renderDropDownItems}
+                {/* <DropdownItem>
+                  <LinksDrop to="whoweare">מי אנחנו</LinksDrop>
+                </DropdownItem>
+                <DropdownItem>
+                  <LinksDrop to="whoweare">טגנולוגיה</LinksDrop>
+                </DropdownItem> */}
+                {/* <DropdownDivider /> */}
+                {/* <DropdownItem>
+                  <LinksDrop to="whoweare">צוות</LinksDrop>
+                </DropdownItem> */}
+              </DropdownMenu>
+            </DropdownNew>
+          </NavItem>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment key={index}>
+          <NavItem>
+            <NavLinks
+              rtl={Boolean(rtl) ? true : false}
+              to={navItem.to}
+              smooth={"true"}
+              duration={500}
+              spy={true}
+              exact="true"
+              offset={-80}
+              activeClass="active"
+            >
+              {navItem.content}
+            </NavLinks>
+          </NavItem>
+        </React.Fragment>
+      );
+    }
   });
 
   return (
@@ -94,3 +165,31 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
 };
 
 export default Navbar;
+
+// const [hidden, setHidden] = useState(true);
+
+// import { Button } from "styled-button-component";
+// import {
+//   Dropdown,
+//   DropdownItem,
+//   DropdownMenu,
+//   DropdownDivider,
+// } from "styled-dropdown-component";
+
+{
+  /* <Dropdown>
+<Button
+  style={{ background: "blue" }}
+  dropdownToggle
+  onClick={() => setHidden(!hidden)}
+>
+  Dropdown Button
+</Button>
+<DropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
+  <DropdownItem>Action</DropdownItem>
+  <DropdownItem>Another action</DropdownItem>
+  <DropdownDivider />
+  <DropdownItem>Action after divider</DropdownItem>
+</DropdownMenu>
+</Dropdown> */
+}

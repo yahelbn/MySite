@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 import { Link as LinkS } from "react-scroll";
+import { Button as ButtonComp } from "styled-button-component";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownDivider,
+} from "styled-dropdown-component";
 
 export const Nav = styled.nav`
   background: ${({ scrollNav }) => (scrollNav ? "#1b1924" : "transparent")};
@@ -134,4 +141,50 @@ export const LanguageButton = styled(LinkS)`
 
 export const TextLanguage = styled.div`
   margin-right: 2px;
+`;
+
+export const NavButton = styled(ButtonComp)`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
+
+  &.active {
+    border-bottom: 3px solid #b5c1b4;
+  }
+`;
+
+export const DropdownNew = styled(Dropdown)`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
+
+  &.active {
+    border-bottom: 3px solid #b5c1b4;
+  }
+`;
+
+export const LinksDrop = styled(LinkS)`
+  justify-content: center;
+  color: black;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
+
+  &.active {
+    border-bottom: 3px solid #b5c1b4;
+  }
 `;

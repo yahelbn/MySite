@@ -60,10 +60,12 @@ export const Card = styled.div`
 export const ArrowLeft = styled(MdKeyboardArrowLeft)`
   height: 30px;
   width: 30px;
+  cursor: pointer;
 `;
 export const ArrowRight = styled(MdKeyboardArrowRight)`
   height: 30px;
   width: 30px;
+  cursor: pointer;
 `;
 
 export const Img = styled.img`

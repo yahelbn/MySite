@@ -4,6 +4,8 @@ import Home from "./pages";
 import SigninPage from "./pages/signin";
 import SignupPage from "./pages/signup";
 import InitOrJoin from "./pages/initorjoin";
+import ContactUs from "./pages/contactus";
+
 import ContoTeqApp from "../Application/pageComponents/LangRouter";
 
 import React from "react";
@@ -40,6 +42,11 @@ const App = (props) => {
         <Route
           path={"/" + locale + "/initorjoin"}
           render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
+        />
+
+        <Route
+          path={"/" + locale + "/contactus"}
+          render={(propRouter) => <ContactUs {...propRouter} {...props} />}
         />
 
         <Route
