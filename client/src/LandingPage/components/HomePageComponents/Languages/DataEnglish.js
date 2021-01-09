@@ -135,7 +135,7 @@ export const DataEnglish = {
     forminput3: "text",
     formbutton: "Send",
     text: "For any question you can contact ",
-    email: "info@contoteq.com",
+    email: "contoteq@gmail.com",
     text2:
       "Thank you for your interest,<br> please leave details and we will contact you soon:",
   },

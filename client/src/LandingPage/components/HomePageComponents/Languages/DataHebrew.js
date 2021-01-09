@@ -135,7 +135,7 @@ export const DataHebrew = {
     forminput3: "text",
     formbutton: "שלח",
     text: "לכל שאלה ניתן לפנות ל",
-    email: "info@contoteq.com",
+    email: "contoteq@gmail.com",
 
     text2: "תודה על התעניינותך ,<br>  אנא השאר פרטים וניצור קשר בהקדם:",
   },
