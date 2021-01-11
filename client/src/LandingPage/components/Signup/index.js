@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormWrap,
   FormH1,
@@ -12,7 +12,20 @@ import {
   Container,
 } from "./SignupElements";
 
+import { userPool } from "../cognitoUserPool";
+
 const SignUp = ({ content }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    userPool.signUp(email, password, [], null, (err, data) => {
+      if (err) console.log(err);
+      else console.log(data);
+    });
+  };
+
   return (
     <>
       <Container>
@@ -20,7 +33,7 @@ const SignUp = ({ content }) => {
           <Icon to="/">ContoTeq</Icon>
           <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
             <FormH1>{content.formh1}</FormH1>
-            <RowDiv>
+            {/* <RowDiv>
               <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel1}</FormLabel>
                 <FormInput type={content.forminput1} required />
@@ -29,26 +42,38 @@ const SignUp = ({ content }) => {
                 <FormLabel htmlFor="for">{content.formlabel2}</FormLabel>
                 <FormInput type={content.forminput2} required />
               </ColumnDiv>
-            </RowDiv>
+            </RowDiv> */}
 
             <FormLabel htmlFor="for">{content.formlabel3}</FormLabel>
-            <FormInput type={content.forminput3} required />
+            <FormInput
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              type={content.forminput3}
+              required
+            />
             <RowDiv>
               <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel4}</FormLabel>
-                <FormInput type={content.forminput4} required />
+                <FormInput
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  type={content.forminput4}
+                  required
+                />
               </ColumnDiv>
-              <ColumnDiv>
+              {/* <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel5}</FormLabel>
                 <FormInput type={content.forminput5} required />
-              </ColumnDiv>
+              </ColumnDiv> */}
             </RowDiv>
 
-            <FormLabel htmlFor="for">{content.formlabel6}</FormLabel>
+            {/* <FormLabel htmlFor="for">{content.formlabel6}</FormLabel>
             <FormInput type={content.forminput6} required />
             <FormLabel htmlFor="for">{content.formlabel7}</FormLabel>
-            <FormInput type={content.forminput7} required />
-            <FormButton type="submit">{content.formbutton}</FormButton>
+            <FormInput type={content.forminput7} required /> */}
+            <FormButton onClick={(e) => onSubmit(e)} type="submit">
+              {content.formbutton}
+            </FormButton>
           </Form>
         </FormWrap>
       </Container>
