@@ -66,6 +66,28 @@ export const Icon = styled(Link)`
   }
 `;
 
+export const IconExit = styled(Link)`
+  margin-right: 32px;
+  margin-top: 32px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 32px;
+  transition: width 1s, height 1s, transform 0.7s;
+
+  &:hover {
+    //  width: 20px;
+    //height: 20px;
+    color: #ff6347;
+    transform: rotate(-90deg);
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-left: 16px;
+    margin-top: 8px;
+  }
+`;
+
 export const FormContent = styled.div`
   height: 100%;
   display: flex;
@@ -128,4 +150,10 @@ export var RowDiv = styled.div`
 export const ColumnDiv = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const RowHead = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;

@@ -147,7 +147,7 @@ export const DataEnglish = {
     formlabel2: "Password",
     forminput2: "password",
 
-    formbutton: "Continue",
+    formbutton: "Sign in",
     text: "Forgot password",
   },
   signup: {

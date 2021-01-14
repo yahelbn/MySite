@@ -59,6 +59,28 @@ export const Icon = styled(Link)`
   }
 `;
 
+export const IconExit = styled(Link)`
+  margin-right: 32px;
+  margin-top: 32px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 32px;
+  transition: width 1s, height 1s, transform 0.7s;
+
+  &:hover {
+    //  width: 20px;
+    //height: 20px;
+    color: #ff6347;
+    transform: rotate(-90deg);
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-left: 16px;
+    margin-top: 8px;
+  }
+`;
+
 export const FormContent = styled.div`
   height: 100%;
   display: flex;
@@ -91,6 +113,13 @@ export const FormInput = styled.input`
   border-radius: 4px;
 `;
 
+export const FormInputPassword = styled.input`
+  padding: 16px 16px;
+  margin-bottom: 1px;
+  border: none;
+  border-radius: 4px;
+`;
+
 export const FormButton = styled.button`
   background: #74593d;
   padding: 16px 0;
@@ -106,4 +135,18 @@ export const Text = styled.span`
   margin-top: 24px;
   color: #fff;
   font-size: 14px;
+`;
+
+export const RowHead = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const LinkForgotPassword = styled(Link)`
+  text-align: ${({ rtl }) => (rtl ? "right" : "left")};
+  margin-top: 10px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 33px;
 `;

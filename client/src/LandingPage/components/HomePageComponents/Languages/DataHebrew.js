@@ -147,7 +147,7 @@ export const DataHebrew = {
     formlabel2: "סיסמא",
     forminput2: "password",
 
-    formbutton: "המשך",
+    formbutton: "התחבר",
     text: "שכחתי סיסמא",
   },
   signup: {

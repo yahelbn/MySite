@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FormWrap,
   FormH1,
@@ -10,27 +10,63 @@ import {
   RowDiv,
   ColumnDiv,
   Container,
+  IconExit,
+  RowHead,
 } from "./SignupElements";
+import { AiOutlineClose } from "react-icons/ai";
+import Loader from "react-loader-spinner";
+
+import { useHistory } from "react-router-dom";
 
 import { userPool } from "../cognitoUserPool";
 
 const SignUp = ({ content }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loader, setLoader] = useState(false);
+  const history = useHistory();
 
   const onSubmit = (event) => {
     event.preventDefault();
+    setLoader(true);
+
     userPool.signUp(email, password, [], null, (err, data) => {
-      if (err) console.log(err);
-      else console.log(data);
+      if (err) {
+        console.log(err);
+        setLoader(false);
+      } else {
+        console.log(data);
+        setLoader(false);
+      }
     });
   };
+
+  const handleUserKeyPress = (event) => {
+    const { key, keyCode } = event;
+
+    if (keyCode === 27) {
+      history.push("/");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleUserKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleUserKeyPress);
+    };
+  }, []);
 
   return (
     <>
       <Container>
         <FormWrap>
-          <Icon to="/">ContoTeq</Icon>
+          <RowHead>
+            <Icon to="/">ContoTeq</Icon>
+            <IconExit to="/">
+              <AiOutlineClose />
+            </IconExit>
+          </RowHead>
           <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
             <FormH1>{content.formh1}</FormH1>
             {/* <RowDiv>
@@ -72,7 +108,17 @@ const SignUp = ({ content }) => {
             <FormLabel htmlFor="for">{content.formlabel7}</FormLabel>
             <FormInput type={content.forminput7} required /> */}
             <FormButton onClick={(e) => onSubmit(e)} type="submit">
-              {content.formbutton}
+              {loader ? (
+                <Loader
+                  type="Puff"
+                  color="#DCD9C6"
+                  height={35}
+                  width={35}
+                  timeout={10000}
+                />
+              ) : (
+                content.formbutton
+              )}
             </FormButton>
           </Form>
         </FormWrap>
