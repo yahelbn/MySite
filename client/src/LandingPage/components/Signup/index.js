@@ -12,18 +12,25 @@ import {
   Container,
   IconExit,
   RowHead,
+  AlertText,
 } from "./SignupElements";
 import { AiOutlineClose } from "react-icons/ai";
 import Loader from "react-loader-spinner";
-
 import { useHistory } from "react-router-dom";
-
 import { userPool } from "../cognitoUserPool";
+
+import "../HomePageComponents/Modal/Modal.css";
+import Modal from "../HomePageComponents/Modal/Modal";
+import useModal from "../HomePageComponents/Modal/useModal";
 
 const SignUp = ({ content }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
+  const { isShowing, toggle } = useModal();
+
   const history = useHistory();
 
   const onSubmit = (event) => {
@@ -32,11 +39,16 @@ const SignUp = ({ content }) => {
 
     userPool.signUp(email, password, [], null, (err, data) => {
       if (err) {
-        console.log(err);
+        console.log(err.message.message);
         setLoader(false);
+        setMessage(err.message);
+        setError(true);
       } else {
         console.log(data);
+        setMessage("Success");
         setLoader(false);
+        setError(false);
+        toggle();
       }
     });
   };
@@ -68,6 +80,11 @@ const SignUp = ({ content }) => {
             </IconExit>
           </RowHead>
           <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
+            <Modal
+              isShowing={isShowing}
+              hide={toggle}
+              modalContent={content.modalconfirm}
+            />
             <FormH1>{content.formh1}</FormH1>
             {/* <RowDiv>
               <ColumnDiv>
@@ -120,6 +137,7 @@ const SignUp = ({ content }) => {
                 content.formbutton
               )}
             </FormButton>
+            {message && <AlertText error={error}>{message}</AlertText>}
           </Form>
         </FormWrap>
       </Container>

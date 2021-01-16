@@ -170,6 +170,13 @@ export const DataEnglish = {
 
     formbutton: "Sign up",
     //text: "שכחתי סיסמא",
+    modalconfirm: {
+      rtl: false,
+      header: "Please check your email",
+      p1: "Just click the link to complete the sign-up proccess",
+      p2b: "Haven't received an email?",
+      p2: "Please check your spam folder to make sure it's not in there",
+    },
   },
 
   initorjoin: {

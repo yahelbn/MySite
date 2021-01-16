@@ -150,3 +150,16 @@ export const LinkForgotPassword = styled(Link)`
   font-size: 14px;
   margin-bottom: 33px;
 `;
+
+export const AlertText = styled.span`
+  direction: ltr;
+  text-align: center;
+  margin-top: 24px;
+  color: ${({ error }) => (error ? "brown" : "#1d5630")};
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: ${({ error }) => (error ? "#f8d7da" : "#d3ebdb")};
+  border: 0.5px solid ${({ error }) => (error ? "#f08080" : "#008080")};
+  border-radius: 8px;
+`;

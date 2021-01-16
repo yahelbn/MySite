@@ -14,6 +14,7 @@ import {
   RowHead,
   LinkForgotPassword,
   FormInputPassword,
+  AlertText,
 } from "./SigninElements";
 import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
@@ -26,6 +27,7 @@ const SignIn = ({ content }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
   const history = useHistory();
 
@@ -46,12 +48,14 @@ const SignIn = ({ content }) => {
 
     user.authenticateUser(authDetails, {
       onSuccess: (data) => {
-        console.log("success");
+        setError(false);
         setMessage("success");
         setLoader(false);
       },
       onFailure: (err) => {
+        setError(true);
         setMessage(err.message);
+        setLoader(false);
       },
       newPasswordRequired: (data) => {
         setMessage(data.message);
@@ -116,7 +120,7 @@ const SignIn = ({ content }) => {
                   content.formbutton
                 )}
               </FormButton>
-              <Text>{message}</Text>
+              {message && <AlertText error={error}>{message}</AlertText>}
             </Form>
           </FormContent>
         </FormWrap>
