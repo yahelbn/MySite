@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   FormWrap,
   FormContent,
@@ -19,9 +19,7 @@ import {
 import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
-
-import { userPool } from "../cognitoUserPool";
-import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import { AccountContext } from "../Account";
 
 const SignIn = ({ content }) => {
   const [email, setEmail] = useState("");
@@ -31,36 +29,24 @@ const SignIn = ({ content }) => {
   const [loader, setLoader] = useState(false);
   const history = useHistory();
 
+  const { authenticate } = useContext(AccountContext);
+
   const onSubmit = (event) => {
     event.preventDefault();
-    setMessage("Loading");
     setLoader(true);
 
-    const user = new CognitoUser({
-      Username: email,
-      Pool: userPool,
-    });
-
-    const authDetails = new AuthenticationDetails({
-      Username: email,
-      Password: password,
-    });
-
-    user.authenticateUser(authDetails, {
-      onSuccess: (data) => {
+    authenticate(email, password).then(
+      (data) => {
+        setMessage("מיד תועבר");
         setError(false);
-        setMessage("success");
         setLoader(false);
       },
-      onFailure: (err) => {
+      (err) => {
         setError(true);
         setMessage(err.message);
         setLoader(false);
-      },
-      newPasswordRequired: (data) => {
-        setMessage(data.message);
-      },
-    });
+      }
+    );
   };
 
   const handleUserKeyPress = (event) => {
