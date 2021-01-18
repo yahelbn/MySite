@@ -15,6 +15,7 @@ import gradient from "../../images/gradient.png";
 import { IoIosPeople } from "react-icons/io";
 import { TiMessages } from "react-icons/ti";
 import { BiReceipt } from "react-icons/bi";
+import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import { HiDocumentDownload } from "react-icons/hi";
 const SideBar = ({ toggle }) => {
@@ -37,7 +38,17 @@ const SideBar = ({ toggle }) => {
                   />
                 }
               >
-                תפריט
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <h3>שם משתמש</h3>
+                  <h4>שם חברה</h4>
+                </div>
               </MenuItem>
             </Menu>
           </SidebarHeader>
@@ -72,6 +83,31 @@ const SideBar = ({ toggle }) => {
                 <MenuItem>שליחת קבלות</MenuItem>
                 <MenuItem>מעקב קבלות</MenuItem>
               </SubMenu>
+              <div onClick={() => setHamburgerOpen(!hamburgerIsOpen)}>
+                <MenuItem
+                  icon={
+                    hamburgerIsOpen ? (
+                      <BsArrowLeftShort
+                        rounded
+                        toggled={hamburgerIsOpen}
+                        toggle={setHamburgerOpen}
+                        size={20}
+                        duration={0.8}
+                      />
+                    ) : (
+                      <BsArrowRightShort
+                        rounded
+                        toggled={hamburgerIsOpen}
+                        toggle={setHamburgerOpen}
+                        size={20}
+                        duration={0.8}
+                      />
+                    )
+                  }
+                >
+                  הקטן תפריט
+                </MenuItem>
+              </div>
             </Menu>
           </SidebarContent>
 
