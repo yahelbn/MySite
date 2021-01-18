@@ -24,33 +24,33 @@ const App = (props) => {
     });
   }, []);
 
-  if (authenticationStatus) {
-    return (
-      <Account>
-        <Row>
-          <SideBar />
-          <Column>
-            <NavBar />
+  // if (authenticationStatus) {
+  return (
+    <Account>
+      <Row>
+        <SideBar />
+        <Column>
+          <NavBar />
 
-            <MainDiv>
-              <Switch>
-                <Route
-                  path={"/" + locale + "/contoteqapp/mainpage"}
-                  exact
-                  render={(propRouter) => (
-                    <MainPageApp {...propRouter} {...props} />
-                  )}
-                />
-              </Switch>
-            </MainDiv>
-          </Column>
-          <ProfileBar />
-        </Row>
-      </Account>
-    );
-  } else {
-    return <div>sorry, you are not connected</div>;
-  }
+          <MainDiv>
+            <Switch>
+              <Route
+                path={"/" + locale + "/contoteqapp/mainpage"}
+                exact
+                render={(propRouter) => (
+                  <MainPageApp {...propRouter} {...props} />
+                )}
+              />
+            </Switch>
+          </MainDiv>
+        </Column>
+        <ProfileBar />
+      </Row>
+    </Account>
+  );
+  // } else {
+  //   return <div>sorry, you are not connected</div>;
+  // }
 };
 
 export default App;
