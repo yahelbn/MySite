@@ -22,7 +22,7 @@ export default () => {
       {status ? (
         <div>
           you are logged in
-          <button onClick={() => alert("dfgdfg")}> logout</button>
+          <button onClick={() => logout()}> logout</button>
         </div>
       ) : (
         "not connected"
