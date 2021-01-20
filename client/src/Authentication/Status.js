@@ -20,7 +20,7 @@ export default () => {
   return (
     <div>
       {status ? (
-        <div>
+        <div style={{ position: "absolute" }}>
           you are logged in
           <button onClick={() => logout()}> logout</button>
         </div>

@@ -18,7 +18,7 @@ export const SubHeader = styled.h4`
 `;
 
 export const RowSwitch = styled.div`
-  flex-direction: row-reverse;
+  flex-direction: ${({ rtl }) => (rtl ? "row-reverse" : "row")};
   display: flex;
   justify-content: center;
   align-items: center;
