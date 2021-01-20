@@ -26,6 +26,17 @@ const Account = (props) => {
     });
   };
 
+  const getUserConnected = async () => {
+    return await new Promise((resolve, reject) => {
+      const user = userPool.getCurrentUser();
+      if (user) {
+        resolve(user);
+      } else {
+        reject();
+      }
+    });
+  };
+
   const authenticate = async (email, password) => {
     return await new Promise((resolve, reject) => {
       const user = new CognitoUser({
@@ -60,7 +71,9 @@ const Account = (props) => {
   };
 
   return (
-    <AccountContext.Provider value={{ authenticate, getSession, logout }}>
+    <AccountContext.Provider
+      value={{ authenticate, getSession, logout, getUserConnected }}
+    >
       {props.children}
     </AccountContext.Provider>
   );

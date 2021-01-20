@@ -4,7 +4,6 @@ import Home from "./pages";
 import SigninPage from "./pages/signin";
 import SignupPage from "./pages/signup";
 import { Account } from "../Authentication/Account";
-import InitOrJoin from "./pages/initorjoin";
 import ContactUs from "./pages/contactus";
 import Status from "../Authentication/Status";
 
@@ -39,11 +38,6 @@ const App = (props) => {
         <Route
           path={"/" + locale + "/signup"}
           render={(propRouter) => <SignupPage {...propRouter} {...props} />}
-        />
-
-        <Route
-          path={"/" + locale + "/initorjoin"}
-          render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
         />
 
         <Route
