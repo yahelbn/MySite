@@ -17,7 +17,7 @@ import {
 import { AiOutlineClose } from "react-icons/ai";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router-dom";
-import { userPool } from "../cognitoUserPool";
+import { userPool } from "../../../Authentication/cognitoUserPool";
 
 import "../HomePageComponents/Modal/Modal.css";
 import Modal from "../HomePageComponents/Modal/Modal";

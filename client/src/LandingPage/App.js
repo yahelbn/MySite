@@ -3,10 +3,10 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./pages";
 import SigninPage from "./pages/signin";
 import SignupPage from "./pages/signup";
-import { Account } from "./components/Account";
+import { Account } from "../Authentication/Account";
 import InitOrJoin from "./pages/initorjoin";
 import ContactUs from "./pages/contactus";
-import Status from "./components/Status";
+import Status from "../Authentication/Status";
 
 import ContoTeqApp from "../Application/pageComponents/LangRouter";
 

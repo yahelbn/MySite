@@ -19,7 +19,7 @@ import {
 import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
-import { AccountContext } from "../Account";
+import { AccountContext } from "../../../Authentication/Account";
 
 const SignIn = ({ content }) => {
   const [email, setEmail] = useState("");
