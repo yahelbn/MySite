@@ -24,44 +24,44 @@ const App = (props) => {
   // });
 
   return (
-    <Account>
-      <Status />
-      <Switch>
-        <Route
-          path={"/" + locale + "/"}
-          exact
-          render={(propRouter) => <Home {...propRouter} {...props} />}
-        />
-        <Route
-          path={"/" + locale + "/signin"}
-          render={(propRouter) => <SigninPage {...propRouter} {...props} />}
-        />
+    // <Account>
+    //   <Status />
+    <Switch>
+      <Route
+        path={"/" + locale + "/"}
+        exact
+        render={(propRouter) => <Home {...propRouter} {...props} />}
+      />
+      <Route
+        path={"/" + locale + "/signin"}
+        render={(propRouter) => <SigninPage {...propRouter} {...props} />}
+      />
 
-        <Route
-          path={"/" + locale + "/signup"}
-          render={(propRouter) => <SignupPage {...propRouter} {...props} />}
-        />
+      <Route
+        path={"/" + locale + "/signup"}
+        render={(propRouter) => <SignupPage {...propRouter} {...props} />}
+      />
 
-        <Route
-          path={"/" + locale + "/initorjoin"}
-          render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
-        />
+      <Route
+        path={"/" + locale + "/initorjoin"}
+        render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
+      />
 
-        <Route
-          path={"/" + locale + "/contactus"}
-          render={(propRouter) => <ContactUs {...propRouter} {...props} />}
-        />
+      <Route
+        path={"/" + locale + "/contactus"}
+        render={(propRouter) => <ContactUs {...propRouter} {...props} />}
+      />
 
-        <Route
-          path={"/" + locale + "/contoteqapp"}
-          render={(propRouter) => <ContoTeqApp {...propRouter} {...props} />}
-        />
-        {/* <Route
+      <Route
+        path={"/" + locale + "/contoteqapp"}
+        render={(propRouter) => <ContoTeqApp {...propRouter} {...props} />}
+      />
+      {/* <Route
           path="*"
           render={(propRouter) => <NoFound {...propRouter} {...props} />}
         /> */}
-      </Switch>
-    </Account>
+    </Switch>
+    /* </Account> */
   );
 };
 

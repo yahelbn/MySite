@@ -9,7 +9,13 @@ import {
   SidebarFooter,
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-import {} from "./SideBarElements";
+import {
+  SwitchContainer,
+  Header,
+  SubHeader,
+  RowSwitch,
+  textSwitch,
+} from "./SideBarElements";
 import Hamburger from "hamburger-react";
 import gradient from "../../images/gradient.png";
 import { IoIosPeople } from "react-icons/io";
@@ -18,8 +24,11 @@ import { BiReceipt } from "react-icons/bi";
 import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import { HiDocumentDownload } from "react-icons/hi";
+import Switch from "react-switch";
+
 const SideBar = ({ toggle }) => {
   const [hamburgerIsOpen, setHamburgerOpen] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   return (
     <>
@@ -33,22 +42,35 @@ const SideBar = ({ toggle }) => {
                     rounded
                     toggled={hamburgerIsOpen}
                     toggle={setHamburgerOpen}
-                    direction="right"
+                    // direction="right"
                     duration={0.8}
                   />
                 }
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "column",
-                  }}
-                >
-                  <h3>שם משתמש</h3>
-                  <h4>שם חברה</h4>
-                </div>
+                <SwitchContainer>
+                  <Header>שם משתמש</Header>
+                  <SubHeader>שם חברה</SubHeader>
+                  <RowSwitch>
+                    <textSwitch>Customer</textSwitch>
+                    <div style={{}}>
+                      <Switch
+                        checked={checked}
+                        onChange={setChecked}
+                        onColor="#dcd9c6"
+                        onHandleColor="#D0CCB5"
+                        offHandleColor="#D0CCB5"
+                        handleDiameter={30}
+                        uncheckedIcon={false}
+                        checkedIcon={false}
+                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                        activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                        height={20}
+                        width={48}
+                      />
+                    </div>
+                    <textSwitch>Vendor</textSwitch>
+                  </RowSwitch>
+                </SwitchContainer>
               </MenuItem>
             </Menu>
           </SidebarHeader>
