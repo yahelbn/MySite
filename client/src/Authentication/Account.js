@@ -26,7 +26,7 @@ const Account = (props) => {
     });
   };
 
-  const getUserConnected = async () => {
+  const getConnectedUser = async () => {
     return await new Promise((resolve, reject) => {
       const user = userPool.getCurrentUser();
       if (user) {
@@ -72,7 +72,12 @@ const Account = (props) => {
 
   return (
     <AccountContext.Provider
-      value={{ authenticate, getSession, logout, getUserConnected }}
+      value={{
+        authenticate,
+        getSession,
+        logout,
+        getConnectedUser,
+      }}
     >
       {props.children}
     </AccountContext.Provider>
