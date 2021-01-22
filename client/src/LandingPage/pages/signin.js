@@ -5,7 +5,7 @@ const SigninPage = (props) => {
   return (
     <div>
       <ScrollToTop />
-      <SignIn content={props.dataLanguages.signin} />
+      <SignIn content={props.dataLanguages.signin} locale={props.locale}/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FaBars } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { MdLanguage } from "react-icons/md";
@@ -19,6 +19,7 @@ import {
   TextLanguage,
   LinksDrop,
   DropdownNew,
+  RowBttns,
 } from "./NavbarElements";
 
 import { Button } from "styled-button-component";
@@ -28,11 +29,17 @@ import {
   DropdownMenu,
   DropdownDivider,
 } from "styled-dropdown-component";
+import { AccountContext } from "../../../../Authentication/Account";
+import {useHistory} from 'react-router-dom'
+
 const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
+  const history = useHistory();
+  const { getSession, getConnectedUser, logout } = useContext(AccountContext);
+  const [authenticationStatus, setAuthenticationStatus] = useState(false);
   const [scrollNav, setScrollNav] = useState(false);
   const [hidden, setHidden] = useState(true);
 
-  const { rtl, links, loginbutton } = content;
+  const { rtl, links, loginbutton, goToApp, logoutbutton } = content;
 
   const changeNav = () => {
     if (window.scrollY >= 80) {
@@ -42,7 +49,26 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
     }
   };
 
+  const logoutLogin=()=>{
+    if(authenticationStatus){
+      logout()
+    }else{
+      history.push(`/${locale}/signin`)
+    }
+  }
+
   useEffect(() => {
+    getSession()
+      .then((session) => {
+        if (session) {
+          setAuthenticationStatus(true);
+          getConnectedUser().then((user) => {
+            console.log(user);
+          });
+        }
+      })
+      .catch((e) => {});
+
     window.addEventListener("scroll", changeNav);
   }, []);
 
@@ -152,11 +178,20 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
                 </LanguageButton>
               </NavItem>
             </NavMenu>
-            <NavBtn>
-              <NavBtnLink to={"/" + locale + "/signin"}>
-                {loginbutton}
-              </NavBtnLink>
-            </NavBtn>
+            <RowBttns>
+              <NavBtn onClick={logoutLogin}  >
+                <NavBtnLink color={authenticationStatus}>
+                  {authenticationStatus ? logoutbutton : loginbutton}
+                </NavBtnLink>
+              </NavBtn>
+              {authenticationStatus && (
+                <NavBtn marginLeft={"10px"}>
+                  <NavBtnLink to={"/" + locale + "/signin"}>
+                    {goToApp}
+                  </NavBtnLink>
+                </NavBtn>
+              )}
+            </RowBttns>
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>
@@ -165,31 +200,3 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
 };
 
 export default Navbar;
-
-// const [hidden, setHidden] = useState(true);
-
-// import { Button } from "styled-button-component";
-// import {
-//   Dropdown,
-//   DropdownItem,
-//   DropdownMenu,
-//   DropdownDivider,
-// } from "styled-dropdown-component";
-
-{
-  /* <Dropdown>
-<Button
-  style={{ background: "blue" }}
-  dropdownToggle
-  onClick={() => setHidden(!hidden)}
->
-  Dropdown Button
-</Button>
-<DropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
-  <DropdownItem>Action</DropdownItem>
-  <DropdownItem>Another action</DropdownItem>
-  <DropdownDivider />
-  <DropdownItem>Action after divider</DropdownItem>
-</DropdownMenu>
-</Dropdown> */
-}

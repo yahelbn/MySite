@@ -10,7 +10,6 @@ import { Account } from "../../Authentication/Account";
 import { AccountContext } from "../../Authentication/Account";
 import InitOrJoin from "../pages/initorjoin";
 import { useHistory } from "react-router-dom";
-import SignIn from '../../LandingPage/pages/signin' 
 
 const App = (props) => {
   const history = useHistory();
