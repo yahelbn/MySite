@@ -3,8 +3,10 @@ import {
   FormWrap,
   FormContent,
   FormH1,
+  FormLabel,
   FormInput,
   FormButton,
+  Text,
   Icon,
   Form,
   Container,
@@ -13,16 +15,16 @@ import {
   LinkForgotPassword,
   FormInputPassword,
   AlertText,
-} from "./SigninElements";
+} from "./ForgotPasswordElements";
 import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
-import { AccountContext } from "../../../Authentication/Account";
+import { AccountContext } from "../../Authentication/Account";
 
-const SignIn = ({ content, locale } ) => {
-  
+const ForgotPassword = (props) => {
+  const content=props.dataLanguages.forgotPassword;
+  const {locale}=props;
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -34,25 +36,28 @@ const SignIn = ({ content, locale } ) => {
     event.preventDefault();
     setLoader(true);
 
-    authenticate(email, password).then(
-      (data) => {
-        setMessage("מיד תועבר");
-        setError(false);
-        setLoader(false);
-      },
-      (err) => {
-        setError(true);
-        setMessage(err.message);
-        setLoader(false);
-      }
-    );
+    /**
+     * ofir to complete
+     */
+    // authenticate(email, password).then(
+    //   (data) => {
+    //     setMessage("מיד תועבר");
+    //     setError(false);
+    //     setLoader(false);
+    //   },
+    //   (err) => {
+    //     setError(true);
+    //     setMessage(err.message);
+    //     setLoader(false);
+    //   }
+    // );
   };
 
   const handleUserKeyPress = (event) => {
     const { key, keyCode } = event;
 
     if (keyCode === 27) {
-      history.push("/");
+      history.push(`/${locale}/signin`);
     }
   };
 
@@ -77,22 +82,12 @@ const SignIn = ({ content, locale } ) => {
           <FormContent>
             <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
               <FormH1>{content.formh1}</FormH1>
-              <FormInput
-              placeholder={content.formlabel1}
+              <FormInput placeholder={content.formlabel1}
                 onChange={(e) => setEmail(e.target.value)}
                 type={content.forminput1}
                 required
               />
-              <FormInputPassword
-              placeholder={content.formlabel2}
-                rtl={Boolean(content.rtl) ? true : false}
-                onChange={(e) => setPassword(e.target.value)}
-                type={content.forminput2}
-                required
-              />
-              <LinkForgotPassword to={`/${locale}/forgotpassword`}>
-                {content.text}
-              </LinkForgotPassword>
+            
 
               <FormButton onClick={(e) => onSubmit(e)} type="submit">
                 {loader ? (
@@ -116,4 +111,4 @@ const SignIn = ({ content, locale } ) => {
   );
 };
 
-export default SignIn;
+export default ForgotPassword;

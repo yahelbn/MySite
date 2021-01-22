@@ -117,6 +117,10 @@ export const DataEnglish = {
       { content: "Prices", to: "prices" },
     ],
     loginbutton: "Log in",
+    logoutbutton:"Log out",
+
+    goToApp:"Go to Application"
+
   },
 
   heroSection: {
@@ -359,6 +363,17 @@ export const DataEnglish = {
           "The system provides ongoing customer support and answers to any question at the touch of a button.",
       },
     ],
+  },
+  forgotPassword: {
+    rtl: false,
+    formh1: "Restore password",
+    formlabel1: "Enter your user account's verified email",
+    forminput1: "email",
+    // formlabel2: "סיסמא",
+    // forminput2: "password",
+
+    formbutton: "Send password reset email",
+   // text: "שכחתי סיסמא",
   },
 
   whoweare: {

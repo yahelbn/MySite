@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import {
   SidebarContainer,
   CloseIcon,
@@ -12,16 +12,49 @@ import {
   TextLanguage,
   MiniSideBarContainer,
   SidebarMiniLink,
+  RowBttns,
 } from "./SidebarElements";
 import { MdLanguage } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RiArrowUpSLine } from "react-icons/ri";
+import { AccountContext } from "../../../../Authentication/Account";
+import {useHistory} from 'react-router-dom'
+
 
 const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
-  const { rtl, links, loginbutton } = content;
+  const { getSession, getConnectedUser,logout } = useContext(AccountContext);
+  const [authenticationStatus, setAuthenticationStatus] = useState(false);
+  const history = useHistory();
+
+
+
+  const { rtl, links, loginbutton,logoutbutton ,goToApp} = content;
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
-  console.log(toggleDropDown);
+  useEffect(() => {
+    getSession()
+      .then((session) => {
+        if (session) {
+          setAuthenticationStatus(true);
+          getConnectedUser().then((user) => {
+            console.log(user);
+          });
+        }
+      })
+      .catch((e) => {});
+
+  }, []);
+
+  const logoutLogin=()=>{
+    if(authenticationStatus){
+      logout()
+    }else{
+      history.push(`/${locale}/signin`)
+    }
+  }
+
+
+
   const renderSideBarLinks = links.map((navItem, index) => {
     if (index === 0) {
       const renderMiniSideBarLinks = navItem.dropdown.map((link) => {
@@ -80,11 +113,19 @@ const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
             <TextLanguage>{locale}</TextLanguage>
           </LanguageButton>
         </SidebarMenu>
-        <SideBtnWrap>
-          <SidebarRoute to={"/" + locale + "/signin"}>
-            {loginbutton}
-          </SidebarRoute>
-        </SideBtnWrap>
+        <RowBttns>
+          <SideBtnWrap onClick={logoutLogin} >
+            <SidebarRoute color={authenticationStatus}>
+            {authenticationStatus ? logoutbutton : loginbutton}
+            </SidebarRoute>
+          </SideBtnWrap>
+          {authenticationStatus &&(<SideBtnWrap down={true}>
+            <SidebarRoute  to={"/" + locale + "/signin"}>
+              {goToApp}
+            </SidebarRoute>
+          </SideBtnWrap>)}
+          
+        </RowBttns>
       </SidebarWrapper>
     </SidebarContainer>
   );

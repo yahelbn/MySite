@@ -117,6 +117,8 @@ export const DataHebrew = {
       // { content: "הרשם", to: "signup" },
     ],
     loginbutton: "התחבר",
+    logoutbutton:"התנתק",
+    goToApp:"לאפליקציה"
   },
 
   heroSection: {
@@ -357,6 +359,13 @@ export const DataHebrew = {
           "המערכת מספקת תמיכה שוטפת בלקוחות ומענה לכל שאלה בנגיעת כפתור.",
       },
     ],
+  },
+  forgotPassword: {
+    rtl: true,
+    formh1: "שחזור סיסמא",
+    formlabel1: "הכנס את כתובת המייל שאיתה נרשמת",
+    forminput1: "email",
+    formbutton: "שלח מייל לשיחזור"
   },
 
   whoweare: {
