@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
 import { userPool } from "./cognitoUserPool";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import {useHistory} from 'react-router-dom'
 
 /**
  * component for authentication: context makes it easy to access functions from the
@@ -9,6 +10,7 @@ import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 const AccountContext = createContext();
 
 const Account = (props) => {
+  const history = useHistory();
   const getSession = async () => {
     return await new Promise((resolve, reject) => {
       const user = userPool.getCurrentUser();
@@ -67,6 +69,7 @@ const Account = (props) => {
     const user = userPool.getCurrentUser();
     if (user) {
       user.signOut();
+      history.push('/')
     }
   };
 

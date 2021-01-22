@@ -9,21 +9,28 @@ import ProfileBar from "../components/ProfileBar";
 import { Account } from "../../Authentication/Account";
 import { AccountContext } from "../../Authentication/Account";
 import InitOrJoin from "../pages/initorjoin";
+import { useHistory } from "react-router-dom";
+import SignIn from '../../LandingPage/pages/signin' 
 
 const App = (props) => {
+  const history = useHistory();
   let { locale } = props;
   const [authenticationStatus, setAuthenticationStatus] = useState(false);
   const { getSession, getConnectedUser } = useContext(AccountContext);
 
   useEffect(() => {
-    getSession().then((session) => {
-      if (session) {
-        setAuthenticationStatus(true);
-        getConnectedUser().then((user) => {
-          console.log(user);
-        });
-      }
-    });
+    getSession()
+      .then((session) => {
+        if (session) {
+          setAuthenticationStatus(true);
+          getConnectedUser().then((user) => {
+            console.log(user);
+          });
+        }
+      })
+      .catch((e) => {
+        history.push(`/`);
+      });
   });
 
   if (authenticationStatus) {
@@ -55,8 +62,8 @@ const App = (props) => {
         </Row>
       </Account>
     );
-  } else {
-    return <div>sorry, you are not connected</div>;
+  }else{
+   return null;
   }
 };
 
