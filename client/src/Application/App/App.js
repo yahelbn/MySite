@@ -9,31 +9,28 @@ import ProfileBar from "../components/ProfileBar";
 import { Account } from "../../Authentication/Account";
 import { AccountContext } from "../../Authentication/Account";
 import InitOrJoin from "../pages/initorjoin";
+import { useHistory } from "react-router-dom";
 
 const App = (props) => {
+  const history = useHistory();
   let { locale } = props;
   const [authenticationStatus, setAuthenticationStatus] = useState(false);
-  const [userConnected, setUserConnected] = useState("");
-
-  const { getSession, logout, getUserConnected } = useContext(AccountContext);
+  const { getSession, getConnectedUser } = useContext(AccountContext);
 
   useEffect(() => {
-    getSession().then((session) => {
-      if (session) {
-        console.log(session);
-        setAuthenticationStatus(true);
-        getUserConnected().then((user) => {
-          var username = user.username;
-          setUserConnected(username);
-        });
-      }
-    });
-  }, []);
-
-  const logOutPressed = () => {
-    logout();
-    setAuthenticationStatus(false);
-  };
+    getSession()
+      .then((session) => {
+        if (session) {
+          setAuthenticationStatus(true);
+          getConnectedUser().then((user) => {
+            console.log(user);
+          });
+        }
+      })
+      .catch((e) => {
+        history.push(`/`);
+      });
+  });
 
   if (authenticationStatus) {
     return (
@@ -44,10 +41,7 @@ const App = (props) => {
         />
 
         <Row>
-          <SideBar
-            logOutPressed={logOutPressed}
-            content={props.dataLanguages.sidebar}
-          />
+          <SideBar content={props.dataLanguages.sidebar} />
           <Column>
             <NavBar />
 
@@ -67,8 +61,8 @@ const App = (props) => {
         </Row>
       </Account>
     );
-  } else {
-    return <div>sorry, you are not connected</div>;
+  }else{
+   return null;
   }
 };
 

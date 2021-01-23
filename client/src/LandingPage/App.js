@@ -6,6 +6,7 @@ import SignupPage from "./pages/signup";
 import { Account } from "../Authentication/Account";
 import ContactUs from "./pages/contactus";
 import Status from "../Authentication/Status";
+import ForgotPassword from '../LandingPage/ForgotPassword/index'
 
 import ContoTeqApp from "../Application/pageComponents/LangRouter";
 
@@ -34,6 +35,10 @@ const App = (props) => {
           path={"/" + locale + "/signin"}
           render={(propRouter) => <SigninPage {...propRouter} {...props} />}
         />
+            <Route
+          path={"/" + locale + "/forgotpassword"}
+          render={(propRouter) => <ForgotPassword {...propRouter} {...props} />}
+        />
 
         <Route
           path={"/" + locale + "/signup"}
@@ -49,10 +54,6 @@ const App = (props) => {
           path={"/" + locale + "/contoteqapp"}
           render={(propRouter) => <ContoTeqApp {...propRouter} {...props} />}
         />
-        {/* <Route
-          path="*"
-          render={(propRouter) => <NoFound {...propRouter} {...props} />}
-        /> */}
       </Switch>
       <Status />
     </Account>
@@ -60,14 +61,3 @@ const App = (props) => {
 };
 
 export default App;
-
-// function App() {
-//   return (
-//     <Router>
-//       <Switch>
-//         <Route path="/" component={Home} exact />
-//         <Route path="/signin" component={SigninPage} exact />
-//       </Switch>
-//     </Router>
-//   );
-// }

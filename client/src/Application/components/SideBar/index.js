@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   ProSidebar,
   Menu,
@@ -25,8 +25,11 @@ import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
 import { FiSettings, FiLogOut } from "react-icons/fi";
 import { HiDocumentDownload } from "react-icons/hi";
 import Switch from "react-switch";
+import { AccountContext } from "../../../Authentication/Account";
 
-const SideBar = ({ logOutPressed, content }) => {
+const SideBar = ({ content }) => {
+  const { logout } = useContext(AccountContext);
+
   const [hamburgerIsOpen, setHamburgerOpen] = useState(false);
   const [checked, setChecked] = useState(false);
 
@@ -151,7 +154,7 @@ const SideBar = ({ logOutPressed, content }) => {
 
           <SidebarFooter>
             <Menu>
-              <div onClick={logOutPressed}>
+              <div onClick={logout}>
                 <MenuItem icon={<FiLogOut size={17} />}>
                   {content.logout}
                 </MenuItem>
