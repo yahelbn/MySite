@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { FaBars } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { MdLanguage } from "react-icons/md";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { FaBusinessTime } from "react-icons/fa";
 
 import { animateScroll as scroll } from "react-scroll";
 
@@ -20,17 +22,13 @@ import {
   LinksDrop,
   DropdownNew,
   RowBttns,
+  UserNameHeader,
 } from "./NavbarElements";
 
 import { Button } from "styled-button-component";
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownDivider,
-} from "styled-dropdown-component";
+import { DropdownItem, DropdownMenu } from "styled-dropdown-component";
 import { AccountContext } from "../../../../Authentication/Account";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   const history = useHistory();
@@ -49,13 +47,13 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
     }
   };
 
-  const logoutLogin=()=>{
-    if(authenticationStatus){
-      logout()
-    }else{
-      history.push(`/${locale}/signin`)
+  const logoutLogin = () => {
+    if (authenticationStatus) {
+      logout();
+    } else {
+      history.push(`/${locale}/signin`);
     }
-  }
+  };
 
   useEffect(() => {
     getSession()
@@ -120,16 +118,6 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
                 toggle={() => setHidden(!hidden)}
               >
                 {renderDropDownItems}
-                {/* <DropdownItem>
-                  <LinksDrop to="whoweare">מי אנחנו</LinksDrop>
-                </DropdownItem>
-                <DropdownItem>
-                  <LinksDrop to="whoweare">טגנולוגיה</LinksDrop>
-                </DropdownItem> */}
-                {/* <DropdownDivider /> */}
-                {/* <DropdownItem>
-                  <LinksDrop to="whoweare">צוות</LinksDrop>
-                </DropdownItem> */}
               </DropdownMenu>
             </DropdownNew>
           </NavItem>
@@ -179,18 +167,38 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
               </NavItem>
             </NavMenu>
             <RowBttns>
-              <NavBtn onClick={logoutLogin}  >
+              <NavBtn onClick={logoutLogin}>
                 <NavBtnLink color={authenticationStatus}>
                   {authenticationStatus ? logoutbutton : loginbutton}
+                  {authenticationStatus ? (
+                    <FiLogOut
+                      style={{ marginLeft: "5px" }}
+                      size={17}
+                      color={"black"}
+                    />
+                  ) : (
+                    <FiLogIn
+                      style={{ marginLeft: "5px" }}
+                      size={17}
+                      color={"black"}
+                    />
+                  )}
                 </NavBtnLink>
               </NavBtn>
               {authenticationStatus && (
                 <NavBtn marginLeft={"10px"}>
                   <NavBtnLink to={"/" + locale + "/signin"}>
                     {goToApp}
+                    <FaBusinessTime
+                      style={{ marginLeft: "5px" }}
+                      size={17}
+                      color={"black"}
+                    />
                   </NavBtnLink>
                 </NavBtn>
               )}
+
+              {authenticationStatus && <UserNameHeader>Yahel</UserNameHeader>}
             </RowBttns>
           </NavbarContainer>
         </Nav>
