@@ -71,12 +71,12 @@ export const SidebarLink = styled(LinkS)`
 export const SideBtnWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin-top:${({ down }) => (down ? "20px" : "0px")};
+  margin-top: ${({ down }) => (down ? "20px" : "0px")};
 `;
 
 export const SidebarRoute = styled(LinkR)`
   border-radius: 50px;
-  background:${({ color }) => (color ? '#e9967a' : '#b5c1b4')};;
+  background: ${({ color }) => (color ? "#e9967a" : "#b5c1b4")};
   white-space: nowrap;
   padding: 16px 64px;
   color: #010606;
@@ -86,6 +86,9 @@ export const SidebarRoute = styled(LinkR)`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     transition: all 0.2s ease-in-out;
@@ -134,12 +137,12 @@ export const SidebarMiniLink = styled(LinkS)`
   }
 `;
 
-export const RowBttns=styled.div`
-display:flex;
-align-items: center;
-justify-content: center;
-flex-direction:column;
-`
+export const RowBttns = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 export const MiniSideBarContainer = styled.aside`
   height: 70%;

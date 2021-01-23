@@ -6,7 +6,7 @@ import SignupPage from "./pages/signup";
 import { Account } from "../Authentication/Account";
 import ContactUs from "./pages/contactus";
 import Status from "../Authentication/Status";
-import ForgotPassword from '../LandingPage/ForgotPassword/index'
+import ForgotPassword from "../LandingPage/ForgotPassword/index";
 
 import ContoTeqApp from "../Application/pageComponents/LangRouter";
 
@@ -35,7 +35,7 @@ const App = (props) => {
           path={"/" + locale + "/signin"}
           render={(propRouter) => <SigninPage {...propRouter} {...props} />}
         />
-            <Route
+        <Route
           path={"/" + locale + "/forgotpassword"}
           render={(propRouter) => <ForgotPassword {...propRouter} {...props} />}
         />
@@ -55,7 +55,7 @@ const App = (props) => {
           render={(propRouter) => <ContoTeqApp {...propRouter} {...props} />}
         />
       </Switch>
-      <Status />
+      {/* <Status /> */}
     </Account>
   );
 };
