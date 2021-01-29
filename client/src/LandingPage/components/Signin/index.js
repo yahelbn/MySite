@@ -18,9 +18,7 @@ import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { AccountContext } from "../../../Authentication/Account";
-
-const SignIn = ({ content, locale } ) => {
-  
+const SignIn = ({ content, locale }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -33,7 +31,6 @@ const SignIn = ({ content, locale } ) => {
   const onSubmit = (event) => {
     event.preventDefault();
     setLoader(true);
-
     authenticate(email, password).then(
       (data) => {
         setMessage("מיד תועבר");
@@ -78,13 +75,13 @@ const SignIn = ({ content, locale } ) => {
             <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
               <FormH1>{content.formh1}</FormH1>
               <FormInput
-              placeholder={content.formlabel1}
+                placeholder={content.formlabel1}
                 onChange={(e) => setEmail(e.target.value)}
                 type={content.forminput1}
                 required
               />
               <FormInputPassword
-              placeholder={content.formlabel2}
+                placeholder={content.formlabel2}
                 rtl={Boolean(content.rtl) ? true : false}
                 onChange={(e) => setPassword(e.target.value)}
                 type={content.forminput2}

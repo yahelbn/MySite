@@ -4,7 +4,7 @@ import { IconContext } from "react-icons/lib";
 import { MdLanguage } from "react-icons/md";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { FaBusinessTime } from "react-icons/fa";
-
+import { AttributesFuncContext } from "../../../../Authentication/AttributesFunc";
 import { animateScroll as scroll } from "react-scroll";
 
 import {
@@ -33,9 +33,12 @@ import { useHistory } from "react-router-dom";
 const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   const history = useHistory();
   const { getSession, getConnectedUser, logout } = useContext(AccountContext);
+  const { getAttribute } = useContext(AttributesFuncContext);
+
   const [authenticationStatus, setAuthenticationStatus] = useState(false);
   const [scrollNav, setScrollNav] = useState(false);
   const [hidden, setHidden] = useState(true);
+  const [userName, setuserName] = useState("");
 
   const { rtl, links, loginbutton, goToApp, logoutbutton } = content;
 
@@ -60,12 +63,13 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
       .then((session) => {
         if (session) {
           setAuthenticationStatus(true);
-          getConnectedUser().then((user) => {
-            console.log(user);
-          });
         }
       })
       .catch((e) => {});
+
+    getAttribute("custom:name").then((data) => {
+      setuserName(data);
+    });
 
     window.addEventListener("scroll", changeNav);
   }, []);
@@ -198,7 +202,9 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
                 </NavBtn>
               )}
 
-              {authenticationStatus && <UserNameHeader>Yahel</UserNameHeader>}
+              {authenticationStatus && (
+                <UserNameHeader>{userName}</UserNameHeader>
+              )}
             </RowBttns>
           </NavbarContainer>
         </Nav>
