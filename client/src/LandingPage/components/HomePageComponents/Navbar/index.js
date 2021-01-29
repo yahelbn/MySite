@@ -4,7 +4,7 @@ import { IconContext } from "react-icons/lib";
 import { MdLanguage } from "react-icons/md";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { FaBusinessTime } from "react-icons/fa";
-
+import { AttributesFuncContext } from "../../../../Authentication/AttributesFunc";
 import { animateScroll as scroll } from "react-scroll";
 
 import {
@@ -33,9 +33,12 @@ import { useHistory } from "react-router-dom";
 const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   const history = useHistory();
   const { getSession, getConnectedUser, logout } = useContext(AccountContext);
-  const [authenticationStatus, setAuthenticationStatus] = useState(false);
+  const { getAttribute } = useContext(AttributesFuncContext);
+
+  const [authenticationStatus, setAuthenticationStatus] = useState(undefined);
   const [scrollNav, setScrollNav] = useState(false);
   const [hidden, setHidden] = useState(true);
+  const [userName, setuserName] = useState("");
 
   const { rtl, links, loginbutton, goToApp, logoutbutton } = content;
 
@@ -60,12 +63,15 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
       .then((session) => {
         if (session) {
           setAuthenticationStatus(true);
-          getConnectedUser().then((user) => {
-            console.log(user);
-          });
         }
       })
-      .catch((e) => {});
+      .catch((e) => {
+        setAuthenticationStatus(false);
+      });
+
+    getAttribute("custom:name").then((data) => {
+      setuserName(data);
+    });
 
     window.addEventListener("scroll", changeNav);
   }, []);
@@ -166,40 +172,46 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
                 </LanguageButton>
               </NavItem>
             </NavMenu>
-            <RowBttns>
-              <NavBtn onClick={logoutLogin}>
-                <NavBtnLink color={authenticationStatus}>
-                  {authenticationStatus ? logoutbutton : loginbutton}
-                  {authenticationStatus ? (
-                    <FiLogOut
-                      style={{ marginLeft: "5px" }}
-                      size={17}
-                      color={"black"}
-                    />
-                  ) : (
-                    <FiLogIn
-                      style={{ marginLeft: "5px" }}
-                      size={17}
-                      color={"black"}
-                    />
-                  )}
-                </NavBtnLink>
-              </NavBtn>
-              {authenticationStatus && (
-                <NavBtn marginLeft={"10px"}>
-                  <NavBtnLink to={"/" + locale + "/signin"}>
-                    {goToApp}
-                    <FaBusinessTime
-                      style={{ marginLeft: "5px" }}
-                      size={17}
-                      color={"black"}
-                    />
+            {authenticationStatus !== undefined ? (
+              <RowBttns>
+                <NavBtn onClick={logoutLogin}>
+                  <NavBtnLink color={authenticationStatus}>
+                    {authenticationStatus ? logoutbutton : loginbutton}
+                    {authenticationStatus ? (
+                      <FiLogOut
+                        style={{ marginLeft: "5px" }}
+                        size={17}
+                        color={"black"}
+                      />
+                    ) : (
+                      <FiLogIn
+                        style={{ marginLeft: "5px" }}
+                        size={17}
+                        color={"black"}
+                      />
+                    )}
                   </NavBtnLink>
                 </NavBtn>
-              )}
+                {authenticationStatus && (
+                  <NavBtn marginLeft={"10px"}>
+                    <NavBtnLink to={"/" + locale + "/signin"}>
+                      {goToApp}
+                      <FaBusinessTime
+                        style={{ marginLeft: "5px" }}
+                        size={17}
+                        color={"black"}
+                      />
+                    </NavBtnLink>
+                  </NavBtn>
+                )}
 
-              {authenticationStatus && <UserNameHeader>Yahel</UserNameHeader>}
-            </RowBttns>
+                {authenticationStatus && (
+                  <UserNameHeader>{userName}</UserNameHeader>
+                )}
+              </RowBttns>
+            ) : (
+              <div></div>
+            )}
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>

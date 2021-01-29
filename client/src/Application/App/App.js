@@ -61,8 +61,8 @@ const App = (props) => {
         </Row>
       </Account>
     );
-  }else{
-   return null;
+  } else {
+    return null;
   }
 };
 
