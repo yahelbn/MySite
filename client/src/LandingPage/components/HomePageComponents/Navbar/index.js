@@ -35,7 +35,7 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   const { getSession, getConnectedUser, logout } = useContext(AccountContext);
   const { getAttribute } = useContext(AttributesFuncContext);
 
-  const [authenticationStatus, setAuthenticationStatus] = useState(false);
+  const [authenticationStatus, setAuthenticationStatus] = useState(undefined);
   const [scrollNav, setScrollNav] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [userName, setuserName] = useState("");
@@ -65,7 +65,9 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
           setAuthenticationStatus(true);
         }
       })
-      .catch((e) => {});
+      .catch((e) => {
+        setAuthenticationStatus(false);
+      });
 
     getAttribute("custom:name").then((data) => {
       setuserName(data);
@@ -170,42 +172,46 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
                 </LanguageButton>
               </NavItem>
             </NavMenu>
-            <RowBttns>
-              <NavBtn onClick={logoutLogin}>
-                <NavBtnLink color={authenticationStatus}>
-                  {authenticationStatus ? logoutbutton : loginbutton}
-                  {authenticationStatus ? (
-                    <FiLogOut
-                      style={{ marginLeft: "5px" }}
-                      size={17}
-                      color={"black"}
-                    />
-                  ) : (
-                    <FiLogIn
-                      style={{ marginLeft: "5px" }}
-                      size={17}
-                      color={"black"}
-                    />
-                  )}
-                </NavBtnLink>
-              </NavBtn>
-              {authenticationStatus && (
-                <NavBtn marginLeft={"10px"}>
-                  <NavBtnLink to={"/" + locale + "/signin"}>
-                    {goToApp}
-                    <FaBusinessTime
-                      style={{ marginLeft: "5px" }}
-                      size={17}
-                      color={"black"}
-                    />
+            {authenticationStatus !== undefined ? (
+              <RowBttns>
+                <NavBtn onClick={logoutLogin}>
+                  <NavBtnLink color={authenticationStatus}>
+                    {authenticationStatus ? logoutbutton : loginbutton}
+                    {authenticationStatus ? (
+                      <FiLogOut
+                        style={{ marginLeft: "5px" }}
+                        size={17}
+                        color={"black"}
+                      />
+                    ) : (
+                      <FiLogIn
+                        style={{ marginLeft: "5px" }}
+                        size={17}
+                        color={"black"}
+                      />
+                    )}
                   </NavBtnLink>
                 </NavBtn>
-              )}
+                {authenticationStatus && (
+                  <NavBtn marginLeft={"10px"}>
+                    <NavBtnLink to={"/" + locale + "/signin"}>
+                      {goToApp}
+                      <FaBusinessTime
+                        style={{ marginLeft: "5px" }}
+                        size={17}
+                        color={"black"}
+                      />
+                    </NavBtnLink>
+                  </NavBtn>
+                )}
 
-              {authenticationStatus && (
-                <UserNameHeader>{userName}</UserNameHeader>
-              )}
-            </RowBttns>
+                {authenticationStatus && (
+                  <UserNameHeader>{userName}</UserNameHeader>
+                )}
+              </RowBttns>
+            ) : (
+              <div></div>
+            )}
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>
