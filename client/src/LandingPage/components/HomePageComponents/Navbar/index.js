@@ -32,7 +32,7 @@ import { useHistory } from "react-router-dom";
 
 const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   const history = useHistory();
-  const { getSession, getConnectedUser, logout } = useContext(AccountContext);
+  const { getSession, logout } = useContext(AccountContext);
   const { getAttribute } = useContext(AttributesFuncContext);
 
   const [authenticationStatus, setAuthenticationStatus] = useState(undefined);

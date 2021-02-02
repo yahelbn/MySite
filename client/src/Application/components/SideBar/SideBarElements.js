@@ -31,3 +31,7 @@ export const textSwitch = styled.div`
   /* margin-right: 20px;
   margin-left: 20px; */
 `;
+
+export const SideBarContainer = styled.div`
+  height: 100vh;
+`;

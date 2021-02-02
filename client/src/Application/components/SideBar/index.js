@@ -15,19 +15,27 @@ import {
   SubHeader,
   RowSwitch,
   textSwitch,
+  SideBarContainer,
 } from "./SideBarElements";
-import Hamburger from "hamburger-react";
 import gradient from "../../images/gradient.png";
+
+/* Icons*/
 import { IoIosPeople } from "react-icons/io";
 import { TiMessages } from "react-icons/ti";
 import { BiReceipt } from "react-icons/bi";
 import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
 import { FiSettings, FiLogOut } from "react-icons/fi";
 import { HiDocumentDownload } from "react-icons/hi";
+
+/*Components*/
 import Switch from "react-switch";
+import Hamburger from "hamburger-react";
+import { Link } from "react-router-dom";
+
+/*Contexts*/
 import { AccountContext } from "../../../Authentication/Account";
 
-const SideBar = ({ content }) => {
+const SideBar = ({ username, content }) => {
   const { logout } = useContext(AccountContext);
 
   const [hamburgerIsOpen, setHamburgerOpen] = useState(false);
@@ -35,7 +43,7 @@ const SideBar = ({ content }) => {
 
   return (
     <>
-      <div style={{ height: "100vh" }}>
+      <SideBarContainer>
         <ProSidebar
           collapsed={!hamburgerIsOpen}
           image={gradient}
@@ -55,7 +63,7 @@ const SideBar = ({ content }) => {
                 }
               >
                 <SwitchContainer>
-                  <Header>שם משתמש</Header>
+                  <Header>{username}</Header>
                   <SubHeader>שם חברה</SubHeader>
                   <RowSwitch rtl={content.rtl}>
                     <textSwitch>{content.customer}</textSwitch>
@@ -71,8 +79,8 @@ const SideBar = ({ content }) => {
                         checkedIcon={false}
                         boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
                         activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                        height={20}
-                        width={48}
+                        height={15}
+                        width={40}
                       />
                     </div>
                     <textSwitch>{content.vendor}</textSwitch>
@@ -90,7 +98,9 @@ const SideBar = ({ content }) => {
                 title={content.customers}
                 icon={<IoIosPeople size={17} />}
               >
-                <MenuItem>{content.addingacustomer}</MenuItem>
+                <MenuItem>
+                  <Link to="searchcustomer">{content.addingacustomer}</Link>
+                </MenuItem>
                 <MenuItem>{content.existingclients}</MenuItem>
               </SubMenu>
 
@@ -162,7 +172,7 @@ const SideBar = ({ content }) => {
             </Menu>
           </SidebarFooter>
         </ProSidebar>
-      </div>
+      </SideBarContainer>
     </>
   );
 };

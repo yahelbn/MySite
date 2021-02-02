@@ -2,26 +2,32 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-  min-height: 1000px;
+  //min-height: 692px;
   //position: fixed;
+  height: 100%;
   bottom: 0;
   left: 0;
   right: 0;
   top: 0;
   z-index: 0;
   overflow: hidden;
-  background: linear-gradient(
-    90deg,
-    rgba(220, 217, 198, 1) 22%,
-    rgba(181, 193, 180, 1) 100%
-  );
+  //background: no-repeat center center fixed;
+  /* background-image: linear-gradient(
+      90deg,
+      rgba(220, 217, 198, 0.7) 22%,
+      rgba(181, 193, 180, 0.5) 100%
+    ),
+    url("../../images/survey.svg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export const FormWrap = styled.div`
-  height: 100%;
+  height: 95.5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* align-items: center; */
 
   @media screen and (max-width: 480px) {
     padding: 10px;
@@ -35,16 +41,18 @@ export const Form = styled.form`
   width: 100%;
   z-index: 1;
   display: flex;
+  margin: 0 auto;
   justify-content: center;
   flex-direction: column;
-
-  margin: 0 auto;
+  align-items: center;
   padding: 80px 32px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
-  @media screen and(max-width:600px) {
-    padding: 32px 32px;
+  @media screen and (max-width: 400px) {
+    /* padding: 32px 32px;
+    width: 80%;
+    margin-left: 1px; */
   }
 `;
 
@@ -55,32 +63,6 @@ export const Icon = styled(Link)`
   color: #fff;
   font-weight: 700;
   font-size: 32px;
-
-  @media screen and (max-width: 1085px) {
-    padding-bottom: 20px;
-  }
-
-  @media screen and (max-width: 480px) {
-    margin-left: 16px;
-    margin-top: 8px;
-  }
-`;
-
-export const IconExit = styled(Link)`
-  margin-right: 32px;
-  margin-top: 32px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 700;
-  font-size: 32px;
-  transition: width 1s, height 1s, transform 0.7s;
-
-  &:hover {
-    //  width: 20px;
-    //height: 20px;
-    color: #ff6347;
-    transform: rotate(-90deg);
-  }
 
   @media screen and (max-width: 480px) {
     margin-left: 16px;
@@ -93,14 +75,14 @@ export const FormContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  align-items: center;
   @media screen and(max-width:480px) {
     padding: 10px;
   }
 `;
 
 export const FormH1 = styled.h1`
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   color: #fff;
   font-size: 20px;
   font-weight: 400;
@@ -118,6 +100,11 @@ export const FormInput = styled.input`
   margin-bottom: 32px;
   border: none;
   border-radius: 4px;
+  width: 70%;
+
+  @media screen and (max-width: 480px) {
+    width: 80%;
+  }
 `;
 
 export const FormButton = styled.button`
@@ -127,6 +114,7 @@ export const FormButton = styled.button`
   border-radius: 4px;
   color: #fff;
   font-size: 20px;
+  width: 30%;
   cursor: pointer;
 `;
 
@@ -137,37 +125,10 @@ export const Text = styled.span`
   font-size: 14px;
 `;
 
-export var RowDiv = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
-
-  @media screen and (max-width: 550px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-export const ColumnDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const RowHead = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-export const AlertText = styled.span`
-  direction: ltr;
+export const TextHeader = styled.span`
   text-align: center;
-  margin-top: 24px;
-  color: ${({ error }) => (error ? "brown" : "#1d5630")};
+  margin-top: 10px;
+  margin-bottom: 40px;
+  color: #fff;
   font-size: 14px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: ${({ error }) => (error ? "#f8d7da" : "#d3ebdb")};
-  border: 0.5px solid ${({ error }) => (error ? "#f08080" : "#008080")};
-  border-radius: 8px;
-  margin-bottom: 15px;
 `;

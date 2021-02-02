@@ -23,34 +23,57 @@ import "../HomePageComponents/Modal/Modal.css";
 import Modal from "../HomePageComponents/Modal/Modal";
 import useModal from "../HomePageComponents/Modal/useModal";
 
+//CongitoAttributes
+import { CognitoUserAttribute } from "amazon-cognito-identity-js";
+
 const SignUp = ({ content }) => {
+  /*Attributes of the user  */
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(undefined);
+  const [rePassword, setRePassword] = useState(undefined);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [telephone, setTelephone] = useState("");
+
+  /*Loaders and messages */
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState("");
-  const [error, setError] = useState(false);
-  const { isShowing, toggle } = useModal();
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [errorPasswordMessage, setErrorPasswordMessage] = useState(false);
 
+  const [error, setError] = useState(false);
+  const [comparePass, setComparePass] = useState(false);
+
+  /* Contexts */
+  const { isShowing, toggle } = useModal();
   const history = useHistory();
 
   const onSubmit = (event) => {
     event.preventDefault();
     setLoader(true);
 
-    userPool.signUp(email, password, [], null, (err, data) => {
-      if (err) {
-        console.log(err.message.message);
-        setLoader(false);
-        setMessage(err.message);
-        setError(true);
-      } else {
-        console.log(data);
-        setMessage("Success");
-        setLoader(false);
-        setError(false);
-        toggle();
-      }
-    });
+    var userAttributes = userSignUpAttributes();
+    console.log(userAttributes);
+    if (comparePass) {
+      userPool.signUp(email, password, userAttributes, null, (err, data) => {
+        if (err) {
+          console.log(err.message.message);
+          setLoader(false);
+          setMessage(err.message);
+          setError(true);
+        } else {
+          console.log(data);
+          setMessage("Success");
+          setLoader(false);
+          setError(false);
+          toggle();
+        }
+      });
+    } else {
+      setMessage("Passwords not the same, try again");
+      setError(true);
+      setLoader(false);
+    }
   };
 
   const handleUserKeyPress = (event) => {
@@ -61,13 +84,53 @@ const SignUp = ({ content }) => {
     }
   };
 
+  const checkCompatibilityPasswords = () => {
+    if (rePassword !== undefined) {
+      if (rePassword !== password) {
+        setPasswordMessage("Password not the equals");
+        setErrorPasswordMessage(true);
+        return false;
+      } else {
+        setPasswordMessage("Password equals");
+        setErrorPasswordMessage(false);
+        return true;
+      }
+    }
+  };
+
+  const userSignUpAttributes = () => {
+    var attributeList = [];
+
+    var attributeFirstName = new CognitoUserAttribute({
+      Name: "custom:first_name",
+      Value: firstName,
+    });
+
+    var attributeLastName = new CognitoUserAttribute({
+      Name: "custom:last_name",
+      Value: lastName,
+    });
+
+    var attributeTelephone = new CognitoUserAttribute({
+      Name: "custom:telephone",
+      Value: telephone,
+    });
+
+    attributeList.push(attributeFirstName);
+    attributeList.push(attributeLastName);
+    attributeList.push(attributeTelephone);
+    return attributeList;
+  };
+
   useEffect(() => {
+    setComparePass(checkCompatibilityPasswords());
+
     window.addEventListener("keydown", handleUserKeyPress);
 
     return () => {
       window.removeEventListener("keydown", handleUserKeyPress);
     };
-  }, []);
+  }, [rePassword]);
 
   return (
     <>
@@ -86,16 +149,24 @@ const SignUp = ({ content }) => {
               modalContent={content.modalconfirm}
             />
             <FormH1>{content.formh1}</FormH1>
-            {/* <RowDiv>
+            <RowDiv>
               <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel1}</FormLabel>
-                <FormInput type={content.forminput1} required />
+                <FormInput
+                  type={content.forminput1}
+                  required
+                  onChange={(event) => setFirstName(event.target.value)}
+                />
               </ColumnDiv>
               <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel2}</FormLabel>
-                <FormInput type={content.forminput2} required />
+                <FormInput
+                  type={content.forminput2}
+                  required
+                  onChange={(event) => setLastName(event.target.value)}
+                />
               </ColumnDiv>
-            </RowDiv> */}
+            </RowDiv>
 
             <FormLabel htmlFor="for">{content.formlabel3}</FormLabel>
             <FormInput
@@ -114,15 +185,28 @@ const SignUp = ({ content }) => {
                   required
                 />
               </ColumnDiv>
-              {/* <ColumnDiv>
+              <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel5}</FormLabel>
-                <FormInput type={content.forminput5} required />
-              </ColumnDiv> */}
+                <FormInput
+                  type={content.forminput5}
+                  required
+                  onChange={(event) => setRePassword(event.target.value)}
+                />
+              </ColumnDiv>
             </RowDiv>
+            {passwordMessage && (
+              <AlertText error={errorPasswordMessage}>
+                {passwordMessage}
+              </AlertText>
+            )}
 
-            {/* <FormLabel htmlFor="for">{content.formlabel6}</FormLabel>
-            <FormInput type={content.forminput6} required />
-            <FormLabel htmlFor="for">{content.formlabel7}</FormLabel>
+            <FormLabel htmlFor="for">{content.formlabel6}</FormLabel>
+            <FormInput
+              type={content.forminput6}
+              required
+              onChange={(event) => setTelephone(event.target.value)}
+            />
+            {/* <FormLabel htmlFor="for">{content.formlabel7}</FormLabel>
             <FormInput type={content.forminput7} required /> */}
             <FormButton onClick={(e) => onSubmit(e)} type="submit">
               {loader ? (
