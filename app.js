@@ -9,6 +9,8 @@ const port = process.env.PORT || 5000;
 
 /* import all routes */
 const findocs = require("./src/routes/findocs");
+const users = require("./src/routes/users");
+const userCompany = require("./src/routes/userCompany");
 
 /* middlewares */
 /* Serve static files from the React app */
@@ -23,7 +25,8 @@ if (process.env.NODE_ENV === environments.DEVELOPMENT) {
 }
 
 app.use("/api/findocs", findocs);
-// app.use("/api/users");
+app.use("/api/users", users);
+app.use("/api/userCompany", userCompany);
 // app.use("/api/companies");
 
 /* routes */
