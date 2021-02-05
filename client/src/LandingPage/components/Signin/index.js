@@ -18,6 +18,8 @@ import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { AccountContext } from "../../../Authentication/Account";
+import axios from "axios";
+
 const SignIn = ({ content, locale }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,13 +28,19 @@ const SignIn = ({ content, locale }) => {
   const [loader, setLoader] = useState(false);
   const history = useHistory();
 
-  const { authenticate } = useContext(AccountContext);
+  const { authenticate, getStatus } = useContext(AccountContext);
 
   const onSubmit = (event) => {
     event.preventDefault();
     setLoader(true);
     authenticate(email, password).then(
-      (data) => {
+      async (data) => {
+        const userCompany = await getUserStatusInCompany();
+        if (userCompany.length > 0) {
+          history.push("/he/contoteqapp/");
+        } else {
+          history.push("/he/contoteqapp/initorjoin");
+        }
         setMessage("מיד תועבר");
         setError(false);
         setLoader(false);
@@ -43,6 +51,14 @@ const SignIn = ({ content, locale }) => {
         setLoader(false);
       }
     );
+  };
+
+  const getUserStatusInCompany = async () => {
+    const userCompany = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/userCompany/getByEmailAndStatuses`,
+      { params: { email: email, statuses: ["lear", "poc"] } }
+    );
+    return userCompany.data;
   };
 
   const handleUserKeyPress = (event) => {

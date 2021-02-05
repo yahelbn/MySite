@@ -6,13 +6,15 @@ connection.connect();
  * fetch data with query below
  * gets an sql command
  */
-exports.originFetch = function (query) {
-  connection.query(query, function (error, results) {
-    if (error) {
-      throw error;
-    } else {
-      return results;
-    }
+exports.do = function (query) {
+  return new Promise((resolve, reject) => {
+    connection.query(query, function (error, results) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
   });
 };
 
@@ -22,10 +24,9 @@ exports.originFetch = function (query) {
 //  * @param {*} fields
 //  * @param {*} id
 //  */
-// exports.fetchById = function (tableName, id, ...fields) {
+// exports.doMultiple = function (tableName, fields, attribute, values) {
 //   connection.query(
-//     `SELECT ${fields.toString()} FROM ${tableName} WHERE id = ?`,
-//     [id],
+//     `SELECT ${fields.toString()} FROM ${tableName} WHERE ${attribute} in(${values.toString()})`,
 //     function (error, results) {
 //       if (error) {
 //         connection.end();
@@ -36,6 +37,7 @@ exports.originFetch = function (query) {
 //       }
 //     }
 //   );
+//   connection.query(asdasd);
 // };
 
 /**
