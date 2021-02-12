@@ -17,8 +17,16 @@ export const DataHebrew = {
     optionsSelect: ["סוג", 'בע"מ', "עוסק פטור"],
 
     buttonContent1: "צור חברה",
-    buttonContent2: "הצטרף לחברה",
+    buttonContent2: "הוסף איש קשר",
     //text: "שכחתי סיסמא",
+    formh2: "אנשי קשר",
+    forminput4: "text",
+    formlabel5: "שם פרטי (איש קשר)",
+    forminput5: "text",
+    formlabel6: "שם משפחה (איש קשר)",
+    forminput6: "text",
+    formlabel7: "אימייל",
+    forminput7: "text",
   },
   searchcustomer: {
     rtl: true,

@@ -14,9 +14,16 @@ export const DataEnglish = {
     formlabel4: "Address",
     forminput4: "text",
     optionsSelect: ["Type", "LTD", "עוסק פטור"],
+    formh2: "Contacts",
+    formlabel5: "First name (contact)",
+    forminput5: "text",
+    formlabel6: "Last name (contact)",
+    forminput6: "text",
+    formlabel7: "Email",
+    forminput7: "text",
 
     buttonContent1: "Create Company",
-    buttonContent2: "Join Company",
+    buttonContent2: "Add Person of contact",
     //text: "שכחתי סיסמא",
   },
 

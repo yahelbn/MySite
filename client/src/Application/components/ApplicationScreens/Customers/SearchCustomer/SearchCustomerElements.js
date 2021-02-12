@@ -93,6 +93,8 @@ export const FormLabel = styled.label`
   margin-bottom: 8px;
   font-size: 14px;
   color: #fff;
+  text-align: center;
+  color: ${({ dark }) => (dark ? "black" : "white")};
 `;
 
 export const FormInput = styled.input`
@@ -131,4 +133,46 @@ export const TextHeader = styled.span`
   margin-bottom: 40px;
   color: #fff;
   font-size: 14px;
+`;
+
+export const CompaniesContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 30px;
+`;
+
+export var RowDiv = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+
+  @media screen and (max-width: 550px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const ColumnDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const CompanyRow = styled.div`
+  margin-top: 20px;
+  border-radius: 20px;
+  width: 100%;
+  background-color: #dcd9c6;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+
+  @media screen and (max-width: 550px) {
+    grid-template-columns: 1fr;
+  }
 `;
