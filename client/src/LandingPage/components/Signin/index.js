@@ -19,6 +19,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { AccountContext } from "../../../Authentication/Account";
 import { GlobalContext } from "../../../Global/Global";
+import { userStatusInCompany } from "../../../Global/Enums.json";
 
 const SignIn = ({ content, locale }) => {
   const { getUserStatusInCompany } = useContext(GlobalContext);
@@ -36,9 +37,21 @@ const SignIn = ({ content, locale }) => {
     setLoader(true);
     authenticate(email, password).then(
       async (data) => {
-        const userCompany = await getUserStatusInCompany();
-        if (userCompany.length > 0) {
-          history.push("/he/contoteqapp/");
+        let userCompanies = await getUserStatusInCompany(email, [
+          userStatusInCompany.LEAR,
+          userStatusInCompany.PENDING,
+          userStatusInCompany.POC,
+        ]);
+        //sending the user the relevant screen based on whether he is signed into a company or not
+        if (userCompanies.length > 0) {
+          userCompanies = userCompanies.filter(
+            (status) => status === userStatusInCompany.PENDING
+          );
+          if (userCompanies.length !== 0) {
+            //means that status is pending
+          } else {
+            history.push("/he/contoteqapp/");
+          }
         } else {
           history.push("/he/contoteqapp/initorjoin");
         }

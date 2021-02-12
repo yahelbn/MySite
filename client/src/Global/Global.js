@@ -11,19 +11,35 @@ const Global = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const getUserStatusInCompany = async (email) => {
+  const getUserStatusInCompany = async (email, statuses) => {
     setLoading(true);
     const userCompany = await axios.get(
       `${process.env.REACT_APP_SERVER_URL}/api/userCompany/getByEmailAndStatuses`,
-      { params: { email, statuses: ["lear", "poc"] } }
+      { params: { email, statuses: statuses } }
     );
     setData(userCompany);
     setLoading(false);
-    return userCompany;
+    return userCompany.data;
+  };
+
+  /**
+   * returns all user information from the db (companies etc)
+   * @param  email
+   */
+  //TODO - change it to return relevant data
+  const getUserInfo = async (email) => {
+    setLoading(true);
+    const userCompany = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/userCompany/getByEmailAndStatuses`,
+      { params: { email, statuses: ["lear", "poc", "pending"] } }
+    );
+    setData(userCompany);
+    setLoading(false);
+    return userCompany.data;
   };
 
   useEffect(() => {
-    getUserStatusInCompany(props.email);
+    getUserInfo(props.email);
   }, []);
 
   return (
