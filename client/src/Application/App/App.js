@@ -15,12 +15,15 @@ import { AttributesFuncContext } from "../../Authentication/AttributesFunc";
 /* Import Pages */
 
 import InitOrJoin from "../pages/initorjoin";
+import WelcomeScreen from "../pages/welcomescreen";
+
 import MainPageApp from "../pages/main";
 import SearchCustomer from "../components/ApplicationScreens/Customers/SearchCustomer/index";
 import AddCustomer from "../components/ApplicationScreens/Customers/AddCustomer/index";
 
 /* Import Functions */
 import { useHistory } from "react-router-dom";
+import SearchCompanyPage from "../pages/searchcompany";
 
 const App = (props) => {
   const history = useHistory();
@@ -52,6 +55,19 @@ const App = (props) => {
           <Route
             path={"/" + locale + "/contoteqapp/initorjoin"}
             render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
+          />
+          <Route
+            path={"/" + locale + "/contoteqapp/welcomescreen"}
+            render={(propRouter) => (
+              <WelcomeScreen {...propRouter} {...props} />
+            )}
+          />
+
+          <Route
+            path={"/" + locale + "/contoteqapp/searchcompany"}
+            render={(propRouter) => (
+              <SearchCompanyPage {...propRouter} {...props} />
+            )}
           />
 
           <Row>
