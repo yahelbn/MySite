@@ -11,6 +11,7 @@ import ProfileBar from "../components/ProfileBar";
 import { Account } from "../../Authentication/Account";
 import { AccountContext } from "../../Authentication/Account";
 import { AttributesFuncContext } from "../../Authentication/AttributesFunc";
+import { Global } from "../../Global/Global";
 
 /* Import Pages */
 
@@ -29,14 +30,18 @@ const App = (props) => {
   const { getSession } = useContext(AccountContext);
   const { getAttribute } = useContext(AttributesFuncContext);
   const [userName, setuserName] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     getSession()
       .then((session) => {
         if (session) {
-          setAuthenticationStatus(true);
           getAttribute("custom:first_name").then((data) => {
             setuserName(data);
+          });
+          getAttribute("email").then((data) => {
+            setEmail(data);
+            setAuthenticationStatus(true);
           });
         }
       })
@@ -47,52 +52,54 @@ const App = (props) => {
 
   if (authenticationStatus) {
     return (
-      <Account>
-        <AppContainer>
-          <Route
-            path={"/" + locale + "/contoteqapp/initorjoin"}
-            render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
-          />
-
-          <Row>
-            <SideBar
-              content={props.dataLanguages.sidebar}
-              username={userName}
+      <Global email={email}>
+        <Account>
+          <AppContainer>
+            <Route
+              path={"/" + locale + "/contoteqapp/initorjoin"}
+              render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
             />
-            <Column>
-              <NavBar />
 
-              <MainDiv>
-                <Switch>
-                  <Route
-                    path={"/" + locale + "/contoteqapp/mainpage"}
-                    exact
-                    render={(propRouter) => (
-                      <MainPageApp {...propRouter} {...props} />
-                    )}
-                  />
+            <Row>
+              <SideBar
+                content={props.dataLanguages.sidebar}
+                username={userName}
+              />
+              <Column>
+                <NavBar />
 
-                  <Route
-                    path={"/" + locale + "/contoteqapp/searchcustomer"}
-                    exact
-                    render={(propRouter) => (
-                      <SearchCustomer {...propRouter} {...props} />
-                    )}
-                  />
-                  <Route
-                    path={"/" + locale + "/contoteqapp/addcustomer"}
-                    exact
-                    render={(propRouter) => (
-                      <AddCustomer {...propRouter} {...props} />
-                    )}
-                  />
-                </Switch>
-              </MainDiv>
-            </Column>
-            <ProfileBar />
-          </Row>
-        </AppContainer>
-      </Account>
+                <MainDiv>
+                  <Switch>
+                    <Route
+                      path={"/" + locale + "/contoteqapp/mainpage"}
+                      exact
+                      render={(propRouter) => (
+                        <MainPageApp {...propRouter} {...props} />
+                      )}
+                    />
+
+                    <Route
+                      path={"/" + locale + "/contoteqapp/searchcustomer"}
+                      exact
+                      render={(propRouter) => (
+                        <SearchCustomer {...propRouter} {...props} />
+                      )}
+                    />
+                    <Route
+                      path={"/" + locale + "/contoteqapp/addcustomer"}
+                      exact
+                      render={(propRouter) => (
+                        <AddCustomer {...propRouter} {...props} />
+                      )}
+                    />
+                  </Switch>
+                </MainDiv>
+              </Column>
+              <ProfileBar />
+            </Row>
+          </AppContainer>
+        </Account>
+      </Global>
     );
   } else {
     return null;

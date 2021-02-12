@@ -18,9 +18,10 @@ import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { AccountContext } from "../../../Authentication/Account";
-import axios from "axios";
+import { GlobalContext } from "../../../Global/Global";
 
 const SignIn = ({ content, locale }) => {
+  const { getUserStatusInCompany } = useContext(GlobalContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -53,14 +54,6 @@ const SignIn = ({ content, locale }) => {
     );
   };
 
-  const getUserStatusInCompany = async () => {
-    const userCompany = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/api/userCompany/getByEmailAndStatuses`,
-      { params: { email: email, statuses: ["lear", "poc"] } }
-    );
-    return userCompany.data;
-  };
-
   const handleUserKeyPress = (event) => {
     const { key, keyCode } = event;
 
@@ -75,7 +68,7 @@ const SignIn = ({ content, locale }) => {
     return () => {
       window.removeEventListener("keydown", handleUserKeyPress);
     };
-  }, []);
+  });
 
   return (
     <>
