@@ -18,9 +18,11 @@ import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { AccountContext } from "../../../Authentication/Account";
-import axios from "axios";
+import { GlobalContext } from "../../../Global/Global";
+import { userStatusInCompany } from "../../../Global/Enums.json";
 
 const SignIn = ({ content, locale }) => {
+  const { getUserStatusInCompany } = useContext(GlobalContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -35,9 +37,21 @@ const SignIn = ({ content, locale }) => {
     setLoader(true);
     authenticate(email, password).then(
       async (data) => {
-        const userCompany = await getUserStatusInCompany();
-        if (userCompany.length > 0) {
-          history.push("/he/contoteqapp/");
+        let userCompanies = await getUserStatusInCompany(email, [
+          userStatusInCompany.LEAR,
+          userStatusInCompany.PENDING,
+          userStatusInCompany.POC,
+        ]);
+        //sending the user the relevant screen based on whether he is signed into a company or not
+        if (userCompanies.length > 0) {
+          userCompanies = userCompanies.filter(
+            (status) => status === userStatusInCompany.PENDING
+          );
+          if (userCompanies.length !== 0) {
+            //means that status is pending
+          } else {
+            history.push("/he/contoteqapp/");
+          }
         } else {
           history.push("/he/contoteqapp/initorjoin");
         }
@@ -51,14 +65,6 @@ const SignIn = ({ content, locale }) => {
         setLoader(false);
       }
     );
-  };
-
-  const getUserStatusInCompany = async () => {
-    const userCompany = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/api/userCompany/getByEmailAndStatuses`,
-      { params: { email: email, statuses: ["lear", "poc"] } }
-    );
-    return userCompany.data;
   };
 
   const handleUserKeyPress = (event) => {
@@ -75,7 +81,7 @@ const SignIn = ({ content, locale }) => {
     return () => {
       window.removeEventListener("keydown", handleUserKeyPress);
     };
-  }, []);
+  });
 
   return (
     <>
