@@ -117,10 +117,9 @@ export const DataEnglish = {
       { content: "Prices", to: "prices" },
     ],
     loginbutton: "Log in",
-    logoutbutton:"Log out",
+    logoutbutton: "Log out",
 
-    goToApp:"Go to Application"
-
+    goToApp: "Go to Application",
   },
 
   heroSection: {
@@ -366,14 +365,28 @@ export const DataEnglish = {
   },
   forgotPassword: {
     rtl: false,
-    formh1: "Restore password",
-    formlabel1: "Enter your user account's verified email",
-    forminput1: "email",
-    // formlabel2: "סיסמא",
-    // forminput2: "password",
+    formh1: "Renew Password",
+    sendCode: {
+      formlabel1: "insert your verified E-mail address",
+      forminput1: "email",
+      formbutton: "Send code",
+    },
+    resetPassword: {
+      formlabel2: "Enter verification code",
+      forminput2: "email",
 
-    formbutton: "Send password reset email",
-   // text: "שכחתי סיסמא",
+      formlabel3: "Enter new password",
+      forminput3: "password",
+
+      formlabel4: "Re-Enter new password",
+      forminput4: "password",
+
+      formbutton2: "Renew Password",
+      passwordsDontMatch: "Passwords do not match",
+      passwordNotSupported:
+        "Password must be at least 8 characters, lowercase, uppercase, and numbers for greater security",
+      invalidCode: "Invalid Code was entered, or an old one",
+    },
   },
 
   whoweare: {

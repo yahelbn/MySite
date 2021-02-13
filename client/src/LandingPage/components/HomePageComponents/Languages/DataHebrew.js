@@ -117,8 +117,8 @@ export const DataHebrew = {
       // { content: "הרשם", to: "signup" },
     ],
     loginbutton: "התחבר",
-    logoutbutton:"התנתק",
-    goToApp:"לאפליקציה"
+    logoutbutton: "התנתק",
+    goToApp: "לאפליקציה",
   },
 
   heroSection: {
@@ -362,10 +362,28 @@ export const DataHebrew = {
   },
   forgotPassword: {
     rtl: true,
-    formh1: "שחזור סיסמא",
-    formlabel1: "הכנס את כתובת המייל שאיתה נרשמת",
-    forminput1: "email",
-    formbutton: "שלח מייל לשיחזור"
+    formh1: "חידוש סיסמא",
+    sendCode: {
+      formlabel1: "הכנס את כתובת המייל שאיתה נרשמת",
+      forminput1: "email",
+      formbutton: "שלח קוד לשחזור",
+    },
+    resetPassword: {
+      formlabel2: "הזן את הקוד שנשלח אלייך למייל",
+      forminput2: "email",
+
+      formlabel3: "הזן סיסמא חדשה",
+      forminput3: "password",
+
+      formlabel4: "הזן סיסמא חדשה שוב",
+      forminput4: "password",
+
+      formbutton2: "חדש סיסמא",
+      passwordsDontMatch: "הסיסמאות שהוזנו אינן תואמות",
+      passwordNotSupported:
+        "סיסמא באנגלית בלבד. לפחות 8 תווים וחייבת להכיל אות קטנה, אות גדולה ומספר",
+      invalidCode: "הוזן קוד לא נכון, או קוד ישן",
+    },
   },
 
   whoweare: {
