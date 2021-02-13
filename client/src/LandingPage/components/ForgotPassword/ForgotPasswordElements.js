@@ -30,7 +30,7 @@ export const FormWrap = styled.div`
 
 export const Form = styled.form`
   background: #1b1924;
-  max-width: 400px;
+  max-width: 500px;
   height: auto;
   width: 100%;
   z-index: 1;

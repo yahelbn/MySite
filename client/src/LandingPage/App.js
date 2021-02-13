@@ -10,7 +10,7 @@ import { Global } from "../Global/Global";
 
 import { AttributesFunc } from "../Authentication/AttributesFunc";
 import ContactUs from "./pages/contactus";
-import ForgotPassword from "../LandingPage/ForgotPassword/index";
+import ForgotPassword from "../LandingPage/components/ForgotPassword/index";
 
 import ContoTeqApp from "../Application/pageComponents/LangRouter";
 
