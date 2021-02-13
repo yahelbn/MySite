@@ -10,13 +10,15 @@ exports.do = function (query) {
   return new Promise((resolve, reject) => {
     connection.query(query, function (error, results) {
       if (error) {
-        reject(error);
+        reject(error.toString());
       } else {
         resolve(results);
       }
     });
   });
 };
+
+// UPDATE `sellers` SET `seller_phone` = JSON_SET(`seller_phone`, {"0":"33565388","1":"33565399"}) WHERE `seller_id` = 8
 
 // /**
 //  * fetch the desired fields from the desired table by id
