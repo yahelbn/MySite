@@ -115,7 +115,7 @@ const SearchCustomer = (props) => {
                           }}
                         >
                           <FormLabel dark={true} htmlFor="for">
-                            add Customer
+                            {content.button2}
                           </FormLabel>
 
                           <FiUserPlus />
