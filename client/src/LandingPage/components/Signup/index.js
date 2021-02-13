@@ -25,6 +25,7 @@ import useModal from "../HomePageComponents/Modal/useModal";
 
 //CongitoAttributes
 import { CognitoUserAttribute } from "amazon-cognito-identity-js";
+import axios from "axios";
 
 const SignUp = ({ content }) => {
   /*Attributes of the user  */
@@ -81,6 +82,23 @@ const SignUp = ({ content }) => {
 
     if (keyCode === 27) {
       history.push("/");
+    }
+  };
+
+  const addUserToDB = async (email) => {
+    const user = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/users/getByEmail`,
+      { params: { email } }
+    );
+
+    if (user) {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/users/update`, {
+        params: { email },
+      });
+    } else {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/users/add`, {
+        params: { email },
+      });
     }
   };
 

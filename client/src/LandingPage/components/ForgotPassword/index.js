@@ -48,6 +48,7 @@ const ForgotPassword = (props) => {
       },
       inputVerificationCode: () => {
         setStage(2);
+        setMessage("");
       },
     });
   };
@@ -126,6 +127,7 @@ const ForgotPassword = (props) => {
                     content.sendCode.formbutton
                   )}
                 </FormButton>
+                {message && <AlertText error={error}>{message}</AlertText>}
               </Form>
             </FormContent>
           )}

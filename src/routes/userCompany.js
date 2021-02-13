@@ -9,7 +9,7 @@ const {
 router.post("/add", async (req, res) => {
   try {
     await addUserCompany(req.body);
-    res.status(200);
+    res.send(200);
   } catch (e) {
     res.status(500).send(e);
   }
@@ -22,7 +22,6 @@ router.get("/getByEmailAndStatus", async (req, res) => {
       req.body.status
     );
     res.send(userCompany);
-    res.status(200);
   } catch (e) {
     res.status(500).send(e);
   }
@@ -36,7 +35,6 @@ router.get("/getByEmailAndStatuses", async (req, res) => {
       req.query.statuses
     );
     res.send(userCompany);
-    res.status(200);
   } catch (e) {
     res.status(500).send(e);
   }
