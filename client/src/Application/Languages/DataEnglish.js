@@ -2,6 +2,27 @@ export const DataEnglish = {
   mainpage: {
     firsttext: "Hello",
   },
+  welcomescreen: {
+    rtl: false,
+    formh1: "Welcome to ContoTeq!",
+
+    buttonContent1: "Search and join an existing company",
+    buttonContent2: "Creating a company",
+    information1:
+      "Search and join an existing company - by searching the database of existing companies with us, you can find the company that is relevant to you and ask to join it and watch and work with it.",
+    information2:
+      "Create a company - If you are not associated with a specific company that exists in the database, you want to create one. Select this option.",
+  },
+  searchcompany: {
+    rtl: false,
+    formh1: "Search a company",
+    inputplaceholder: "Company name/cid",
+    button1: "Search",
+    label: "Join this company",
+    text:
+      "If the company you are looking for is not on the list and you want to create",
+    link: "Click here",
+  },
   initorjoin: {
     rtl: false,
     formh1: "Company",
@@ -32,6 +53,8 @@ export const DataEnglish = {
     formh1: "Add a customer",
     inputplaceholder: "type CID or Company name",
     button: "Search",
+    button2: "add this company",
+
     text: "Customer/Company not exist ,would you like to add",
     link: "Click here",
   },
