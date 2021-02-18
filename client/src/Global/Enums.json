@@ -2,6 +2,23 @@
   "userStatusInCompany": {
     "LEAR": "lear",
     "POC": "poc",
-    "PENDING": "pending"
+    "PENDING": "pending",
+    "DEMO_POC": "demoPoc"
+  },
+
+  "userInterface": {
+    "UEmail": "",
+    "UFirstName": "",
+    "ULastName": null,
+    "UPhone": "",
+    "UType": "",
+    "UinCognito": ""
+  },
+  "InCognito": {
+    "TRUE": "true",
+    "FALSE": "false"
+  },
+  "UserTypes": {
+    "GUEST": "Guest"
   }
 }

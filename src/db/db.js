@@ -10,7 +10,7 @@ exports.do = function (query) {
   return new Promise((resolve, reject) => {
     connection.query(query, function (error, results) {
       if (error) {
-        reject(error.toString());
+        reject(error);
       } else {
         resolve(results);
       }

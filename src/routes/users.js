@@ -12,7 +12,7 @@ router.post("/add", async (req, res) => {
     await addUser(req.body);
     res.send(200);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).send(e.toString());
   }
 });
 
@@ -22,21 +22,22 @@ router.post("/updateByEmail", async (req, res) => {
     await updateUserByEmail(req.body);
     res.sendStatus(200);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).send(e.toString());
   }
 });
 
 router.get("/getByEmail", async (req, res) => {
   try {
-    const user = await getUser(req.body.email);
+    const user = await getUser(req.query.email);
     res.send(user);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).send(e.toString());
   }
 });
 
-router.get("/*", async (req, res) => {
-  res.status(500).send("no such route");
+router.get("/*", (req, res) => {
+  console.log("no such route");
+  res.status(404).send("no such route");
 });
 
 module.exports = router;
