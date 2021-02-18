@@ -20,7 +20,8 @@ import UseAnimations from "react-useanimations";
 import trash2 from "react-useanimations/lib/trash2";
 import { AiOutlinePlus } from "react-icons/ai";
 
-const InitOrJoinCompany = ({ content }) => {
+const InitOrJoinCompany = (props) => {
+  const content = props.dataLanguages.initorjoin;
   const [fields, setFields] = useState([
     { firstname: null, lastname: null, email: null },
   ]);

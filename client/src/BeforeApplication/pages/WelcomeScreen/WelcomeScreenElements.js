@@ -22,6 +22,7 @@ export const FormWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 480px) {
     padding: 10px;
@@ -30,6 +31,8 @@ export const FormWrap = styled.div`
 
 export const Form = styled.form`
   background: #1b1924;
+  align-items: center;
+
   max-width: 770px;
   height: auto;
   width: 100%;
@@ -131,4 +134,20 @@ export const InfoCard = styled.div`
   background-color: white;
   height: 100%;
   border-radius: 20px;
+
+  @media screen and (max-width: 550px) {
+    height: 110%;
+  }
+`;
+
+export const ImgWrap = styled.div`
+  max-width: 280px;
+  height: 100%;
+  margin-bottom: 35px;
+`;
+
+export const Img = styled.img`
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding-right: 0;
 `;

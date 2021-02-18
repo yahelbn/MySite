@@ -13,6 +13,7 @@ import ContactUs from "./pages/contactus";
 import ForgotPassword from "../LandingPage/components/ForgotPassword/index";
 
 import ContoTeqApp from "../Application/pageComponents/LangRouter";
+import BeforeApp from "../BeforeApplication/LangRouter";
 
 const App = (props) => {
   let { locale } = props;
@@ -53,6 +54,11 @@ const App = (props) => {
               render={(propRouter) => (
                 <ContoTeqApp {...propRouter} {...props} />
               )}
+            />
+
+            <Route
+              path={"/" + locale + "/beforeapp"}
+              render={(propRouter) => <BeforeApp {...propRouter} {...props} />}
             />
           </Switch>
         </AttributesFunc>
