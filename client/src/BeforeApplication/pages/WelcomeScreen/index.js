@@ -10,11 +10,17 @@ import {
   Container,
   InfoCard,
   Text,
+  ImgWrap,
+  Img,
 } from "./WelcomeScreenElements";
 import { BsInfoSquare } from "react-icons/bs";
 import { useHistory, Link } from "react-router-dom";
 
-const WelcomeScreen = ({ content }) => {
+import Hapypeople from "../../images/happypeople.svg";
+
+const WelcomeScreen = (props) => {
+  const content = props.dataLanguages.welcomescreen;
+
   const history = useHistory();
 
   return (
@@ -24,6 +30,9 @@ const WelcomeScreen = ({ content }) => {
           <Icon to="/">ContoTeq</Icon>
           <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
             <FormH1>{content.formh1}</FormH1>
+            <ImgWrap>
+              <Img src={Hapypeople} alt={"happy"} />
+            </ImgWrap>
             <RowDiv>
               <ColumnDiv>
                 <InfoCard>
