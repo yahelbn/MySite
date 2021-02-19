@@ -2,6 +2,14 @@ export const DataEnglish = {
   mainpage: {
     firsttext: "Hello",
   },
+  pendingscreen: {
+    rtl: false,
+    formh1: "Wait for company approval",
+
+    buttonContent: "Look for another company",
+    information:
+      "To start using ContoTeq, you must wait for the approval of the company that will approve your joining it. If you want to give up the application and apply to join another company click the button below.",
+  },
   welcomescreen: {
     rtl: false,
     formh1: "Welcome to ContoTeq!",

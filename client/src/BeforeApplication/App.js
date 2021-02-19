@@ -18,6 +18,7 @@ import { Global } from "../Global/Global";
 import InitOrJoin from "./pages/InitOrJoinCompany/index";
 import WelcomeScreen from "./pages/WelcomeScreen/index";
 import SearchCompanyPage from "./pages/SearchCompany/index";
+import PendingScreen from "./pages/PendingScreen";
 
 /* Import Functions */
 import { useHistory } from "react-router-dom";
@@ -54,26 +55,31 @@ const App = (props) => {
       <Global email={email}>
         <Account>
           {/* <AppContainer> */}
-          <Switch>
-            <Route
-              path={"/" + locale + "/beforeapp/initorjoin"}
-              render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
-            />
+          <Route
+            path={"/" + locale + "/beforeapp/initorjoin"}
+            render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
+          />
 
-            <Route
-              path={"/" + locale + "/beforeapp/welcomescreen"}
-              render={(propRouter) => (
-                <WelcomeScreen {...propRouter} {...props} />
-              )}
-            />
+          <Route
+            path={"/" + locale + "/beforeapp/welcomescreen"}
+            render={(propRouter) => (
+              <WelcomeScreen {...propRouter} {...props} />
+            )}
+          />
 
-            <Route
-              path={"/" + locale + "/beforeapp/searchcompany"}
-              render={(propRouter) => (
-                <SearchCompanyPage {...propRouter} {...props} />
-              )}
-            />
-          </Switch>
+          <Route
+            path={"/" + locale + "/beforeapp/searchcompany"}
+            render={(propRouter) => (
+              <SearchCompanyPage {...propRouter} {...props} />
+            )}
+          />
+          <Route
+            path={"/" + locale + "/beforeapp/pendingscreen"}
+            render={(propRouter) => (
+              <PendingScreen {...propRouter} {...props} />
+            )}
+          />
+          {/* </AppContainer> */}
         </Account>
       </Global>
     );

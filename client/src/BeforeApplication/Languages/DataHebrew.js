@@ -3,6 +3,14 @@ export const DataHebrew = {
     firsttext: "שלום",
   },
 
+  pendingscreen: {
+    rtl: true,
+    formh1: "המתן לאישור החברה",
+
+    buttonContent: "אני אוותר על הבקשה",
+    information:
+      "בכדי להתחיל את השימוש בContoteq, עליך להמתין לאישור החברה שתאשר את הצטרפותך אליה. אם ברצונך לוותר על הבקשה ולבקש להצטרף לחברה אחרת לחץ על הכפתור למטה.",
+  },
   welcomescreen: {
     rtl: true,
     formh1: "ברוך הבא לContoTeq!",
