@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FormWrap,
   FormH1,
@@ -19,8 +19,14 @@ import UseAnimations from "react-useanimations";
 // EVERY ANIMATION NEEDS TO BE IMPORTED FIRST -> YOUR BUNDLE WILL INCLUDE ONLY WHAT IT NEEDS
 import trash2 from "react-useanimations/lib/trash2";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useLocation } from "react-router-dom";
 
 const InitOrJoinCompany = (props) => {
+  const location = useLocation();
+  useEffect(() => {
+    console.log(location.state.companyID); // result: 'some_value'
+  }, [location]);
+
   const content = props.dataLanguages.initorjoin;
   const [fields, setFields] = useState([
     { firstname: null, lastname: null, email: null },

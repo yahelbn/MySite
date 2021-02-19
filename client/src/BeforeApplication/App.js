@@ -54,25 +54,26 @@ const App = (props) => {
       <Global email={email}>
         <Account>
           {/* <AppContainer> */}
-          <Route
-            path={"/" + locale + "/beforeapp/initorjoin"}
-            render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
-          />
+          <Switch>
+            <Route
+              path={"/" + locale + "/beforeapp/initorjoin"}
+              render={(propRouter) => <InitOrJoin {...propRouter} {...props} />}
+            />
 
-          <Route
-            path={"/" + locale + "/beforeapp/welcomescreen"}
-            render={(propRouter) => (
-              <WelcomeScreen {...propRouter} {...props} />
-            )}
-          />
+            <Route
+              path={"/" + locale + "/beforeapp/welcomescreen"}
+              render={(propRouter) => (
+                <WelcomeScreen {...propRouter} {...props} />
+              )}
+            />
 
-          <Route
-            path={"/" + locale + "/beforeapp/searchcompany"}
-            render={(propRouter) => (
-              <SearchCompanyPage {...propRouter} {...props} />
-            )}
-          />
-          {/* </AppContainer> */}
+            <Route
+              path={"/" + locale + "/beforeapp/searchcompany"}
+              render={(propRouter) => (
+                <SearchCompanyPage {...propRouter} {...props} />
+              )}
+            />
+          </Switch>
         </Account>
       </Global>
     );

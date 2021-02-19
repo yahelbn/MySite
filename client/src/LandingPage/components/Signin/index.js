@@ -18,17 +18,16 @@ import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { AccountContext } from "../../../Authentication/Account";
-import { GlobalContext } from "../../../Global/Global";
-import { userStatusInCompany } from "../../../Global/Enums.json";
+import { userCompanyStatuses } from "../../../Global/Enums.json";
+import axios from "axios";
 
 const SignIn = ({ content, locale }) => {
-  const { getUserStatusInCompany } = useContext(GlobalContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
-  const history = useHistory();
+  let history = useHistory();
 
   const { authenticate, getStatus } = useContext(AccountContext);
 
@@ -36,24 +35,31 @@ const SignIn = ({ content, locale }) => {
     event.preventDefault();
     setLoader(true);
     authenticate(email, password).then(
-      async (data) => {
-        let userCompanies = await getUserStatusInCompany(email, [
-          userStatusInCompany.LEAR,
-          userStatusInCompany.PENDING,
-          userStatusInCompany.POC,
-        ]);
+      async () => {
         //sending the user the relevant screen based on whether he is signed into a company or not
-        if (userCompanies.length > 0) {
-          userCompanies = userCompanies.filter(
-            (status) => status === userStatusInCompany.PENDING
-          );
-          if (userCompanies.length !== 0) {
-            //means that status is pending
-          } else {
-            history.push("/he/contoteqapp/");
-          }
+        const userCompanyData = await getUserStatusInCompany(email);
+
+        if (
+          userCompanyData.UUserStatusInCompany === userCompanyStatuses.DEMO_POC
+        ) {
+          //send to initORJOin with filled values
+          history.push({
+            pathname: `/${locale}/beforeapp/initOrJoin`,
+            state: { companyID: userCompanyData.UCompanyID },
+          });
+        } else if (
+          userCompanyData.UUserStatusInCompany === userCompanyStatuses.LEAR ||
+          userCompanyData.UUserStatusInCompany === userCompanyStatuses.POC
+        ) {
+          //Send to contoteqapp customer/client view
+          history.push(`/${locale}/contoteqapp/`);
+        } else if (
+          userCompanyData.UUserStatusInCompany === userCompanyStatuses.PENDINGS
+        ) {
         } else {
-          history.push("/he/contoteqapp/initorjoin");
+          //Send to beforeapp/welcomescreen
+          //not part of a company
+          history.push(`/${locale}/beforeapp/welcomescreen`);
         }
         setMessage("מיד תועבר");
         setError(false);
@@ -65,6 +71,14 @@ const SignIn = ({ content, locale }) => {
         setLoader(false);
       }
     );
+  };
+
+  const getUserStatusInCompany = async (email) => {
+    const userCompany = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/userCompany/getByEmail`,
+      { params: { email } }
+    );
+    return userCompany.data[0];
   };
 
   const handleUserKeyPress = (event) => {

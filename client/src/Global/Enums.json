@@ -1,5 +1,5 @@
 {
-  "userStatusInCompany": {
+  "userCompanyStatuses": {
     "LEAR": "lear",
     "POC": "poc",
     "PENDING": "pending",
