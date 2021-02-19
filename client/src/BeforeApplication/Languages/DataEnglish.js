@@ -42,7 +42,7 @@ export const DataEnglish = {
     forminput3: "number",
     formlabel4: "Address",
     forminput4: "text",
-    optionsSelect: ["Type", "LTD", "עוסק פטור"],
+    optionsSelect: ["Partnership", "NonProfit", "LTD", "SoleProp"],
     formh2: "Contacts",
     formlabel5: "First name (contact)",
     forminput5: "text",

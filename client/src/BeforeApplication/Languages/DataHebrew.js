@@ -51,7 +51,7 @@ export const DataHebrew = {
     forminput3: "number",
     formlabel4: "כתובת",
     forminput4: "text",
-    optionsSelect: ["סוג", 'בע"מ', "עוסק פטור"],
+    optionsSelect: ["שותפות", "ארגון ללא מטרת רווח", 'בע"מ', "עוסק פטור"],
 
     buttonContent1: "צור חברה",
     buttonContent2: "הוסף איש קשר",
