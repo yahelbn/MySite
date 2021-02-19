@@ -18,6 +18,7 @@ import { Global } from "../Global/Global";
 import InitOrJoin from "./pages/InitOrJoinCompany/index";
 import WelcomeScreen from "./pages/WelcomeScreen/index";
 import SearchCompanyPage from "./pages/SearchCompany/index";
+import PendingScreen from "./pages/PendingScreen";
 
 /* Import Functions */
 import { useHistory } from "react-router-dom";
@@ -70,6 +71,12 @@ const App = (props) => {
             path={"/" + locale + "/beforeapp/searchcompany"}
             render={(propRouter) => (
               <SearchCompanyPage {...propRouter} {...props} />
+            )}
+          />
+          <Route
+            path={"/" + locale + "/beforeapp/pendingscreen"}
+            render={(propRouter) => (
+              <PendingScreen {...propRouter} {...props} />
             )}
           />
           {/* </AppContainer> */}
