@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FormWrap,
   FormH1,
@@ -19,30 +19,52 @@ import UseAnimations from "react-useanimations";
 // EVERY ANIMATION NEEDS TO BE IMPORTED FIRST -> YOUR BUNDLE WILL INCLUDE ONLY WHAT IT NEEDS
 import trash2 from "react-useanimations/lib/trash2";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useLocation } from "react-router-dom";
+import { companyInterface, companyTypes } from "../../../Global/Enums.json";
+import axios from "axios";
 
 const InitOrJoinCompany = (props) => {
-  const content = props.dataLanguages.initorjoin;
   const [fields, setFields] = useState([
     { firstname: null, lastname: null, email: null },
   ]);
+  const [companyData, setCompanyData] = useState(companyInterface);
 
-  const renderOptions = content.optionsSelect.map((option, index) => {
-    if (index === 0) {
+  const location = useLocation();
+  useEffect(() => {
+    //if some component passed company id here - we will show its data
+    if (location.state) {
+      setCompanyDataByCid(location.state.companyID);
+    }
+  }, [location]);
+
+  const content = props.dataLanguages.initorjoin;
+
+  //renders company types for the selection menu
+  const renderCompanyTypesSelections = () => {
+    const typesObject = companyTypes[props.locale];
+    return Object.keys(typesObject).map((key, index) => {
       return (
         <React.Fragment key={index}>
-          <option value="" hidden>
-            {option}
+          <option
+            selected={companyData.CType === key ? true : false}
+            value={key}
+          >
+            {typesObject[key]}
           </option>
         </React.Fragment>
       );
-    } else {
-      return (
-        <React.Fragment key={index}>
-          <option value={index}>{option}</option>
-        </React.Fragment>
+    });
+  };
+
+  const setCompanyDataByCid = async (cid) => {
+    if (cid) {
+      const companyData = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/api/companies/getByCid`,
+        { params: { cid } }
       );
+      setCompanyData(companyData.data[0]);
     }
-  });
+  };
 
   function handleChange(i, type, event) {
     const values = [...fields];
@@ -73,21 +95,60 @@ const InitOrJoinCompany = (props) => {
             <RowDiv>
               <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel1}</FormLabel>
-                <FormInput type={content.forminput1} required />
+                <FormInput
+                  type={content.forminput1}
+                  required
+                  value={companyData.CName || ""}
+                  onChange={(event) =>
+                    setCompanyData({
+                      ...companyData,
+                      CName: event.target.value,
+                    })
+                  }
+                />
               </ColumnDiv>
               <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel2}</FormLabel>
-                <FormSelect type={content.forminput2} required>
-                  {renderOptions}
+                <FormSelect
+                  type={content.forminput2}
+                  required
+                  onChange={(event) =>
+                    setCompanyData({
+                      ...companyData,
+                      CType: event.target.value,
+                    })
+                  }
+                >
+                  {renderCompanyTypesSelections()}
                 </FormSelect>
               </ColumnDiv>
             </RowDiv>
 
             <FormLabel htmlFor="for">{content.formlabel3}</FormLabel>
-            <FormInput type={content.forminput3} required />
+            <FormInput
+              type={content.forminput3}
+              required
+              value={companyData.CompanyID || ""}
+              onChange={(event) =>
+                setCompanyData({
+                  ...companyData,
+                  CompanyID: event.target.value,
+                })
+              }
+            />
 
             <FormLabel htmlFor="for">{content.formlabel4}</FormLabel>
-            <FormInput type={content.forminput4} required />
+            <FormInput
+              type={content.forminput4}
+              required
+              value={companyData.CAddress || ""}
+              onChange={(event) =>
+                setCompanyData({
+                  ...companyData,
+                  CAddress: event.target.value,
+                })
+              }
+            />
 
             {fields.map((field, idx) => {
               return (

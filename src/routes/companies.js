@@ -1,35 +1,29 @@
 const express = require("express");
 const router = express.Router();
-const {
-  getUser,
-  addUser,
-  updateUserByEmail,
-} = require("../services/usersService");
+const { add, getByCid, updateByCid } = require("../services/companiesService");
 
 router.post("/add", async (req, res) => {
-  //use findoc service here
   try {
-    await addUser(req.body);
+    await add(req.body);
     res.send(200);
   } catch (e) {
     res.status(500).send(e.toString());
   }
 });
 
-router.post("/updateByEmail", async (req, res) => {
-  //use findoc service here
+router.post("/update", async (req, res) => {
   try {
-    await updateUserByEmail(req.body);
+    await updateByCid(req.body);
     res.sendStatus(200);
   } catch (e) {
     res.status(500).send(e.toString());
   }
 });
 
-router.get("/getByEmail", async (req, res) => {
+router.get("/getByCid", async (req, res) => {
   try {
-    const user = await getUser(req.query.email);
-    res.send(user);
+    const company = await getByCid(req.query.cid);
+    res.send(company);
   } catch (e) {
     res.status(500).send(e.toString());
   }

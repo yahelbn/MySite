@@ -18,58 +18,62 @@ import { AiOutlineClose } from "react-icons/ai";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router-dom";
 import { userPool } from "../../../Authentication/cognitoUserPool";
+import {
+  userInterface,
+  UserTypes,
+  InCognito,
+} from "../../../Global/Enums.json";
 
 import "../HomePageComponents/Modal/Modal.css";
 import Modal from "../HomePageComponents/Modal/Modal";
 import useModal from "../HomePageComponents/Modal/useModal";
 
-//CongitoAttributes
-import { CognitoUserAttribute } from "amazon-cognito-identity-js";
 import axios from "axios";
 
 const SignUp = ({ content }) => {
   /*Attributes of the user  */
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState(undefined);
   const [rePassword, setRePassword] = useState(undefined);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [telephone, setTelephone] = useState("");
+  const [userData, setUserData] = useState(userInterface);
 
   /*Loaders and messages */
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [errorPasswordMessage, setErrorPasswordMessage] = useState(false);
-
   const [error, setError] = useState(false);
+
   const [comparePass, setComparePass] = useState(false);
 
   /* Contexts */
   const { isShowing, toggle } = useModal();
   const history = useHistory();
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     setLoader(true);
 
-    var userAttributes = userSignUpAttributes();
-    console.log(userAttributes);
     if (comparePass) {
-      userPool.signUp(email, password, userAttributes, null, (err, data) => {
-        if (err) {
-          console.log(err.message.message);
-          setLoader(false);
-          setMessage(err.message);
-          setError(true);
-        } else {
-          console.log(data);
-          setMessage("Success");
-          setLoader(false);
-          setError(false);
-          toggle();
+      userPool.signUp(
+        userData.UEmail,
+        password,
+        [],
+        null,
+        async (err, data) => {
+          if (err) {
+            console.log(err.message.message);
+            setLoader(false);
+            setMessage(err.message);
+            setError(true);
+          } else {
+            setMessage("Success");
+            setLoader(false);
+            setError(false);
+            await addUserToDB(userData.UEmail);
+            toggle();
+          }
         }
-      });
+      );
     } else {
       setMessage("Passwords not the same, try again");
       setError(true);
@@ -85,20 +89,27 @@ const SignUp = ({ content }) => {
     }
   };
 
+  //if the user already exists in our db(someone set him as poc), we only update him, else adding new.
   const addUserToDB = async (email) => {
     const user = await axios.get(
       `${process.env.REACT_APP_SERVER_URL}/api/users/getByEmail`,
       { params: { email } }
     );
 
-    if (user) {
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/users/update`, {
-        params: { email },
-      });
+    if (user.data.length !== 0) {
+      await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api/users/updateByEmail`,
+        {
+          email: userData.UEmail,
+          userData,
+        }
+      );
     } else {
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/users/add`, {
-        params: { email },
-      });
+      //adding a new user
+      await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api/users/add`,
+        userData
+      );
     }
   };
 
@@ -116,35 +127,14 @@ const SignUp = ({ content }) => {
     }
   };
 
-  const userSignUpAttributes = () => {
-    var attributeList = [];
-
-    var attributeFirstName = new CognitoUserAttribute({
-      Name: "custom:first_name",
-      Value: firstName,
-    });
-
-    var attributeLastName = new CognitoUserAttribute({
-      Name: "custom:last_name",
-      Value: lastName,
-    });
-
-    var attributeTelephone = new CognitoUserAttribute({
-      Name: "custom:telephone",
-      Value: telephone,
-    });
-
-    attributeList.push(attributeFirstName);
-    attributeList.push(attributeLastName);
-    attributeList.push(attributeTelephone);
-    return attributeList;
-  };
-
   useEffect(() => {
+    setUserData({
+      ...userData,
+      UType: UserTypes.GUEST,
+      UinCognito: InCognito.TRUE,
+    });
     setComparePass(checkCompatibilityPasswords());
-
     window.addEventListener("keydown", handleUserKeyPress);
-
     return () => {
       window.removeEventListener("keydown", handleUserKeyPress);
     };
@@ -173,7 +163,9 @@ const SignUp = ({ content }) => {
                 <FormInput
                   type={content.forminput1}
                   required
-                  onChange={(event) => setFirstName(event.target.value)}
+                  onChange={(event) =>
+                    setUserData({ ...userData, UFirstName: event.target.value })
+                  }
                 />
               </ColumnDiv>
               <ColumnDiv>
@@ -181,15 +173,19 @@ const SignUp = ({ content }) => {
                 <FormInput
                   type={content.forminput2}
                   required
-                  onChange={(event) => setLastName(event.target.value)}
+                  onChange={(event) =>
+                    setUserData({ ...userData, ULastName: event.target.value })
+                  }
                 />
               </ColumnDiv>
             </RowDiv>
 
             <FormLabel htmlFor="for">{content.formlabel3}</FormLabel>
             <FormInput
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              // value={email}
+              onChange={(event) =>
+                setUserData({ ...userData, UEmail: event.target.value })
+              }
               type={content.forminput3}
               required
             />
@@ -222,10 +218,10 @@ const SignUp = ({ content }) => {
             <FormInput
               type={content.forminput6}
               required
-              onChange={(event) => setTelephone(event.target.value)}
+              onChange={(event) =>
+                setUserData({ ...userData, UPhone: event.target.value })
+              }
             />
-            {/* <FormLabel htmlFor="for">{content.formlabel7}</FormLabel>
-            <FormInput type={content.forminput7} required /> */}
             <FormButton onClick={(e) => onSubmit(e)} type="submit">
               {loader ? (
                 <Loader

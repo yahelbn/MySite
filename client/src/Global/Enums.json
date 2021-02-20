@@ -1,7 +1,50 @@
 {
-  "userStatusInCompany": {
+  "userCompanyStatuses": {
     "LEAR": "lear",
     "POC": "poc",
-    "PENDING": "pending"
+    "PENDING": "pending",
+    "DEMO_POC": "demoPoc"
+  },
+
+  "userInterface": {
+    "UEmail": "",
+    "UFirstName": "",
+    "ULastName": null,
+    "UPhone": "",
+    "UType": "",
+    "UinCognito": ""
+  },
+
+  "companyInterface": {
+    "CompanyID": "",
+    "CIsVAT": "",
+    "CType": "",
+    "CName": "",
+    "CAddress": ""
+  },
+
+  "companyTypes": {
+    "he": {
+      "LTD": "בעמ",
+      "NON_PROFIT": "ללא מטרות רווח"
+    },
+    "en": {
+      "LTD": "Ltd",
+      "NON_PROFIT": "non-profit"
+    }
+  },
+
+  "InCognito": {
+    "TRUE": "true",
+    "FALSE": "false"
+  },
+
+  "UserTypes": {
+    "he": {
+      "GUEST": "אורח"
+    },
+    "en": {
+      "GUEST": "Guest"
+    }
   }
 }
