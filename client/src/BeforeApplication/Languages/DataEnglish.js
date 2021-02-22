@@ -62,6 +62,12 @@ export const DataEnglish = {
     buttonContent1: "Create Company",
     buttonContent2: "Add Person of contact",
     //text: "שכחתי סיסמא",
+    street: "Street",
+    number: "Number",
+    city: "City",
+    zipcode: "Zip Code",
+    country: "Country",
+    address: "Address",
   },
 
   searchcustomer: {

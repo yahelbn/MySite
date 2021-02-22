@@ -25,6 +25,7 @@ export const ServicesWrapper = styled.div`
   align-items: center;
   grid-gap: 16px;
   padding: 0 50px;
+  direction: ${({ rtl }) => (rtl ? `rtl` : `ltr`)};
 
   @media screen and (max-width: 1000px) {
     grid-template-columns: 1fr 1fr;

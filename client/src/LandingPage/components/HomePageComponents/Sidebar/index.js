@@ -52,7 +52,7 @@ const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
   };
 
   const renderSideBarLinks = links.map((navItem, index) => {
-    if (index === 0) {
+    if (index === 2) {
       const renderMiniSideBarLinks = navItem.dropdown.map((link) => {
         return (
           <SidebarMiniLink

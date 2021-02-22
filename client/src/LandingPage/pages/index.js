@@ -45,6 +45,9 @@ const Home = (props) => {
         content={props.dataLanguages.heroSection}
         locale={props.locale}
       />
+      <Advantages content={props.dataLanguages.advantages} />
+      <Services content={props.dataLanguages.services} />
+
       <InfoSection
         content={props.dataLanguages.homeObjOne}
         locale={props.locale}
@@ -55,8 +58,8 @@ const Home = (props) => {
       />
       <CarouselFounders content={props.dataLanguages.whoweare} />
 
-      <Advantages content={props.dataLanguages.advantages} />
-      <Services content={props.dataLanguages.services} />
+      {/* <Advantages content={props.dataLanguages.advantages} /> */}
+      {/* <Services content={props.dataLanguages.services} /> */}
 
       {/* <InfoSection
         content={props.dataLanguages.homeObjThree}

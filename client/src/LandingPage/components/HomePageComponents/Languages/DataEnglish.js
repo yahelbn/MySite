@@ -29,7 +29,7 @@ export const DataEnglish = {
     topLine: "about us",
     //headLine: "Simplify the process of accounting between businesses",
     description:
-      "Contoteq is a fintech platform established to streamline business processes between suppliers and customers from end to end. In the first place we bring a complete, automatic and simple solution to all payment and collection processes - AR In the future we will allow additional process management between suppliers and customers. The company was established by entrepreneurs with many years of experience in the world of small and medium businesses, fintech and online systems and finance.",
+      "ContoTeq is an innovative fintech platform that streamlines business processes between suppliers and customers. We bring a complete and simple solution to all payment processes and collection between supplier and customer (AR). In the future we will manage additional processes between suppliers and customers. Small and medium-sized businesses, fintech and online systems and finance. ",
     buttonLabel: "Start Now",
     imgStart: false,
     img: smartransaction,
@@ -87,9 +87,9 @@ export const DataEnglish = {
     lightText: true,
     lightTextDesc: false,
     topLine: "Sign up",
-    headLine: "Sign up now for free",
-    description:
-      "Register and experience our services in your business or as a customer.",
+    headLine: "Sign up now for a free trial",
+    // description:
+    //   "Register and experience our services in your business or as a customer.",
     buttonLabel: "Start Now",
     imgStart: true,
     img: checklistpayment,
@@ -103,6 +103,8 @@ export const DataEnglish = {
   navBar: {
     rtl: false,
     links: [
+      { content: "Why ContoTeq?", to: "advantages" },
+      { content: "Our services", to: "services" },
       {
         content: "Company",
         dropdown: [
@@ -111,8 +113,6 @@ export const DataEnglish = {
           { content: "Inventors", to: "inventors" },
         ],
       },
-      { content: "Why ContoTeq?", to: "advantages" },
-      { content: "Our services", to: "services" },
       // { content: "Technology", to: "technology" },
       { content: "Prices", to: "prices" },
     ],
@@ -124,7 +124,7 @@ export const DataEnglish = {
 
   heroSection: {
     heroh1: "Transactions between businesses have become easier",
-    herop: "Sign up now and use for free",
+    herop: "Feel free to try us - sign up now",
     button: "Start now",
   },
   contactus: {
@@ -307,7 +307,7 @@ export const DataEnglish = {
       {
         rtl: false,
         icon: Thunder,
-        servicesh2: "Improving efficiency and saving time",
+        servicesh2: "Saving time",
         servicesp:
           "Automating tedious processes that give you time to focus on your business",
       },

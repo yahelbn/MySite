@@ -31,7 +31,9 @@ const Advantages = ({ content }) => {
       <ServicesH1 rtl={Boolean(content.header.rtl) ? true : false}>
         {content.header.content}
       </ServicesH1>
-      <ServicesWrapper>{renderServiceCards}</ServicesWrapper>
+      <ServicesWrapper rtl={Boolean(content.header.rtl) ? true : false}>
+        {renderServiceCards}
+      </ServicesWrapper>
     </ServicesContainer>
   );
 };

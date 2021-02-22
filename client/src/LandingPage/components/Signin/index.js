@@ -110,18 +110,20 @@ const SignIn = ({ content, locale }) => {
           <FormContent>
             <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
               <FormH1>{content.formh1}</FormH1>
+
               <FormInput
+                required
                 placeholder={content.formlabel1}
+                value={email || ""}
                 onChange={(e) => setEmail(e.target.value)}
                 type={content.forminput1}
-                required
               />
               <FormInputPassword
+                required
                 placeholder={content.formlabel2}
                 rtl={Boolean(content.rtl) ? true : false}
                 onChange={(e) => setPassword(e.target.value)}
                 type={content.forminput2}
-                required
               />
               <LinkForgotPassword to={`/${locale}/forgotpassword`}>
                 {content.text}

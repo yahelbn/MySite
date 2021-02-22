@@ -29,7 +29,8 @@ export const DataHebrew = {
     topLine: "מי אנחנו?",
     //headLine: "פישוט תהליך התחשבנות בין עסקים",
     description:
-      "קונטוטק היא פלטפורמת fintech שהוקמה על מנת ליעל תהליכים עסקיים בין ספקים ללקוחות מקצה לקצה.  בשלב הראשון אנו מביאים פתרון מלא, אוטומטי ופשוט לכלל תהליכי התשלום והגביה – AR בהמשך נאפשר ניהול תהליכים נוספים בין ספקים ללקוחות.החברה הוקמה על ידי יזמים שנים רבות של ניסיון בעולם של עסקים קטנים ובינוניים, מערכות fintech ואון-ליין ופיננסים.",
+      "ContoTeq היא פלטפורמת פינטק חדשנית שמייעלת תהליכים עסקיים בין ספקים ללקוחות. אנו מביאים פתרון מלא ופשוט לכלל תהליכי התשלום והגביה בין ספק ללקוח (AR). בהמשך נאפשר ניהול תהליכים נוספים בין ספקים ללקוחות. החברה הוקמה על ידי יזמים עם שנים רבות של ניסיון בעולם של עסקים קטנים ובינוניים, מערכות פינטק ואון-ליין ופיננסים.",
+
     buttonLabel: "התחל עכשיו",
     imgStart: false,
     img: smartransaction,
@@ -86,8 +87,8 @@ export const DataHebrew = {
     lightText: true,
     lightTextDesc: false,
     topLine: "הירשם",
-    headLine: "הירשם עכשיו ללא תשלום",
-    description: "הירשם והתנסה בשירותים שלנו בעסקך או בתור לקוח.",
+    headLine: "הירשם עכשיו לתקופת ניסיון ללא תשלום",
+    // description: "הירשם והתנסה בשירותים שלנו בעסקך או בתור לקוח.",
     buttonLabel: "התחל עכשיו",
     imgStart: true,
     img: checklistpayment,
@@ -102,6 +103,8 @@ export const DataHebrew = {
   navBar: {
     rtl: true,
     links: [
+      { content: "למה ContoTeq?", to: "advantages" },
+      { content: "שירותים שלנו", to: "services" },
       {
         content: "החברה",
         dropdown: [
@@ -110,8 +113,6 @@ export const DataHebrew = {
           { content: "הצוות", to: "inventors" },
         ],
       },
-      { content: "למה ContoTeq?", to: "advantages" },
-      { content: "שירותים שלנו", to: "services" },
       // { content: "טכנולוגיה", to: "technology" },
       { content: "מחירים", to: "prices" },
       // { content: "הרשם", to: "signup" },
@@ -123,7 +124,7 @@ export const DataHebrew = {
 
   heroSection: {
     heroh1: "פעולות בין עסקים נהפכות לקלות יותר",
-    herop: "הירשם עכשיו והשתמש בחינם",
+    herop: "מוזמן לנסות אותנו – הירשם עכשיו",
     button: "התחל עכשיו",
   },
   contactus: {
@@ -284,8 +285,7 @@ export const DataHebrew = {
         rtl: true,
         icon: Icon2,
         servicesh2: "עבור לקוחות",
-        servicesp:
-          "מעקב רצוף אחרי דרישות תשלום: קבלה, אישור וביצוע מול מגוון ספקים",
+        servicesp: "מעקב אחרי דרישות תשלום: קבלה, אישור וביצוע מול מגוון ספקים",
       },
       // {
       //   rtl: true,
@@ -305,7 +305,7 @@ export const DataHebrew = {
       {
         rtl: true,
         icon: Thunder,
-        servicesh2: "שיפור יעילות וחיסכון בזמן",
+        servicesh2: "חיסכון בזמן",
         servicesp: "אוטומציה של תהליכים טרחניים המפנה לך זמן להתמקד בעסק שלך",
       },
 
@@ -326,14 +326,14 @@ export const DataHebrew = {
       {
         rtl: true,
         icon: Interactive,
-        servicesh2: "ניהול פשוט של תהליך מקצה לקצה",
+        servicesh2: "ניהול פשוט של התהליך מקצה לקצה",
         servicesp:
           "מיצירת חשבוניות, אישורים, תשלום והוצאת קבלות תוך כדי אינטראקציה בזמן אמת בין ספק ללקוח. הפקת דוחות היסטוריים בחתכים שונים תוך דקות.",
       },
       {
         rtl: true,
         icon: Payday,
-        servicesh2: "שיפור וייעול תשלום וגביה",
+        servicesh2: "ייעול תשלום וגביה",
         servicesp:
           "מעקב אחרי תשלומים, שליחת תזכורות, ואפשרות תשלום מידי אונליין.",
       },
@@ -347,14 +347,14 @@ export const DataHebrew = {
       {
         rtl: true,
         icon: Clock,
-        servicesh2: "רישום ותחילת עבודת תוך דקות",
+        servicesh2: "רישום ותחילת עבודה תוך דקות",
         servicesp:
           "המערכת פועלת אונליין ותהליך הרישום עד תחילת עבודה לוקח דקות.",
       },
       {
         rtl: true,
         icon: Customerservice,
-        servicesh2: "צריך עזרה? תמיכה מעולה בלקוחות",
+        servicesh2: "צריך עזרה? תמיכה מהירה בלקוחות",
         servicesp:
           "המערכת מספקת תמיכה שוטפת בלקוחות ומענה לכל שאלה בנגיעת כפתור.",
       },
