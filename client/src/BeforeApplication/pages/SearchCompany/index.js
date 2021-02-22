@@ -135,6 +135,7 @@ const SearchCompany = (props) => {
                               style={{
                                 cursor: "pointer",
                                 WebkitBorderRadius: "20px",
+                                width: "100%",
                               }}
                               onClick={() => handleTheSelectedOption(idx)}
                             >

@@ -22,6 +22,14 @@
     "CName": "",
     "CAddress": ""
   },
+  "addressInterface":{
+    "AAddressID":"",
+    "AStreet":"",
+    "ANumber":"",
+    "ACity":"",
+    "AZIPCode":"",
+    "ACountry":""
+  },
 
   "companyTypes": {
     "he": {

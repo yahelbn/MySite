@@ -72,6 +72,12 @@ export const DataHebrew = {
     forminput6: "text",
     formlabel7: "אימייל",
     forminput7: "text",
+    street: "רחוב",
+    number: "מס' דירה",
+    city: "עיר",
+    zipcode: "מיקוד",
+    country: "מדינה",
+    address: "כתובת",
   },
   searchcustomer: {
     rtl: true,

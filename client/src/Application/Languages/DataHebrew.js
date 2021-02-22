@@ -57,6 +57,23 @@ export const DataHebrew = {
     button2: "הוסף לקוח זה",
     text: "לקוח או חברה אינם קיימים האם אתה מעוניין להוסיף",
     link: "לחץ כאן",
+    modalconfirm: {
+      rtl: true,
+      header: "הבקשה נשלחה לחברה",
+      p:
+        "לאחר שהחברה תאשר את בקשתך, תוכל לשתף פעולה יחד איתה ,והיא תתווסף לרשימת הלקוחות שלך.",
+      button: "להמשך הוספה",
+    },
+  },
+
+  existingcustomers: {
+    rtl: true,
+    formh1: "הלקוחות שלי",
+    inputplaceholder: 'הקלד ח"פ או שם חברה',
+    button: "חפש",
+    button2: "צפייה בפרטי לקוח זה",
+    text: "לקוח או חברה אינם קיימים האם אתה מעוניין להוסיף",
+    link: "לחץ כאן",
   },
 
   addcustomer: {
@@ -82,6 +99,12 @@ export const DataHebrew = {
     buttonContent1: "צור לקוח",
     buttonContent2: "איש קשר נוסף",
     //text: "שכחתי סיסמא",
+    street: "רחוב",
+    number: "מס' דירה",
+    city: "עיר",
+    zipcode: "מיקוד",
+    country: "מדינה",
+    address: "כתובת",
   },
 
   sidebar: {

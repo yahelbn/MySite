@@ -13,9 +13,12 @@ import { AccountContext } from "../../Authentication/Account";
 import { AttributesFuncContext } from "../../Authentication/AttributesFunc";
 import { Global } from "../../Global/Global";
 
+/* Pages */
 import MainPageApp from "../pages/main";
-import SearchCustomer from "../components/ApplicationScreens/Customers/SearchCustomer/index";
-import AddCustomer from "../components/ApplicationScreens/Customers/AddCustomer/index";
+import SearchCustomer from "../pages/Customers/SearchCustomer/index";
+import AddCustomer from "../pages/Customers/AddCustomer/index";
+import ExistingCustomers from "../pages/Customers/ExistingCustomers/index";
+import CustomersInfo from "../../Application/pages/Customers/CustomersInfo/index";
 
 /* Import Functions */
 import { useHistory } from "react-router-dom";
@@ -82,6 +85,21 @@ const App = (props) => {
                       exact
                       render={(propRouter) => (
                         <AddCustomer {...propRouter} {...props} />
+                      )}
+                    />
+                    <Route
+                      path={"/" + locale + "/contoteqapp/existingcustomers"}
+                      exact
+                      render={(propRouter) => (
+                        <ExistingCustomers {...propRouter} {...props} />
+                      )}
+                    />
+
+                    <Route
+                      path={"/" + locale + "/contoteqapp/customersinfo"}
+                      exact
+                      render={(propRouter) => (
+                        <CustomersInfo {...propRouter} {...props} />
                       )}
                     />
                   </Switch>

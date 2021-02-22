@@ -101,7 +101,9 @@ const SideBar = ({ username, content }) => {
                 <MenuItem>
                   <Link to="searchcustomer">{content.addingacustomer}</Link>
                 </MenuItem>
-                <MenuItem>{content.existingclients}</MenuItem>
+                <MenuItem>
+                  <Link to="existingcustomers">{content.existingclients}</Link>
+                </MenuItem>
               </SubMenu>
 
               <SubMenu

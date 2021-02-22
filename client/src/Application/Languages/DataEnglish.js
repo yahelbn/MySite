@@ -46,6 +46,12 @@ export const DataEnglish = {
     buttonContent1: "Create Company",
     buttonContent2: "Add Person of contact",
     //text: "שכחתי סיסמא",
+    street: "Street",
+    number: "Number",
+    city: "City",
+    zipcode: "Zip Code",
+    country: "Country",
+    address: "Address",
   },
 
   searchcustomer: {
@@ -56,6 +62,22 @@ export const DataEnglish = {
     button2: "add this company",
 
     text: "Customer/Company not exist ,would you like to add",
+    link: "Click here",
+    modalconfirm: {
+      rtl: false,
+      header: "Your request has been sent to the company",
+      p:
+        "Once the company approves your request, you can cooperate with it, and it will be added to your customer list",
+      button: "Continue adding",
+    },
+  },
+  existingcustomers: {
+    rtl: false,
+    formh1: "My Customers",
+    inputplaceholder: "Type cid or Company name",
+    button: "Search",
+    button2: "View this customer's details",
+    text: "Customer or company does not exist Do you want to add ",
     link: "Click here",
   },
   addcustomer: {

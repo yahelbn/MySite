@@ -81,7 +81,7 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   };
 
   const renderNavBarLinks = links.map((navItem, index) => {
-    if (index === 0) {
+    if (index === 2) {
       const renderDropDownItems = navItem.dropdown.map((link, index) => {
         return (
           <React.Fragment key={index}>

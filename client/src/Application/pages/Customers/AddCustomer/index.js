@@ -1,77 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   FormWrap,
   FormH1,
   FormLabel,
   FormInput,
   FormButton,
-  Icon,
   Form,
   RowDiv,
   ColumnDiv,
   Container,
   FormSelect,
+  FormH2,
   RowDivPoc,
   AddButton,
   RowDivAddress,
-  FormH2,
-} from "./InitOrJoinElements";
-
+} from "./AddCustomerElements";
+/*Icon */
 import UseAnimations from "react-useanimations";
 // EVERY ANIMATION NEEDS TO BE IMPORTED FIRST -> YOUR BUNDLE WILL INCLUDE ONLY WHAT IT NEEDS
 import trash2 from "react-useanimations/lib/trash2";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useLocation } from "react-router-dom";
 import {
   companyInterface,
   companyTypes,
   addressInterface,
-} from "../../../Global/Enums.json";
-import axios from "axios";
+} from "../../../../Global/Enums.json";
 
-const InitOrJoinCompany = (props) => {
-  const content = props.dataLanguages.initorjoin;
-
+const AddCustomer = (props) => {
+  const content = props.dataLanguages.addcustomer;
   const [fields, setFields] = useState([
     { firstname: null, lastname: null, email: null },
   ]);
   const [companyData, setCompanyData] = useState(companyInterface);
   const [addressData, setAddressData] = useState(addressInterface);
-
-  const location = useLocation();
-  useEffect(() => {
-    //if some component passed company id here - we will show its data
-    if (location.state) {
-      setCompanyDataByCid(location.state.companyID);
-    }
-  }, [location]);
-
-  //renders company types for the selection menu
-  const renderCompanyTypesSelections = () => {
-    const typesObject = companyTypes[props.locale];
-    return Object.keys(typesObject).map((key, index) => {
-      return (
-        <React.Fragment key={index}>
-          <option
-            selected={companyData.CType === key ? true : false}
-            value={key}
-          >
-            {typesObject[key]}
-          </option>
-        </React.Fragment>
-      );
-    });
-  };
-
-  const setCompanyDataByCid = async (cid) => {
-    if (cid) {
-      const companyData = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/api/companies/getByCid`,
-        { params: { cid } }
-      );
-      setCompanyData(companyData.data[0]);
-    }
-  };
 
   function handleChange(i, type, event) {
     const values = [...fields];
@@ -92,13 +53,30 @@ const InitOrJoinCompany = (props) => {
     setFields(values);
   }
 
+  //renders company types for the selection menu
+  const renderCompanyTypesSelections = () => {
+    const typesObject = companyTypes[props.locale];
+    return Object.keys(typesObject).map((key, index) => {
+      return (
+        <React.Fragment key={index}>
+          <option
+            selected={companyData.CType === key ? true : false}
+            value={key}
+          >
+            {typesObject[key]}
+          </option>
+        </React.Fragment>
+      );
+    });
+  };
   return (
     <>
       <Container>
         <FormWrap>
-          <Icon to="/">ContoTeq</Icon>
+          {/* <Icon to="/">ContoTeq</Icon> */}
           <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
-            <FormH1>{content.formh1}</FormH1>
+            <FormH1>{content.formh1} </FormH1>
+
             <RowDiv>
               <ColumnDiv>
                 <FormLabel htmlFor="for">{content.formlabel1}</FormLabel>
@@ -151,7 +129,7 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput4}
                   required
-                  value={companyData.CAddress || ""}
+                  value={addressData.ACountry || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -165,7 +143,7 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput4}
                   required
-                  value={companyData.CAddress || ""}
+                  value={addressData.ACity || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -180,7 +158,7 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type="number"
                   required
-                  value={companyData.CAddress || ""}
+                  value={addressData.AZIPCode || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -196,7 +174,7 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput4}
                   required
-                  value={companyData.CAddress || ""}
+                  value={addressData.AStreet || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -210,7 +188,7 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput4}
                   required
-                  value={companyData.CAddress || ""}
+                  value={addressData.ANumber || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -254,9 +232,13 @@ const InitOrJoinCompany = (props) => {
                       />
                     </ColumnDiv>
                     <ColumnDiv>
-                      <button type="button" onClick={() => handleRemove(idx)}>
-                        <UseAnimations animation={trash2} />
-                      </button>
+                      {idx !== 0 ? (
+                        <button type="button" onClick={() => handleRemove(idx)}>
+                          <UseAnimations animation={trash2} />
+                        </button>
+                      ) : (
+                        <></>
+                      )}
                     </ColumnDiv>
                   </RowDivPoc>
                 </div>
@@ -271,8 +253,9 @@ const InitOrJoinCompany = (props) => {
                 />
               </AddButton>
             </div>
-
-            <FormButton type="submit">{content.buttonContent1}</FormButton>
+            <FormButton type="submit" onClick={() => console.log(fields)}>
+              {content.buttonContent1}
+            </FormButton>
           </Form>
         </FormWrap>
       </Container>
@@ -280,4 +263,4 @@ const InitOrJoinCompany = (props) => {
   );
 };
 
-export default InitOrJoinCompany;
+export default AddCustomer;
