@@ -127,4 +127,24 @@ export const DataHebrew = {
     settings: "הגדרות",
     logout: "התנתק",
   },
+
+  customerinfo: {
+    rtl: true,
+    formh1: "מידע אודות לקוח",
+    balance: "יתרה:",
+    lastpayment: "תשלום אחרון",
+    edit: "עריכה",
+    moreactions: "פעולות נוספות",
+    navbar: {
+      rtl: false,
+      links: [
+        { content: "חשבוניות", to: "/invoices" },
+        { content: "קבלות", to: "/bills" },
+        // { content: "תשלומים", to: "/payments" },
+        { content: "פרטי לקוח", to: "/clientinfo" },
+        { content: "אנשי קשר", to: "/pocs" },
+        { content: "הערות", to: "/comments" },
+      ],
+    },
+  },
 };

@@ -27,7 +27,7 @@ const WelcomeScreen = (props) => {
     <>
       <Container>
         <FormWrap>
-          <Icon to="/">ContoTeq</Icon>
+          <Icon to="/"></Icon>
           <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
             <FormH1>{content.formh1}</FormH1>
             <ImgWrap>

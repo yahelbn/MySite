@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FormWrap,
   FormH1,
@@ -60,6 +60,29 @@ const SearchCompany = (props) => {
     "initorjoin"
   );
 
+  useEffect(() => {
+    const searchByWordTheCustomers = async () => {
+      //here we are going to make axios request with the searchWord and setFields   /171 lesson on udemy course
+      setArrayComp(searchWord);
+      setFields(arrayTempCompanies);
+    };
+    //Provide start with search
+    if (searchWord && !fields.length) {
+      searchByWordTheCustomers();
+    } else {
+      //Timer for every search
+      const timeoutId = setTimeout(() => {
+        if (searchWord) {
+          searchByWordTheCustomers();
+        }
+      }, 700);
+
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [searchWord]);
+
   const searchCompany = () => {
     console.log(searchWord);
     setArrayComp(searchWord);
@@ -81,6 +104,7 @@ const SearchCompany = (props) => {
             <ModalSearchCompany
               modalContent={content.modalconfirm}
               company={choseCompany}
+              locale={props.locale}
             />
           }
         />

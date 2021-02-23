@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { useHistory } from "react-router-dom";
 //import mailbox from "../../../images/mailbox.svg";
 
 import {
@@ -9,22 +9,33 @@ import {
   Column,
 } from "./ModalSearchCompanyElements";
 
-const ModalSearchCompany = ({ modalContent, company }) => (
-  <Column>
-    <Row rtl={modalContent.rtl}>
-      {modalContent.rtl}
-      <Paragraph>{modalContent.header}</Paragraph>
-      <Paragraph>
-        <b>{company.name}</b>?
-      </Paragraph>
-    </Row>
+const ModalSearchCompany = ({ modalContent, company, locale }) => {
+  const history = useHistory();
 
-    <Row rtl={modalContent.rtl}>
-      <Paragraph>{modalContent.p}</Paragraph>
-    </Row>
+  return (
+    <Column>
+      <Row rtl={modalContent.rtl}>
+        {modalContent.rtl}
+        <Paragraph>{modalContent.header}</Paragraph>
+        <Paragraph>
+          <b>{company.name}</b>?
+        </Paragraph>
+      </Row>
 
-    <FormButton type="submit">{modalContent.button}</FormButton>
-  </Column>
-);
+      <Row rtl={modalContent.rtl}>
+        <Paragraph>{modalContent.p}</Paragraph>
+      </Row>
+
+      <FormButton
+        type="submit"
+        onClick={() => {
+          history.push(`/${locale}/${modalContent.link}`);
+        }}
+      >
+        {modalContent.button}
+      </FormButton>
+    </Column>
+  );
+};
 
 export default ModalSearchCompany;
