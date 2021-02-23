@@ -37,6 +37,7 @@ export const DataEnglish = {
       The directors of the company from which you applied to join If the company approves your application, you can expect
       In invoices, send receipts / invoices to customers with whom the company works.`,
       button: "Join",
+      link: "beforeapp/pendingscreen",
     },
   },
   initorjoin: {

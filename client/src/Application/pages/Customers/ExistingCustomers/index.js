@@ -53,7 +53,7 @@ const ExistingCustomers = (props) => {
 
   const urlAddCustomer = window.location.href.replace(
     "existingcustomers",
-    "addcustomer"
+    "searchcustomer"
   );
 
   useEffect(() => {

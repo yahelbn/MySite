@@ -103,6 +103,12 @@ export const DataEnglish = {
     buttonContent1: "Create",
     buttonContent2: "Add a contact",
     //text: "שכחתי סיסמא",
+    street: "Street",
+    number: "No",
+    city: "City",
+    zipcode: "Zip Code",
+    country: "Country",
+    address: "Address",
   },
   sidebar: {
     rtl: false,
@@ -124,5 +130,24 @@ export const DataEnglish = {
     minimizemenu: "Minimize menu",
     settings: "Settings",
     logout: "Log-out",
+  },
+  customerinfo: {
+    rtl: false,
+    formh1: "Customer information",
+    balance: "Balance:",
+    lastpayment: "Last Payment:",
+    edit: "Edit ",
+    moreactions: "More actions",
+    navbar: {
+      rtl: false,
+      links: [
+        { content: "Invoices", to: "/invoices" },
+        { content: "Bills", to: "/bills" },
+        // { content: "תשלומים", to: "/payments" },
+        { content: "Client Info", to: "/clientinfo" },
+        { content: "Person of Contacts", to: "/pocs" },
+        { content: "Comments", to: "/comments" },
+      ],
+    },
   },
 };

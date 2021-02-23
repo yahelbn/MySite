@@ -1,170 +1,159 @@
-import { text } from "body-parser";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   FormWrap,
   FormH1,
-  FormInput,
-  FormButton,
-  Text,
   Form,
   Container,
-  TextHeader,
-  CompaniesContainer,
-  CompanyRow,
+  RowDiv,
   ColumnDiv,
-  FormLabel,
+  FormButton,
+  LinksDrop,
+  DropdownNew,
+  Row,
 } from "./CustomersInfoElements";
 
+/* Components */
+import { DropdownItem, DropdownMenu } from "styled-dropdown-component";
+import { Button } from "styled-button-component";
+import Navbar from "../CustomersInfo/Navbar/index";
+
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+
 //Icons
-import { FaPeopleCarry } from "react-icons/fa";
-import { AiOutlineEye } from "react-icons/ai";
+import { RiContactsLine } from "react-icons/ri";
+
+//Tables
+import InvoicesTable from "./InfoTables/InvoicesTable/index";
 
 const CustomersInfo = (props) => {
-  const content = props.dataLanguages.existingcustomers;
-  const [searchWord, setSearchWord] = useState("");
-  const [arrayComp, setArrayComp] = useState("");
-  const [fields, setFields] = useState("");
+  const content = props.dataLanguages.customerinfo;
+  const [hidden, setHidden] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
-  //Example array of companies
-  const arrayTempCompanies = [
-    {
-      name: "Shen-Zen",
-      cid: "12345678",
-      poc: [
-        { name: "iris", telephone: "054-6609925", email: "iris@gmail.com" },
-        { name: "rafi", telephone: "054-6609930", email: "rafi@gmail.com" },
-      ],
-    },
-    {
-      name: "Clalit",
-      cid: "12345678",
-      poc: [
-        { name: "iris", telephone: "054-6609925", email: "iris@gmail.com" },
-        { name: "rafi", telephone: "054-6609930", email: "rafi@gmail.com" },
-      ],
-    },
-  ];
-
-  const urlAddCustomer = window.location.href.replace(
-    "existingcustomers",
-    "addcustomer"
-  );
-
-  useEffect(() => {
-    const searchByWordTheCustomers = async () => {
-      //here we are going to make axios request with the searchWord and setFields   /171 lesson on udemy course
-      setArrayComp(searchWord);
-      setFields(arrayTempCompanies);
-    };
-    //Provide start with search
-    if (searchWord && !fields.length) {
-      searchByWordTheCustomers();
-    } else {
-      //Timer for every search
-      const timeoutId = setTimeout(() => {
-        if (searchWord) {
-          searchByWordTheCustomers();
-        }
-      }, 700);
-
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
-  }, [searchWord]);
-
-  const searchCompany = () => {
-    console.log(searchWord);
-    setArrayComp(searchWord);
-    setFields(arrayTempCompanies);
+  const dropdown = {
+    dropdown: [
+      { content: "איחוד", to: "whoweare" },
+      { content: "מחיקה", to: "technology" },
+    ],
+  };
+  const toggle = () => {
+    setIsOpen(!isOpen);
   };
 
+  const renderDropDownItems = dropdown.dropdown.map((link, index) => {
+    return (
+      <React.Fragment key={index}>
+        <DropdownItem>
+          <LinksDrop
+            to={link.to}
+            smooth={"true"}
+            duration={500}
+            spy={true}
+            exact="true"
+            offset={-80}
+            activeClass="active"
+          >
+            {link.content}
+          </LinksDrop>
+        </DropdownItem>
+      </React.Fragment>
+    );
+  });
+
   return (
-    <Container>
-      <FormWrap>
-        {/* <FormContent> */}
-        <Form rtl={content.rtl}>
-          <FormH1>
-            {content.formh1}
-            <FaPeopleCarry
-              size={23}
-              style={{ marginLeft: "6px", marginRight: "6px" }}
-            />
-          </FormH1>
-          <TextHeader>{""}</TextHeader>
-
-          <FormInput
-            list="companies"
-            type={text}
-            placeholder={content.inputplaceholder}
-            required
-            onChange={(e) => setSearchWord(e.target.value)}
-          />
-          <datalist id="companies">
-            <option>Shen-zen</option> <option>Clalit</option>
-            <option>Dr.ahdot</option>
-          </datalist>
-
-          <FormButton type="submit" onClick={() => searchCompany()}>
-            {content.button}
-          </FormButton>
-          {fields && (
-            <CompaniesContainer>
-              {" "}
-              {fields.map((field, idx) => {
-                return (
-                  <div
-                    style={{ width: "100%" }}
-                    dir={content.rtl ? "rtl" : "ltr"}
-                    key={`${field}-${idx}`}
-                  >
-                    <CompanyRow>
-                      <ColumnDiv>
-                        <FormLabel dark={false} htmlFor="for">
-                          {field.name}
-                        </FormLabel>
-                      </ColumnDiv>
-                      <ColumnDiv>
-                        <FormLabel dark={false} htmlFor="for">
-                          {field.cid}
-                        </FormLabel>
-                      </ColumnDiv>
-                      <ColumnDiv>
-                        <FormLabel dark={false} htmlFor="for">
-                          {field.cid}
-                        </FormLabel>
-                      </ColumnDiv>
-                      <ColumnDiv>
-                        <button
-                          type="button"
+    <BrowserRouter>
+      <Container>
+        <FormWrap>
+          <Form rtl={content.rtl}>
+            <FormH1>
+              {content.formh1}
+              <RiContactsLine
+                size={23}
+                style={{ marginLeft: "6px", marginRight: "6px" }}
+              />
+            </FormH1>
+            <RowDiv
+              style={{
+                backgroundColor: "#fff",
+                borderRadius: "20px",
+                padding: "20px 20px",
+              }}
+            >
+              <ColumnDiv>
+                <span style={{ fontSize: "20px" }}>ד"ר חיים</span>
+                <span style={{ marginTop: "15px" }}>haim13@gmail.com</span>
+                <RowDiv>
+                  <ColumnDiv>
+                    <span style={{ fontWeight: "bold" }}>
+                      {content.balance}
+                    </span>
+                    <spn>0.00</spn>
+                  </ColumnDiv>
+                  <ColumnDiv>
+                    <span style={{ fontWeight: "bold" }}>
+                      {content.lastpayment}
+                    </span>
+                    <spn>0.00</spn>
+                  </ColumnDiv>
+                </RowDiv>
+              </ColumnDiv>
+              <ColumnDiv>
+                <RowDiv>
+                  <ColumnDiv>
+                    <FormButton>{content.edit}</FormButton>
+                  </ColumnDiv>
+                  <ColumnDiv>
+                    <React.Fragment>
+                      <DropdownNew rtl={content.rtl}>
+                        <Button
+                          activeClass="active"
                           style={{
-                            cursor: "pointer",
-                            WebkitBorderRadius: "20px",
-                            width: "100%",
+                            backgroundColor: "transparent",
+                            letterSpacing: "0.04em",
+                            border: "1px solid grey",
+                            color: "grey",
                           }}
+                          dropdownToggle
+                          onClick={() => setHidden(!hidden)}
                         >
-                          <FormLabel dark={true} htmlFor="for">
-                            {content.button2}
-                          </FormLabel>
-
-                          <AiOutlineEye size={20} />
-                        </button>
-                      </ColumnDiv>
-                    </CompanyRow>
-                  </div>
-                );
-              })}
-            </CompaniesContainer>
-          )}
-
-          <Text>
-            {content.text} <a href={urlAddCustomer}>{content.link}</a>
-          </Text>
-        </Form>
-        {/* </FormContent> */}
-      </FormWrap>
-    </Container>
+                          {content.moreactions + "  "}
+                        </Button>
+                        <DropdownMenu
+                          style={{ direction: content.rtl }}
+                          hidden={hidden}
+                          toggle={() => setHidden(!hidden)}
+                        >
+                          {renderDropDownItems}
+                        </DropdownMenu>
+                      </DropdownNew>
+                    </React.Fragment>
+                  </ColumnDiv>
+                </RowDiv>
+              </ColumnDiv>
+            </RowDiv>
+            <Navbar
+              toggle={toggle}
+              locale={props.locale}
+              content={content.navbar}
+            />
+            <Row>
+              <Switch>
+                <Route
+                  path={
+                    "/" + props.locale + "/contoteqapp/customersinfo/invoices"
+                  }
+                  exact
+                  render={(propRouter) => (
+                    <InvoicesTable {...propRouter} {...props} />
+                  )}
+                />
+              </Switch>
+            </Row>
+          </Form>
+        </FormWrap>
+      </Container>
+    </BrowserRouter>
   );
 };
 
