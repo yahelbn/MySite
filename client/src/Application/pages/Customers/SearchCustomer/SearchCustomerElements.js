@@ -118,6 +118,8 @@ export const FormButton = styled.button`
   font-size: 20px;
   width: 30%;
   cursor: pointer;
+  width: fit-content;
+  padding: 2px 10px;
 `;
 
 export const Text = styled.span`

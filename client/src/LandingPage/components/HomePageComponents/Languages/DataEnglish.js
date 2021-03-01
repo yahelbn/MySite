@@ -269,6 +269,7 @@ export const DataEnglish = {
     header: {
       content: "Our services",
       rtl: false,
+      button: "Continue",
     },
 
     cards: [
@@ -278,6 +279,35 @@ export const DataEnglish = {
         servicesh2: "For suppliers",
         servicesp:
           "Ongoing and easy management of business work processes with customers such as demand and collection of payments.",
+        modalinfo: {
+          rtl: false,
+          header: "System services for suppliers",
+          button: "Continue",
+
+          content: [
+            { header: "Client management", content: "" },
+            {
+              header:
+                "Create, upload and send tax invoices, transaction invoices, and receipts inclusive",
+              content:
+                "Process management, obtaining customer approval of the contents and the amount to be charged, and performing real-time interaction between the parties",
+            },
+            {
+              header: "Tracking approvals, payments and collection",
+              content: "",
+            },
+            { header: "Sending reminders", content: "" },
+            {
+              header: "Create periodic reports in different sections",
+              content: "",
+            },
+            {
+              header: "Transparency and information sharing",
+              content:
+                "The system allows all parties involved in the process, at the supplier and the customer, to work on the same information platform. Information recovery",
+            },
+          ],
+        },
       },
 
       {
@@ -286,6 +316,30 @@ export const DataEnglish = {
         servicesh2: "For customers",
         servicesp:
           "Continuous monitoring of payment requirements: receipt, approval and execution In front of a variety of suppliers.",
+        modalinfo: {
+          rtl: true,
+          header: "System services for customers",
+          button: "Continue",
+          content: [
+            {
+              header:
+                "Receiving documents for viewing, and downloading, approving and paying online",
+              content: "",
+            },
+            {
+              header:
+                "View all charges, futures and histories, payments, receipts and more",
+              content: "",
+            },
+            {
+              header: "Payment through the system",
+              content:
+                "The system allows all parties involved in the process, at the supplier and the customer, to work on the same information platform",
+            },
+            { header: "Payment tracking", content: "" },
+            { header: "Information recovery", content: "" },
+          ],
+        },
       },
       // {
       //   rtl: false,
