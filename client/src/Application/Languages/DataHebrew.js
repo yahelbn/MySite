@@ -41,7 +41,7 @@ export const DataHebrew = {
     buttonContent2: "הוסף איש קשר",
     //text: "שכחתי סיסמא",
     formh2: "אנשי קשר",
-    forminput4: "text",
+    //forminput4: "text",
     formlabel5: "שם פרטי (איש קשר)",
     forminput5: "text",
     formlabel6: "שם משפחה (איש קשר)",

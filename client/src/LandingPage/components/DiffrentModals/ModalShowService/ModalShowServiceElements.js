@@ -17,7 +17,10 @@ export const FormButton = styled.button`
   }
 `;
 
-export const Paragraph = styled.p``;
+export const Paragraph = styled.p`
+  direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
+  font-size: 0.8rem;
+`;
 
 export const Row = styled.div`
   display: flex;
@@ -25,7 +28,7 @@ export const Row = styled.div`
   align-items: center;
   flex-direction: row;
   text-align: center;
-  margin-bottom: 50px;
+
   direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
 `;
 
@@ -34,6 +37,7 @@ export const Column = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
 `;
 
 export const ImgWrap = styled.div`
@@ -48,3 +52,9 @@ export const Img = styled.img`
   // margin: 0 0 10px 0;
   padding-right: 0;
 `;
+
+export const HeaderService = styled.h2`
+  padding-bottom: 15px;
+`;
+
+export const SubHeaderService = styled.h4``;
