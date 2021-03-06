@@ -142,6 +142,14 @@ export const DataHebrew = {
 
     text2: "תודה על התעניינותך ,<br>  אנא השאר פרטים וניצור קשר בהקדם:",
   },
+  location: {
+    rtl: true,
+    formh1: "איפה אנחנו?",
+    content: [
+      { header: "תא דואר", info: " נווה ירק 49945 " },
+      { header: "כתובת משרדים:", info: "עתיר ידע 20 כפר-סבא" },
+    ],
+  },
   signin: {
     rtl: true,
     formh1: "התחבר לחשבונך ",
@@ -450,5 +458,12 @@ export const DataHebrew = {
     ],
   },
 
-  footer: [["קצת עלינו", "צור קשר", "מיקום", "תנאי שירות"]],
+  footer: [
+    [
+      { name: "קצת עלינו" },
+      { name: "צור קשר", link: "contactus" },
+      { name: "מיקום", link: "location" },
+      { name: "תנאי שירות", link: "" },
+    ],
+  ],
 };

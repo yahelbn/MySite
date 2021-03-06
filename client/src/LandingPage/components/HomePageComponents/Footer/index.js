@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import {
   FaFacebook,
@@ -22,7 +22,18 @@ import {
   SocialIconLink,
   SocialIcons,
 } from "./FooterElements";
-const Footer = ({ content }) => {
+
+//Import Modal
+
+import "../../DiffrentModals/Modal/Modal.css";
+import Modal from "../../DiffrentModals/Modal/Modal";
+import useModal from "../../DiffrentModals/Modal/useModal";
+import ModalContactUs from "../../DiffrentModals/ModalContactUs/index";
+
+const Footer = ({ content, locale }) => {
+  const { isShowing, toggle } = useModal();
+  const [contentOfModal, setContentOfModal] = useState("");
+
   const toggleHome = () => {
     scroll.scrollToTop();
   };
@@ -36,13 +47,17 @@ const Footer = ({ content }) => {
             if (index === 0) {
               return (
                 <React.Fragment key={index}>
-                  <FooterLinkTitle to="/signin">{footerLink}</FooterLinkTitle>
+                  <FooterLinkTitle to="/signin">
+                    {footerLink.name}
+                  </FooterLinkTitle>
                 </React.Fragment>
               );
             }
             return (
               <React.Fragment key={index}>
-                <FooterLink to="/signup">{footerLink}</FooterLink>
+                <FooterLink to={`/${locale}/${footerLink.link}`}>
+                  {footerLink.name}
+                </FooterLink>
               </React.Fragment>
             );
           })}
@@ -52,6 +67,17 @@ const Footer = ({ content }) => {
   });
   return (
     <FooterContainer>
+      <Modal
+        isShowing={isShowing}
+        hide={toggle}
+        modalcomp={
+          <Modal
+            modalContent={contentOfModal}
+            // company={choseCompany}
+            //locale={props.locale}
+          />
+        }
+      />
       <FooterWrap>
         <FooterLinksContainer>
           <FooterLinkWrapper>{renderFooterLinks}</FooterLinkWrapper>
