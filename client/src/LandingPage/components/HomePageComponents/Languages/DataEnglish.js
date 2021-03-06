@@ -153,6 +153,14 @@ export const DataEnglish = {
     formbutton: "Sign in",
     text: "Forgot password",
   },
+  location: {
+    rtl: false,
+    formh1: "Where we are located?",
+    content: [
+      { header: "Mailbox", info: "  Neve-Yarak 49945 " },
+      { header: "Office address:", info: "Atir-Yeda 20, Kfar-Sava" },
+    ],
+  },
   signup: {
     rtl: false,
     formh1: "Create your account",

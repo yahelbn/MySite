@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./pages";
 import SigninPage from "./pages/signin";
 import SignupPage from "./pages/signup";
+import Location from "./pages/location";
 import { Account } from "../Authentication/Account";
 
 import { Global } from "../Global/Global";
@@ -11,7 +12,6 @@ import { Global } from "../Global/Global";
 import { AttributesFunc } from "../Authentication/AttributesFunc";
 import ContactUs from "./pages/contactus";
 import ForgotPassword from "../LandingPage/components/ForgotPassword/index";
-
 import ContoTeqApp from "../Application/pageComponents/LangRouter";
 import BeforeApp from "../BeforeApplication/LangRouter";
 
@@ -47,6 +47,11 @@ const App = (props) => {
             <Route
               path={"/" + locale + "/contactus"}
               render={(propRouter) => <ContactUs {...propRouter} {...props} />}
+            />
+
+            <Route
+              path={"/" + locale + "/location"}
+              render={(propRouter) => <Location {...propRouter} {...props} />}
             />
 
             <Route

@@ -8,10 +8,10 @@ import {
   Column,
   HeaderService,
   SubHeaderService,
-} from "./ModalShowServiceElements";
+} from "./ModalContactUsElements";
 import { HiClipboardCheck } from "react-icons/hi";
 
-const ModalShowService = ({ modalContent, toggle }) => {
+const ModalContactUs = ({ modalContent, toggle }) => {
   const renderRowsSerivces = modalContent.content.map((row, index) => {
     return (
       <React.Fragment key={index}>
@@ -37,4 +37,4 @@ const ModalShowService = ({ modalContent, toggle }) => {
   );
 };
 
-export default ModalShowService;
+export default ModalContactUs;

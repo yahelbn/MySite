@@ -72,7 +72,7 @@ const Home = (props) => {
         locale={props.locale}
       />
 
-      <Footer content={props.dataLanguages.footer} />
+      <Footer content={props.dataLanguages.footer} locale={props.locale} />
     </>
   );
 };
