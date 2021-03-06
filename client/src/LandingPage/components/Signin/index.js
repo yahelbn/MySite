@@ -18,7 +18,7 @@ import Loader from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { AccountContext } from "../../../Authentication/Account";
-import { userCompanyStatuses } from "../../../Global/Enums.json";
+import { userCompanyStatusesEnum } from "../../../Global/Enums.json";
 import axios from "axios";
 
 const SignIn = ({ content, locale }) => {
@@ -38,29 +38,39 @@ const SignIn = ({ content, locale }) => {
       async () => {
         //sending the user the relevant screen based on whether he is signed into a company or not
         const userCompanyData = await getUserStatusInCompany(email);
-
-        if (
-          userCompanyData.UUserStatusInCompany === userCompanyStatuses.DEMO_POC
-        ) {
-          //send to initORJOin with filled values
-          history.push({
-            pathname: `/${locale}/beforeapp/initOrJoin`,
-            state: { companyID: userCompanyData.UCompanyID },
-          });
-        } else if (
-          userCompanyData.UUserStatusInCompany === userCompanyStatuses.LEAR ||
-          userCompanyData.UUserStatusInCompany === userCompanyStatuses.POC
-        ) {
-          //Send to contoteqapp customer/client view
-          history.push(`/${locale}/contoteqapp/`);
-        } else if (
-          userCompanyData.UUserStatusInCompany === userCompanyStatuses.PENDINGS
-        ) {
-        } else {
-          //Send to beforeapp/welcomescreen
-          //not part of a company
+        console.log(userCompanyData);
+        if (!userCompanyData) {
+          //if doesnt exists on any company - go to welcome screen
           history.push(`/${locale}/beforeapp/welcomescreen`);
+        } else {
+          if (
+            userCompanyData.UUserStatusInCompany ===
+            userCompanyStatusesEnum.DEMOPOC
+          ) {
+            //send to initORJOin with filled values
+            history.push({
+              pathname: `/${locale}/beforeapp/initOrJoin`,
+              state: { companyID: userCompanyData.UCompanyID },
+            });
+          } else if (
+            userCompanyData.UUserStatusInCompany ===
+              userCompanyStatusesEnum.LEAR ||
+            userCompanyData.UUserStatusInCompany === userCompanyStatusesEnum.POC
+          ) {
+            //Send to contoteqapp customer/client view
+            history.push(`/${locale}/contoteqapp/`);
+          } else if (
+            userCompanyData.UUserStatusInCompany ===
+            userCompanyStatusesEnum.PENDINGS
+          ) {
+            //send to pending
+          } else {
+            //Send to beforeapp/welcomescreen
+            //not part of a company
+            history.push(`/${locale}/beforeapp/welcomescreen`);
+          }
         }
+
         setMessage("מיד תועבר");
         setError(false);
         setLoader(false);

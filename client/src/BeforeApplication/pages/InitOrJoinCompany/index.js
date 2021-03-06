@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   FormWrap,
   FormH1,
@@ -22,45 +22,58 @@ import UseAnimations from "react-useanimations";
 import trash2 from "react-useanimations/lib/trash2";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
+import { GlobalContext } from "../../../Global/Global";
+
 import {
   companyInterface,
-  companyTypes,
+  userCompanyStatusesEnum,
   addressInterface,
+  enumsTables,
 } from "../../../Global/Enums.json";
 import axios from "axios";
 
 const InitOrJoinCompany = (props) => {
   const content = props.dataLanguages.initorjoin;
 
-  const [fields, setFields] = useState([
+  const [contactPersons, setContactPersons] = useState([
     { firstname: null, lastname: null, email: null },
   ]);
   const [companyData, setCompanyData] = useState(companyInterface);
   const [addressData, setAddressData] = useState(addressInterface);
+  const [enumsTable, setEnumsTable] = useState([]);
+  const [disabledField, setDisabledField] = useState(false);
+
+  const { getEnumsByTableName } = useContext(GlobalContext);
 
   const location = useLocation();
   useEffect(() => {
     //if some component passed company id here - we will show its data
     if (location.state) {
       setCompanyDataByCid(location.state.companyID);
+      setCompanyAddress(location.state.companyID);
+      checkIfCompanyHasLear(location.state.companyID);
     }
+    setCompanyTypeEnums(enumsTables.CompanyTypeEnums);
   }, [location]);
 
   //renders company types for the selection menu
   const renderCompanyTypesSelections = () => {
-    const typesObject = companyTypes[props.locale];
-    return Object.keys(typesObject).map((key, index) => {
-      return (
-        <React.Fragment key={index}>
-          <option
-            selected={companyData.CType === key ? true : false}
-            value={key}
-          >
-            {typesObject[key]}
-          </option>
-        </React.Fragment>
-      );
-    });
+    if (enumsTable) {
+      return enumsTable.map((key, index) => {
+        return (
+          <React.Fragment key={index}>
+            <option
+              selected={
+                companyData.CType === key.EName ? "selected" : undefined
+              }
+              value={key.EName}
+            >
+              {props.locale === "he" ? key.EHebrewName : key.EEnglishName}
+            </option>
+          </React.Fragment>
+        );
+      });
+    }
   };
 
   const setCompanyDataByCid = async (cid) => {
@@ -73,23 +86,69 @@ const InitOrJoinCompany = (props) => {
     }
   };
 
+  const setCompanyAddress = async (cid) => {
+    if (cid) {
+      const companyAddressData = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/api/addresses/getById`,
+        { params: { id: cid } }
+      );
+      console.log(companyAddressData);
+      setAddressData(companyAddressData.data[0]);
+    }
+  };
+
+  const checkIfCompanyHasLear = async (cid) => {
+    if (cid) {
+      const learsOfCompany = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/api/userCompany/getByIdAndStatus`,
+        { params: { id: cid, status: userCompanyStatusesEnum.LEAR } }
+      );
+      console.log(learsOfCompany);
+      if (learsOfCompany.data.length > 0) {
+        setDisabledField(true);
+      }
+    }
+  };
+
+  const setCompanyTypeEnums = async (enumsTableName) => {
+    let enums = await getEnumsByTableName(enumsTableName);
+    setEnumsTable(enums);
+  };
+
+  const addCompany = async () => {
+    await axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/api/companies/add`,
+      companyData
+    );
+    await axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/api/companies/add`,
+      companyData
+    );
+    await axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/api/companies/add`,
+      companyData
+    );
+  };
+
+  const joinCompany = async () => {};
+
   function handleChange(i, type, event) {
-    const values = [...fields];
+    const values = [...contactPersons];
     if (type === 0) values[i].firstname = event.target.value;
     if (type === 1) values[i].lastname = event.target.value;
     if (type === 2) values[i].email = event.target.value;
-    setFields(values);
+    setContactPersons(values);
   }
   const handleAdd = () => {
-    const values = [...fields];
+    const values = [...contactPersons];
     values.push({ firstname: null, lastname: null, email: null });
-    setFields(values);
+    setContactPersons(values);
   };
 
   function handleRemove(i) {
-    const values = [...fields];
+    const values = [...contactPersons];
     values.splice(i, 1);
-    setFields(values);
+    setContactPersons(values);
   }
 
   return (
@@ -105,6 +164,7 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput1}
                   required
+                  disabled={disabledField}
                   value={companyData.CName || ""}
                   onChange={(event) =>
                     setCompanyData({
@@ -119,6 +179,7 @@ const InitOrJoinCompany = (props) => {
                 <FormSelect
                   type={content.forminput2}
                   required
+                  disabled={disabledField}
                   onChange={(event) =>
                     setCompanyData({
                       ...companyData,
@@ -135,11 +196,12 @@ const InitOrJoinCompany = (props) => {
             <FormInput
               type={content.forminput3}
               required
-              value={companyData.CompanyID || ""}
+              disabled={disabledField}
+              value={companyData.CCompanyID || ""}
               onChange={(event) =>
                 setCompanyData({
                   ...companyData,
-                  CompanyID: event.target.value,
+                  CCompanyID: event.target.value,
                 })
               }
             />
@@ -151,7 +213,8 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput4}
                   required
-                  value={companyData.CAddress || ""}
+                  disabled={disabledField}
+                  value={addressData.ACountry || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -165,7 +228,8 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput4}
                   required
-                  value={companyData.CAddress || ""}
+                  disabled={disabledField}
+                  value={addressData.ACity || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -180,11 +244,12 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type="number"
                   required
-                  value={companyData.CAddress || ""}
+                  disabled={disabledField}
+                  value={addressData.AZipCode || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
-                      AZIPCode: event.target.value,
+                      AZipCode: event.target.value,
                     })
                   }
                 />
@@ -196,7 +261,8 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput4}
                   required
-                  value={companyData.CAddress || ""}
+                  disabled={disabledField}
+                  value={addressData.AStreet || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -210,7 +276,8 @@ const InitOrJoinCompany = (props) => {
                 <FormInput
                   type={content.forminput4}
                   required
-                  value={companyData.CAddress || ""}
+                  disabled={disabledField}
+                  value={addressData.ANumber || ""}
                   onChange={(event) =>
                     setAddressData({
                       ...addressData,
@@ -222,7 +289,7 @@ const InitOrJoinCompany = (props) => {
             </RowDiv>
             <FormH2>{content.formh2}</FormH2>
 
-            {fields.map((field, idx) => {
+            {contactPersons.map((field, idx) => {
               return (
                 <div dir={content.rtl ? "rtl" : "ltr"} key={`${field}-${idx}`}>
                   <RowDivPoc>
@@ -231,6 +298,7 @@ const InitOrJoinCompany = (props) => {
                       <FormInput
                         type={content.forminput5}
                         required
+                        disabled={disabledField}
                         value={field.firstname || ""}
                         onChange={(e) => handleChange(idx, 0, e)}
                       />
@@ -240,6 +308,7 @@ const InitOrJoinCompany = (props) => {
                       <FormInput
                         type={content.forminput6}
                         required
+                        disabled={disabledField}
                         value={field.lastname || ""}
                         onChange={(e) => handleChange(idx, 1, e)}
                       />
@@ -249,12 +318,17 @@ const InitOrJoinCompany = (props) => {
                       <FormInput
                         type={content.forminput7}
                         required
+                        disabled={disabledField}
                         value={field.email || ""}
                         onChange={(e) => handleChange(idx, 2, e)}
                       />
                     </ColumnDiv>
                     <ColumnDiv>
-                      <button type="button" onClick={() => handleRemove(idx)}>
+                      <button
+                        disabled={disabledField}
+                        type="button"
+                        onClick={() => handleRemove(idx)}
+                      >
                         <UseAnimations animation={trash2} />
                       </button>
                     </ColumnDiv>
@@ -263,7 +337,11 @@ const InitOrJoinCompany = (props) => {
               );
             })}
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <AddButton type="submit" onClick={handleAdd}>
+              <AddButton
+                disabled={disabledField}
+                type="submit"
+                onClick={handleAdd}
+              >
                 <div style={{ fontSize: "15px" }}>{content.buttonContent2}</div>
                 <AiOutlinePlus
                   color={"#1b1924"}
@@ -272,7 +350,9 @@ const InitOrJoinCompany = (props) => {
               </AddButton>
             </div>
 
-            <FormButton type="submit">{content.buttonContent1}</FormButton>
+            <FormButton type="submit">
+              {disabledField ? content.buttonContent3 : content.buttonContent1}
+            </FormButton>
           </Form>
         </FormWrap>
       </Container>

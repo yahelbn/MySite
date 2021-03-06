@@ -1,10 +1,12 @@
 //file for business purposes.
 //routes functionality and logics shall be here
 const db = require("../db/db");
-
+const { tables } = require("../config/constants.json");
 const getByEmail = async (email) => {
   try {
-    return await db.do(`select * from UserCompany where UEmail = "${email}"`);
+    return await db.do(
+      `select * from ${tables.USER_COMPANIES} where UEmail = "${email}"`
+    );
   } catch (e) {
     throw new Error(e);
   }
@@ -13,7 +15,7 @@ const getByEmail = async (email) => {
 const getByEmailAndStatus = async (email, status) => {
   try {
     return await db.do(
-      `select * from UserCompany where UEmail = "${email}" and UUserStatusInCompany="${status}"`
+      `select * from ${tables.USER_COMPANIES} where UEmail = "${email}" and UUserStatusInCompany="${status}"`
     );
   } catch (e) {
     throw new Error(e);
@@ -23,9 +25,21 @@ const getByEmailAndStatus = async (email, status) => {
 const getByEmailAndStatuses = async (email, statuses) => {
   try {
     return await db.do(
-      `select * from UserCompany where UEmail = "${email}" and UUserStatusInCompany in(${statuses
+      `select * from ${
+        tables.USER_COMPANIES
+      } where UEmail = "${email}" and UUserStatusInCompany in(${statuses
         .map((x) => '"' + x + '"')
         .toString()})`
+    );
+  } catch (e) {
+    throw new Error(e);
+  }
+};
+
+const getByIdAndStatus = async (id, status) => {
+  try {
+    return await db.do(
+      `select * from ${tables.USER_COMPANIES} where UCompanyID = "${id}" and UUserStatusInCompany = "${status}"`
     );
   } catch (e) {
     throw new Error(e);
@@ -36,7 +50,7 @@ const addUserCompany = async (userCompanyData) => {
   console.log("adding a new user");
   try {
     return await db.do(
-      `INSERT INTO UserCompany (${Object.keys(
+      `INSERT INTO ${tables.USER_COMPANIES} (${Object.keys(
         userCompanyData
       ).toString()}) VALUES (${Object.values(userCompanyData).toString()}`
     );
@@ -50,4 +64,5 @@ module.exports = {
   addUserCompany,
   getByEmailAndStatuses,
   getByEmail,
+  getByIdAndStatus,
 };

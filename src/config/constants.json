@@ -2,5 +2,11 @@
   "environments": {
     "PRODUCTION": "production",
     "DEVELOPMENT": "development"
+  },
+  "tables": {
+    "USERS": "Users",
+    "USER_COMPANIES": "UserCompanies",
+    "COMPANIES": "Companies",
+    "ADDRESS": "Addresses"
   }
 }

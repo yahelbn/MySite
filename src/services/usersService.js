@@ -2,11 +2,14 @@
 //routes functionality and logics shall be here
 const db = require("../db/db");
 const utils = require("./utils");
+const { tables } = require("../config/constants.json");
 
 const getUser = async (email) => {
   console.log("fetching user data for email " + email);
   try {
-    return await db.do(`select * from Users where UEmail = "${email}"`);
+    return await db.do(
+      `select * from ${tables.USERS} where UEmail = "${email}"`
+    );
   } catch (e) {
     console.error(e);
     throw new Error(e.message);
@@ -20,7 +23,7 @@ const addUser = async (userData) => {
   );
   try {
     return await db.do(
-      `INSERT INTO Users (${Object.keys(
+      `INSERT INTO ${tables.USERS} (${Object.keys(
         userData
       ).toString()}) VALUES (${Object.values(userData)
         .map((element) => {
@@ -42,7 +45,7 @@ const updateUserByEmail = async (updateByEmailJson) => {
   );
   try {
     return await db.do(
-      `UPDATE Users SET ${utils.jsonToEqualsKeyValue(
+      `UPDATE ${tables.USERS} SET ${utils.jsonToEqualsKeyValue(
         userData
       )} where UEmail = "${email}"`
     );

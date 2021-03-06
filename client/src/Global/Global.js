@@ -9,6 +9,7 @@ const GlobalContext = createContext();
 
 const Global = (props) => {
   const [data, setData] = useState(null);
+  const [enums, setEnums] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const getUserStatusInCompany = async (email, statuses) => {
@@ -38,6 +39,19 @@ const Global = (props) => {
     return userCompany.data;
   };
 
+  const getEnumsByTableName = async (enumsTableName) => {
+    setLoading(true);
+    const enums = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/enums/getEnumsByTableName`,
+      {
+        params: { enumsTableName },
+      }
+    );
+    setEnums(enums);
+    setLoading(false);
+    return enums.data;
+  };
+
   useEffect(() => {
     getUserInfo(props.email);
   }, []);
@@ -47,7 +61,9 @@ const Global = (props) => {
       value={{
         loading,
         data,
+        enums,
         getUserStatusInCompany,
+        getEnumsByTableName,
       }}
     >
       {props.children}
