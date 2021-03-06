@@ -1,11 +1,13 @@
 //file for business purposes.
 //routes functionality and logics shall be here
 const db = require("../db/db");
-
+const { tables } = require("../config/constants.json");
 const getByCid = async (cid) => {
   console.log("getting a company with id: ", cid);
   try {
-    return await db.do(`select * from Companies where CompanyID = ${cid}`);
+    return await db.do(
+      `select * from ${tables.COMPANIES} where CCompanyID = ${cid}`
+    );
   } catch (e) {
     console.error(e);
     throw new Error(e);
@@ -19,7 +21,7 @@ const add = async (companyData) => {
   );
   try {
     return await db.do(
-      `INSERT INTO Companies (${Object.keys(
+      `INSERT INTO ${tables.COMPANIES} (${Object.keys(
         companyData
       ).toString()}) VALUES (${Object.values(companyData)
         .map((element) => {
@@ -41,9 +43,9 @@ const updateByCid = async (updateByEmailJson) => {
   );
   try {
     return await db.do(
-      `UPDATE Companies SET ${utils.jsonToEqualsKeyValue(
+      `UPDATE ${tables.COMPANIES} SET ${utils.jsonToEqualsKeyValue(
         companyData
-      )} where CompanyID = "${cid}"`
+      )} where CCompanyID = "${cid}"`
     );
   } catch (e) {
     console.error(e);

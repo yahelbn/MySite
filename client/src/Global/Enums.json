@@ -1,45 +1,44 @@
 {
-  "userCompanyStatuses": {
-    "LEAR": "lear",
-    "POC": "poc",
-    "PENDING": "pending",
-    "DEMO_POC": "demoPoc"
-  },
-
   "userInterface": {
     "UEmail": "",
     "UFirstName": "",
     "ULastName": null,
     "UPhone": "",
-    "UType": "",
-    "UinCognito": ""
+    "UProgram": "",
+    "UInCognito": ""
   },
 
   "companyInterface": {
-    "CompanyID": "",
+    "CCompanyID": "",
     "CIsVAT": "",
     "CType": "",
     "CName": "",
     "CAddress": ""
   },
-  "addressInterface":{
-    "AAddressID":"",
-    "AStreet":"",
-    "ANumber":"",
-    "ACity":"",
-    "AZIPCode":"",
-    "ACountry":""
+  "addressInterface": {
+    "AAddressID": "",
+    "AStreet": "",
+    "ANumber": "",
+    "ACity": "",
+    "AZipCode": "",
+    "ACountry": ""
   },
 
-  "companyTypes": {
-    "he": {
-      "LTD": "בעמ",
-      "NON_PROFIT": "ללא מטרות רווח"
-    },
-    "en": {
-      "LTD": "Ltd",
-      "NON_PROFIT": "non-profit"
-    }
+  "companyTypesEnum": {
+    "LTD": "LTD",
+    "NONPROFIT": "NONPROFIT"
+  },
+
+  "userCompanyStatusesEnum": {
+    "LEAR": "LEAR",
+    "POC": "POC",
+    "PENDING": "PENDING",
+    "DEMOPOC": "DEMOPOC"
+  },
+
+  "UProgramEnum": {
+    "GUEST": "GUEST",
+    "SUBS": "SUBS"
   },
 
   "InCognito": {
@@ -47,12 +46,10 @@
     "FALSE": "false"
   },
 
-  "UserTypes": {
-    "he": {
-      "GUEST": "אורח"
-    },
-    "en": {
-      "GUEST": "Guest"
-    }
+  "enumsTables": {
+    "CompanyTypeEnums": "CompanyTypeEnums",
+    "PaymentTermsEnums": "PaymentTermsEnums",
+    "UserProgramEnums": "UserProgramEnums",
+    "UserStatusInCompanyEnums": "UserStatusInCompanyEnums"
   }
 }

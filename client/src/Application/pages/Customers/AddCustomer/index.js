@@ -22,7 +22,7 @@ import trash2 from "react-useanimations/lib/trash2";
 import { AiOutlinePlus } from "react-icons/ai";
 import {
   companyInterface,
-  companyTypes,
+  companyTypesEnum,
   addressInterface,
 } from "../../../../Global/Enums.json";
 

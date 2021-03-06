@@ -64,6 +64,8 @@ export const DataHebrew = {
 
     buttonContent1: "צור חברה",
     buttonContent2: "הוסף איש קשר",
+    buttonContent3: "הצטרף לחברה זו",
+
     //text: "שכחתי סיסמא",
     formh2: "אנשי קשר",
     forminput4: "text",
