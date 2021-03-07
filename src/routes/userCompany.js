@@ -5,6 +5,7 @@ const {
   getByEmailAndStatus,
   getByEmailAndStatuses,
   getByEmail,
+  getByIdAndStatus,
 } = require("../services/userCompanyService");
 
 router.post("/add", async (req, res) => {
@@ -47,6 +48,19 @@ router.get("/getByEmailAndStatuses", async (req, res) => {
       req.query.statuses
     );
     res.send(userCompany);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send(e.toString());
+  }
+});
+
+router.get("/getByIdAndStatus", async (req, res) => {
+  try {
+    const userCompanies = await getByIdAndStatus(
+      req.query.id,
+      req.query.status
+    );
+    res.send(userCompanies);
   } catch (e) {
     console.error(e);
     res.status(500).send(e.toString());

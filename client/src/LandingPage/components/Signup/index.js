@@ -18,11 +18,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router-dom";
 import { userPool } from "../../../Authentication/cognitoUserPool";
-import {
-  userInterface,
-  UserTypes,
-  InCognito,
-} from "../../../Global/Enums.json";
+import { userInterface, UProgramEnum } from "../../../Global/Enums.json";
 
 import "../HomePageComponents/Modal/Modal.css";
 import Modal from "../HomePageComponents/Modal/Modal";
@@ -130,8 +126,8 @@ const SignUp = ({ content }) => {
   useEffect(() => {
     setUserData({
       ...userData,
-      UType: UserTypes.GUEST,
-      UinCognito: InCognito.TRUE,
+      UProgram: UProgramEnum.GUEST,
+      UInCognito: "true",
     });
     setComparePass(checkCompatibilityPasswords());
     window.addEventListener("keydown", handleUserKeyPress);

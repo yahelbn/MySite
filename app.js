@@ -12,6 +12,8 @@ const findocs = require("./src/routes/findocs");
 const users = require("./src/routes/users");
 const userCompany = require("./src/routes/userCompany");
 const companies = require("./src/routes/companies");
+const enums = require("./src/routes/enums");
+const addresses = require("./src/routes/addresses.js");
 
 /* middlewares */
 /* Serve static files from the React app */
@@ -29,6 +31,8 @@ app.use("/api/findocs", findocs);
 app.use("/api/users", users);
 app.use("/api/userCompany", userCompany);
 app.use("/api/companies", companies);
+app.use("/api/enums", enums);
+app.use("/api/addresses", addresses);
 
 /* routes */
 
