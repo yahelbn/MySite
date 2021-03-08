@@ -11,6 +11,11 @@ import {
   LinksDrop,
   DropdownNew,
   Row,
+  RowHeaderInfo,
+  CustomerNameSpan,
+  CustomerEmailSpan,
+  CustomerBalanceHeaderSpan,
+  CustomerCurrentBalanceSpan,
 } from "./CustomersInfoElements";
 
 /* Components */
@@ -73,28 +78,26 @@ const CustomersInfo = (props) => {
                 style={{ marginLeft: "6px", marginRight: "6px" }}
               />
             </FormH1>
-            <RowDiv
-              style={{
-                backgroundColor: "#fff",
-                borderRadius: "20px",
-                padding: "20px 20px",
-              }}
-            >
+            <RowHeaderInfo>
               <ColumnDiv>
-                <span style={{ fontSize: "20px" }}>ד"ר חיים</span>
-                <span style={{ marginTop: "15px" }}>haim13@gmail.com</span>
+                <CustomerNameSpan>ד"ר חיים</CustomerNameSpan>
+                <CustomerEmailSpan>haim13@gmail.com</CustomerEmailSpan>
                 <RowDiv>
                   <ColumnDiv>
-                    <span style={{ fontWeight: "bold" }}>
+                    <CustomerBalanceHeaderSpan>
                       {content.balance}
-                    </span>
-                    <spn>0.00</spn>
+                    </CustomerBalanceHeaderSpan>
+                    <CustomerCurrentBalanceSpan>
+                      0.00
+                    </CustomerCurrentBalanceSpan>
                   </ColumnDiv>
                   <ColumnDiv>
-                    <span style={{ fontWeight: "bold" }}>
+                    <CustomerBalanceHeaderSpan>
                       {content.lastpayment}
-                    </span>
-                    <spn>0.00</spn>
+                    </CustomerBalanceHeaderSpan>
+                    <CustomerCurrentBalanceSpan>
+                      0.00
+                    </CustomerCurrentBalanceSpan>
                   </ColumnDiv>
                 </RowDiv>
               </ColumnDiv>
@@ -109,6 +112,7 @@ const CustomersInfo = (props) => {
                         <Button
                           activeClass="active"
                           style={{
+                            fontSize: "0.7rem",
                             backgroundColor: "transparent",
                             letterSpacing: "0.04em",
                             border: "1px solid grey",
@@ -131,7 +135,7 @@ const CustomersInfo = (props) => {
                   </ColumnDiv>
                 </RowDiv>
               </ColumnDiv>
-            </RowDiv>
+            </RowHeaderInfo>
             <Navbar
               toggle={toggle}
               locale={props.locale}

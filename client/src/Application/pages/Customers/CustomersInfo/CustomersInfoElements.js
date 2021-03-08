@@ -117,10 +117,15 @@ export const FormButton = styled.button`
   border: none;
   border-radius: 4px;
   color: #fff;
-  font-size: 20px;
+  font-size: 15px;
   height: fit-content;
-  width: 70%;
+  width: 50%;
   cursor: pointer;
+
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
+    width: 30%;
+  }
 `;
 
 export const Text = styled.span`
@@ -156,10 +161,11 @@ export var RowDiv = styled.div`
   width: 100%;
   height: 100%;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 30px;
+  grid-gap: 15px;
 
   @media screen and (max-width: 550px) {
     grid-template-columns: 1fr;
+    margin-top: 2px;
   }
 `;
 
@@ -207,6 +213,10 @@ export const DropdownNew = styled(Dropdown)`
   &.active {
     border-bottom: 3px solid #b5c1b4;
   }
+
+  @media screen and (max-width: 550px) {
+    font-size: 10px;
+  }
 `;
 
 export const LinksDrop = styled(LinkS)`
@@ -222,5 +232,54 @@ export const LinksDrop = styled(LinkS)`
 
   &.active {
     border-bottom: 3px solid #b5c1b4;
+  }
+  @media screen and (max-width: 550px) {
+    font-size: 10px;
+  }
+`;
+
+export var RowHeaderInfo = styled.div`
+  margin-top: 20px;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px 20px;
+
+  @media screen and (max-width: 550px) {
+    grid-template-columns: 1fr;
+    padding: 12px 5px;
+  }
+`;
+
+/* Header of Row Header - The info of the client on the top of the page*/
+
+export var CustomerNameSpan = styled.span`
+  font-size: 20px;
+  @media screen and (max-width: 550px) {
+    font-size: 15px;
+  }
+`;
+
+export var CustomerEmailSpan = styled.span`
+  margin-top: 15px;
+  @media screen and (max-width: 550px) {
+    font-size: 10px;
+  }
+`;
+
+export var CustomerBalanceHeaderSpan = styled.span`
+  font-weight: "bold";
+  @media screen and (max-width: 550px) {
+    font-size: 12px;
+  }
+`;
+
+export var CustomerCurrentBalanceSpan = styled.span`
+  @media screen and (max-width: 550px) {
+    font-size: 11px;
   }
 `;
