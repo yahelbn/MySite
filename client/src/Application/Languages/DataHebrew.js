@@ -3,17 +3,6 @@ export const DataHebrew = {
     firsttext: "שלום",
   },
 
-  welcomescreen: {
-    rtl: true,
-    formh1: "ברוך הבא לContoTeq!",
-
-    buttonContent1: "חפש והצטרף לחברה קיימת",
-    buttonContent2: "יצירת חברה",
-    information1:
-      " חפש והצטרף לחברה קיימת- באמצעות חיפוש במאגר החברות הקיימות אצלנו תוכל/י למצוא את החברה שרלוונטית לך ולבקש להצטרף אליה ולצפות ולעבוד איתה. ",
-    information2:
-      "יצירת חברה- במידה ואינך משוייך לחברה ספציפית שקיימת במאגר,ברצונך ליצור אחת בחר באפשרות זו.",
-  },
   searchcompany: {
     rtl: true,
     formh1: "חפש חברה",
@@ -24,31 +13,6 @@ export const DataHebrew = {
     link: "לחץ כאן",
   },
 
-  initorjoin: {
-    rtl: true,
-    formh1: "חברה",
-    formlabel1: "שם חברה",
-    forminput1: "text",
-    formlabel2: "סוג חברה",
-    forminput2: "text",
-    formlabel3: "חפ",
-    forminput3: "number",
-    formlabel4: "כתובת",
-    forminput4: "text",
-    optionsSelect: ["סוג", 'בע"מ', "עוסק פטור"],
-
-    buttonContent1: "צור חברה",
-    buttonContent2: "הוסף איש קשר",
-    //text: "שכחתי סיסמא",
-    formh2: "אנשי קשר",
-    //forminput4: "text",
-    formlabel5: "שם פרטי (איש קשר)",
-    forminput5: "text",
-    formlabel6: "שם משפחה (איש קשר)",
-    forminput6: "text",
-    formlabel7: "אימייל",
-    forminput7: "text",
-  },
   searchcustomer: {
     rtl: true,
     formh1: "הוספת לקוח",

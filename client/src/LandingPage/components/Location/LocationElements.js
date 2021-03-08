@@ -35,7 +35,7 @@ export const FormWrap = styled.div`
 
 export const Form = styled.form`
   background: #dcd9c6;
-  max-width: 400px;
+  max-width: 600px;
   height: auto;
   width: 100%;
   z-index: 1;
@@ -123,10 +123,10 @@ export const TextHeader = styled.span`
 
 export const WrapperLocation = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.5fr 0.8fr;
 
-  @media screen and(max-width:480px) {
-    padding: 1fr;
+  @media screen and (max-width: 480px) {
+    //  grid-template-columns: 0.5fr;
   }
 `;
 
@@ -149,3 +149,15 @@ export const InfoWrap = styled.div`
 export const Header = styled.h4``;
 
 export const Para = styled.p``;
+
+export const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const TextMark = styled.span`
+  color: black;
+  font-weight: bold;
+  margin-bottom: 3px;
+`;

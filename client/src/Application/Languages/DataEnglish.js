@@ -2,17 +2,7 @@ export const DataEnglish = {
   mainpage: {
     firsttext: "Hello",
   },
-  welcomescreen: {
-    rtl: false,
-    formh1: "Welcome to ContoTeq!",
 
-    buttonContent1: "Search and join an existing company",
-    buttonContent2: "Creating a company",
-    information1:
-      "Search and join an existing company - by searching the database of existing companies with us, you can find the company that is relevant to you and ask to join it and watch and work with it.",
-    information2:
-      "Create a company - If you are not associated with a specific company that exists in the database, you want to create one. Select this option.",
-  },
   searchcompany: {
     rtl: false,
     formh1: "Search a company",
@@ -22,36 +12,6 @@ export const DataEnglish = {
     text:
       "If the company you are looking for is not on the list and you want to create",
     link: "Click here",
-  },
-  initorjoin: {
-    rtl: false,
-    formh1: "Company",
-    formlabel1: "Company name",
-    forminput1: "text",
-    formlabel2: "Type of company",
-    forminput2: "text",
-    formlabel3: "CID",
-    forminput3: "number",
-    formlabel4: "Address",
-    forminput4: "text",
-    optionsSelect: ["Type", "LTD", "עוסק פטור"],
-    formh2: "Contacts",
-    formlabel5: "First name (contact)",
-    forminput5: "text",
-    formlabel6: "Last name (contact)",
-    forminput6: "text",
-    formlabel7: "Email",
-    forminput7: "text",
-
-    buttonContent1: "Create Company",
-    buttonContent2: "Add Person of contact",
-    //text: "שכחתי סיסמא",
-    street: "Street",
-    number: "Number",
-    city: "City",
-    zipcode: "Zip Code",
-    country: "Country",
-    address: "Address",
   },
 
   searchcustomer: {

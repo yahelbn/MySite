@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   FormWrap,
   FormH1,
@@ -22,17 +22,25 @@ import trash2 from "react-useanimations/lib/trash2";
 import { AiOutlinePlus } from "react-icons/ai";
 import {
   companyInterface,
-  companyTypesEnum,
+  enumsTables,
   addressInterface,
 } from "../../../../Global/Enums.json";
+import { GlobalContext } from "../../../../Global/Global";
 
 const AddCustomer = (props) => {
   const content = props.dataLanguages.addcustomer;
   const [fields, setFields] = useState([
     { firstname: null, lastname: null, email: null },
   ]);
+  const [enumsTable, setEnumsTable] = useState([]);
+  const { getEnumsByTableName } = useContext(GlobalContext);
+
   const [companyData, setCompanyData] = useState(companyInterface);
   const [addressData, setAddressData] = useState(addressInterface);
+
+  useEffect(() => {
+    setCompanyTypeEnums(enumsTables.CompanyTypeEnums);
+  }, []);
 
   function handleChange(i, type, event) {
     const values = [...fields];
@@ -55,19 +63,40 @@ const AddCustomer = (props) => {
 
   //renders company types for the selection menu
   const renderCompanyTypesSelections = () => {
-    const typesObject = companyTypes[props.locale];
-    return Object.keys(typesObject).map((key, index) => {
-      return (
-        <React.Fragment key={index}>
-          <option
-            selected={companyData.CType === key ? true : false}
-            value={key}
-          >
-            {typesObject[key]}
-          </option>
-        </React.Fragment>
-      );
-    });
+    if (enumsTable) {
+      return enumsTable.map((key, index) => {
+        return (
+          <React.Fragment key={index}>
+            <option
+              selected={
+                companyData.CType === key.EName ? "selected" : undefined
+              }
+              value={key.EName}
+            >
+              {props.locale === "he" ? key.EHebrewName : key.EEnglishName}
+            </option>
+          </React.Fragment>
+        );
+      });
+    }
+    // const typesObject = companyTypes[props.locale];
+    // return Object.keys(typesObject).map((key, index) => {
+    //   return (
+    //     <React.Fragment key={index}>
+    //       <option
+    //         selected={companyData.CType === key ? true : false}
+    //         value={key}
+    //       >
+    //         {typesObject[key]}
+    //       </option>
+    //     </React.Fragment>
+    //   );
+    // });
+  };
+
+  const setCompanyTypeEnums = async (enumsTableName) => {
+    let enums = await getEnumsByTableName(enumsTableName);
+    setEnumsTable(enums);
   };
   return (
     <>

@@ -52,6 +52,7 @@ export const Form = styled.form`
   direction: ${({ rtl }) => (rtl ? "rtl" : "ltr")};
   @media screen and (max-width: 600px) {
     padding: 32px 32px;
+    height: fit-content;
     /* width: 80%;
     margin-left: 10px;
     margin-top: 20px; */
@@ -111,15 +112,15 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInput = styled.input`
-  padding: 16px 16px;
-  margin-bottom: 32px;
+  padding: 10px 10px;
+  margin-bottom: 15px;
   border: none;
   border-radius: 4px;
 `;
 
 export const FormSelect = styled.select`
-  padding: 16px 16px;
-  margin-bottom: 32px;
+  padding: 10px 10px;
+  margin-bottom: 15px;
   border: none;
   border-radius: 4px;
   background: white;

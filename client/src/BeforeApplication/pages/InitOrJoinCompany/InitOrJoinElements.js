@@ -104,6 +104,11 @@ export const FormInput = styled.input`
   margin-bottom: 20px;
   border: none;
   border-radius: 4px;
+
+  &:disabled {
+    background-color: #e2e3e2;
+    color: black;
+  }
 `;
 
 export const FormSelect = styled.select`
@@ -126,6 +131,10 @@ export const FormSelect = styled.select`
     min-height: 20px;
     padding: 0px 2px 1px;
   }
+  &:disabled {
+    background-color: #e2e3e2;
+    color: black;
+  }
 `;
 
 export const FormButton = styled.button`
@@ -136,6 +145,9 @@ export const FormButton = styled.button`
   color: #fff;
   font-size: 20px;
   cursor: pointer;
+  &:disabled {
+    background-color: #e2e3e2;
+  }
 `;
 
 export const Text = styled.span`
@@ -197,4 +209,7 @@ export const AddButton = styled.button`
   justify-content: center;
   color: #1b1924;
   margin-bottom: 30px;
+  &:disabled {
+    background-color: #e2e3e2;
+  }
 `;
