@@ -28,6 +28,18 @@ export const HeroContainer = styled.div`
   }
 `;
 
+export const Img = styled.img`
+  width: 160px;
+  height: 196px;
+  border-radius: 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 40px 0 rgba(0, 0, 0, 0.5);
+
+  @media screen and (max-width: 600px) {
+    height: 100px;
+    width: 80px;
+  }
+`;
+
 export const HeroBg = styled.div`
   position: absolute;
   top: 0;

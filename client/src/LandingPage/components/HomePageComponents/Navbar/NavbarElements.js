@@ -5,7 +5,7 @@ import { Button as ButtonComp } from "styled-button-component";
 import { Dropdown } from "styled-dropdown-component";
 
 export const Nav = styled.nav`
-  background: ${({ scrollNav }) => (scrollNav ? "#1b1924" : "transparent")};
+  background: ${({ scrollNav }) => (scrollNav ? "#907163" : "transparent")};
   height: 80px;
   margin-top: -80px;
   display: flex;

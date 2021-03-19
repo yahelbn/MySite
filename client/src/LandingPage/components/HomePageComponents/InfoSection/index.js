@@ -34,6 +34,7 @@ const InfoSection = ({ content, locale }) => {
     dark2,
     rtl,
     routerlink,
+    circleimg,
   } = content;
 
   const linkButton = createButton();
@@ -91,8 +92,8 @@ const InfoSection = ({ content, locale }) => {
               </TextWrapper>
             </Column1>
             <Column2>
-              <ImgWrap>
-                <Img src={img} alt={alt} />
+              <ImgWrap circleimg={circleimg}>
+                <Img circleimg={circleimg} src={img} alt={alt} />
               </ImgWrap>
             </Column2>
           </InfoRow>

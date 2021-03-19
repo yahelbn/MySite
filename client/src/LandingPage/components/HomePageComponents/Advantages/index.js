@@ -25,7 +25,7 @@ const Advantages = ({ content }) => {
 
   return (
     <ServicesContainer
-      id="advantages"
+      id="technologylanguage"
       rtl={Boolean(content.header.rtl) ? true : false}
     >
       <ServicesH1 rtl={Boolean(content.header.rtl) ? true : false}>

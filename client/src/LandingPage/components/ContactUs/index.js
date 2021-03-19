@@ -21,7 +21,7 @@ const ContactUs = ({ content }) => {
     <>
       <Container>
         <FormWrap>
-          <Icon to="/">ContoTeq</Icon>
+          <Icon to="/">Yahel Barnoam</Icon>
           <FormContent>
             <Form action="#" rtl={Boolean(content.rtl) ? true : false}>
               <FormH1>{content.formh1}</FormH1>

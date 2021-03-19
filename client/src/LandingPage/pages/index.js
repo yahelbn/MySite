@@ -4,11 +4,9 @@ import Navbar from "../components/HomePageComponents/Navbar";
 import HeroSection from "../components/HomePageComponents/HeroSectionElements";
 import InfoSection from "../components/HomePageComponents/InfoSection";
 import Advantages from "../components/HomePageComponents/Advantages";
-import Services from "../components/HomePageComponents/Services";
 import Footer from "../components/HomePageComponents/Footer";
 import LanguageSelectionScreen from "../components/HomePageComponents/LanguageSelectionScreen";
 import CarouselFounders from "../components/HomePageComponents/CarouselFounders/index";
-import Prices from "../components/HomePageComponents/Prices/index";
 
 const Home = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,27 +43,17 @@ const Home = (props) => {
         content={props.dataLanguages.heroSection}
         locale={props.locale}
       />
-      <Advantages content={props.dataLanguages.advantages} />
-      <Services content={props.dataLanguages.services} />
-
       <InfoSection
         content={props.dataLanguages.homeObjOne}
         locale={props.locale}
       />
+      <Advantages content={props.dataLanguages.advantages} />
+      <CarouselFounders content={props.dataLanguages.whoweare} />
+
       <InfoSection
         content={props.dataLanguages.homeObjTwo}
         locale={props.locale}
       />
-      <CarouselFounders content={props.dataLanguages.whoweare} />
-
-      {/* <Advantages content={props.dataLanguages.advantages} /> */}
-      {/* <Services content={props.dataLanguages.services} /> */}
-
-      {/* <InfoSection
-        content={props.dataLanguages.homeObjThree}
-        locale={props.locale} 
-      /> */}
-      {/* <Prices content={props.dataLanguages.prices} locale={props.locale} /> */}
 
       <InfoSection
         content={props.dataLanguages.homeObjFour}

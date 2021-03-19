@@ -3,9 +3,7 @@ import {
   SidebarContainer,
   CloseIcon,
   Icon,
-  SidebarRoute,
   SidebarMenu,
-  SideBtnWrap,
   SidebarWrapper,
   SidebarLink,
   LanguageButton,
@@ -17,42 +15,18 @@ import {
 import { MdLanguage } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RiArrowUpSLine } from "react-icons/ri";
-import { AccountContext } from "../../../../Authentication/Account";
 import { useHistory } from "react-router-dom";
-import { FiLogIn, FiLogOut } from "react-icons/fi";
-import { FaBusinessTime } from "react-icons/fa";
 
 const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
-  const { getSession, getConnectedUser, logout } = useContext(AccountContext);
-  const [authenticationStatus, setAuthenticationStatus] = useState(false);
   const history = useHistory();
 
   const { rtl, links, loginbutton, logoutbutton, goToApp } = content;
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
-  useEffect(() => {
-    getSession()
-      .then((session) => {
-        if (session) {
-          setAuthenticationStatus(true);
-          getConnectedUser().then((user) => {
-            console.log(user);
-          });
-        }
-      })
-      .catch((e) => {});
-  }, []);
-
-  const logoutLogin = () => {
-    if (authenticationStatus) {
-      logout();
-    } else {
-      history.push(`/${locale}/signin`);
-    }
-  };
+  useEffect(() => {}, []);
 
   const renderSideBarLinks = links.map((navItem, index) => {
-    if (index === 2) {
+    if (index === 0) {
       const renderMiniSideBarLinks = navItem.dropdown.map((link) => {
         return (
           <SidebarMiniLink
@@ -109,38 +83,7 @@ const Sidebar = ({ isOpen, toggle, toggleLanguage, locale, content }) => {
             <TextLanguage>{locale}</TextLanguage>
           </LanguageButton>
         </SidebarMenu>
-        <RowBttns>
-          <SideBtnWrap onClick={logoutLogin}>
-            <SidebarRoute color={authenticationStatus}>
-              {authenticationStatus ? logoutbutton : loginbutton}
-              {authenticationStatus ? (
-                <FiLogOut
-                  style={{ marginLeft: "5px" }}
-                  size={17}
-                  color={"black"}
-                />
-              ) : (
-                <FiLogIn
-                  style={{ marginLeft: "5px" }}
-                  size={17}
-                  color={"black"}
-                />
-              )}
-            </SidebarRoute>
-          </SideBtnWrap>
-          {authenticationStatus && (
-            <SideBtnWrap down={true}>
-              <SidebarRoute to={"/" + locale + "/signin"}>
-                {goToApp}
-                <FaBusinessTime
-                  style={{ marginLeft: "5px" }}
-                  size={17}
-                  color={"black"}
-                />
-              </SidebarRoute>
-            </SideBtnWrap>
-          )}
-        </RowBttns>
+        <RowBttns></RowBttns>
       </SidebarWrapper>
     </SidebarContainer>
   );

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InfoContainer = styled.div`
   color: #fff;
-  background: ${({ lightBg }) => (lightBg ? "#f9f9f9" : "#1b1924")};
+  background: ${({ lightBg }) => (lightBg ? "#f9f9f9" : "#ad8174")};
   @media screen and (max-width: 768px) {
     padding: 100px 0;
   }
@@ -66,7 +66,7 @@ export const Heading = styled.h1`
   font-size: 48px;
   line-height: 1.1;
   font-weight: 600;
-  color: ${({ lightText }) => (lightText ? `#dcd9c6` : "#1b1924")};
+  color: ${({ lightText }) => (lightText ? `#fff` : "#1b1924")};
   @media screen and (max-width: 480px) {
     font-size: 32px;
   }
@@ -88,10 +88,20 @@ export const BtnWrap = styled.div`
 export const ImgWrap = styled.div`
   max-width: 555px;
   height: 100%;
+  margin: ${({ circleimg }) => (circleimg ? "20px 10px" : "0 0")};
+
+  @media screen and (max-width: 480px) {
+    margin: 0 0;
+  }
 `;
 
 export const Img = styled.img`
-  width: 100%;
-  margin: 0 0 10px 0;
+  width: ${({ circleimg }) => (circleimg ? "70%" : "100%")};
+  margin: ${({ circleimg }) => (circleimg ? "20px 10px" : "0 0 10px 0")};
+
   padding-right: 0;
+  border-radius: ${({ circleimg }) => (circleimg ? "50px" : "0")};
+  @media screen and (max-width: 480px) {
+    margin: 0 0 10px 0;
+  }
 `;

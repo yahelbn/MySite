@@ -4,7 +4,6 @@ import { IconContext } from "react-icons/lib";
 import { MdLanguage } from "react-icons/md";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { FaBusinessTime } from "react-icons/fa";
-import { AttributesFuncContext } from "../../../../Authentication/AttributesFunc";
 import { animateScroll as scroll } from "react-scroll";
 
 import {
@@ -15,27 +14,19 @@ import {
   NavMenu,
   NavItem,
   NavLinks,
-  NavBtnLink,
-  NavBtn,
   LanguageButton,
   TextLanguage,
   LinksDrop,
   DropdownNew,
-  RowBttns,
-  UserNameHeader,
 } from "./NavbarElements";
 
 import { Button } from "styled-button-component";
 import { DropdownItem, DropdownMenu } from "styled-dropdown-component";
-import { AccountContext } from "../../../../Authentication/Account";
 import { useHistory } from "react-router-dom";
 
 const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   const history = useHistory();
-  const { getSession, logout } = useContext(AccountContext);
-  const { getAttribute } = useContext(AttributesFuncContext);
 
-  const [authenticationStatus, setAuthenticationStatus] = useState(undefined);
   const [scrollNav, setScrollNav] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [userName, setuserName] = useState("");
@@ -50,29 +41,7 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
     }
   };
 
-  const logoutLogin = () => {
-    if (authenticationStatus) {
-      logout();
-    } else {
-      history.push(`/${locale}/signin`);
-    }
-  };
-
   useEffect(() => {
-    getSession()
-      .then((session) => {
-        if (session) {
-          setAuthenticationStatus(true);
-        }
-      })
-      .catch((e) => {
-        setAuthenticationStatus(false);
-      });
-
-    getAttribute("custom:name").then((data) => {
-      setuserName(data);
-    });
-
     window.addEventListener("scroll", changeNav);
   }, []);
 
@@ -81,7 +50,7 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
   };
 
   const renderNavBarLinks = links.map((navItem, index) => {
-    if (index === 2) {
+    if (index === 0) {
       const renderDropDownItems = navItem.dropdown.map((link, index) => {
         return (
           <React.Fragment key={index}>
@@ -157,7 +126,7 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
             <NavLogo to="/" onClick={toggleHome}>
-              ContoTeq
+              Yahel Barnoam
             </NavLogo>
             <MobileIcon onClick={toggle}>
               <FaBars />
@@ -172,46 +141,6 @@ const Navbar = ({ toggle, toggleLanguage, locale, content }) => {
                 </LanguageButton>
               </NavItem>
             </NavMenu>
-            {authenticationStatus !== undefined ? (
-              <RowBttns>
-                <NavBtn onClick={logoutLogin}>
-                  <NavBtnLink color={authenticationStatus}>
-                    {authenticationStatus ? logoutbutton : loginbutton}
-                    {authenticationStatus ? (
-                      <FiLogOut
-                        style={{ marginLeft: "5px" }}
-                        size={17}
-                        color={"black"}
-                      />
-                    ) : (
-                      <FiLogIn
-                        style={{ marginLeft: "5px" }}
-                        size={17}
-                        color={"black"}
-                      />
-                    )}
-                  </NavBtnLink>
-                </NavBtn>
-                {authenticationStatus && (
-                  <NavBtn marginLeft={"10px"}>
-                    <NavBtnLink to={"/" + locale + "/signin"}>
-                      {goToApp}
-                      <FaBusinessTime
-                        style={{ marginLeft: "5px" }}
-                        size={17}
-                        color={"black"}
-                      />
-                    </NavBtnLink>
-                  </NavBtn>
-                )}
-
-                {authenticationStatus && (
-                  <UserNameHeader>{userName}</UserNameHeader>
-                )}
-              </RowBttns>
-            ) : (
-              <div></div>
-            )}
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>

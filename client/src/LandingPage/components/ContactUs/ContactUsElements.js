@@ -10,13 +10,13 @@ export const Container = styled.div`
   top: 0;
   z-index: 0;
   overflow: hidden;
-  //background: no-repeat center center fixed;
-  background-image: linear-gradient(
-      90deg,
-      rgba(220, 217, 198, 0.7) 22%,
-      rgba(181, 193, 180, 0.5) 100%
-    ),
-    url("../../images/survey.svg");
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(235, 225, 222, 1) 10%,
+    rgba(173, 129, 116, 1) 100%
+  );
+
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;

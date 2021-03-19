@@ -11,6 +11,7 @@ import {
   HeroBtnWrapper,
   ArrowForward,
   ArrowRight,
+  Img,
 } from "./HeroSectionElements";
 
 const HeroSection = ({ content }) => {
@@ -29,7 +30,7 @@ const HeroSection = ({ content }) => {
         <HeroP>{herop}</HeroP>
         <HeroBtnWrapper>
           <Button
-            to="signup"
+            to="probackground"
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             primary="true"

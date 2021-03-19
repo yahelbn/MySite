@@ -6,6 +6,7 @@ import {
   FaYoutube,
   FaTwitter,
   FaLinkedin,
+  FaGithub,
 } from "react-icons/fa";
 import {
   FooterContainer,
@@ -70,13 +71,7 @@ const Footer = ({ content, locale }) => {
       <Modal
         isShowing={isShowing}
         hide={toggle}
-        modalcomp={
-          <Modal
-            modalContent={contentOfModal}
-            // company={choseCompany}
-            //locale={props.locale}
-          />
-        }
+        modalcomp={<Modal modalContent={contentOfModal} />}
       />
       <FooterWrap>
         <FooterLinksContainer>
@@ -85,10 +80,10 @@ const Footer = ({ content, locale }) => {
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo to="/" onClick={toggleHome}>
-              ContoTeq
+              Yahel Barnoam
             </SocialLogo>
             <WebsiteRights>
-              ContoTeq © {new Date().getFullYear()} All rights reserved.
+              © {new Date().getFullYear()} All rights reserved.
             </WebsiteRights>
             <SocialIcons>
               <SocialIconLink href="/" target="_blank" aria-label="Facebook">
@@ -97,13 +92,18 @@ const Footer = ({ content, locale }) => {
               <SocialIconLink href="/" target="_blank" aria-label="Instagram">
                 <FaInstagram />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Youtube">
-                <FaYoutube />
+              <SocialIconLink
+                href="https://github.com/yahelbn"
+                target="_blank"
+                aria-label="GitHub"
+              >
+                <FaGithub />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Twitter">
-                <FaTwitter />
-              </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Linkedin">
+              <SocialIconLink
+                href="https://www.linkedin.com/in/yahel-bar-noam/"
+                target="_blank"
+                aria-label="Linkedin"
+              >
                 <FaLinkedin />
               </SocialIconLink>
             </SocialIcons>

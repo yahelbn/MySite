@@ -54,16 +54,6 @@ const LangRouter = () => {
           />
         )}
       />
-      {/* <Route
-          path="*"
-          render={(propsRouter) => (
-            <NoFound
-              {...propsRouter}
-              locale={locale}
-              setLocale={this.setLocale}
-            />
-          )}
-        /> */}
     </Switch>
   );
 };

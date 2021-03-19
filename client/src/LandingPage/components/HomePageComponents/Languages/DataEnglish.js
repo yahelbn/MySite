@@ -1,5 +1,5 @@
 //InfoSection Images
-import smartransaction from "../../../images/smartransaction.svg";
+import codeman from "../../../images/codeman.svg";
 import checklistpayment from "../../../images/checklistpayment.svg";
 import peoplewithcard from "../../../images/peoplewithcard.svg";
 
@@ -11,28 +11,81 @@ import Icon1 from "../../../images/survey.svg";
 import Icon2 from "../../../images/preferences.svg";
 
 //Svg Advantages
-import Thunder from "../../../images/svgs/thunder.svg";
-import ConnectionPeople from "../../../images/svgs/connection.svg";
-import Web from "../../../images/svgs/web.svg";
-import Interactive from "../../../images/svgs/interactive.svg";
-import Payday from "../../../images/svgs/payday.svg";
-import Synchronize from "../../../images/svgs/synchronize.svg";
-import Clock from "../../../images/svgs/clock.svg";
-import Customerservice from "../../../images/svgs/customerservice.svg";
+import reacticon from "../../../images/svgs/react.svg";
+import nodejsicon from "../../../images/svgs/nodejs.svg";
+import htmlicon from "../../../images/svgs/html.svg";
+import cssicon from "../../../images/svgs/css.svg";
+import javascripticon from "../../../images/svgs/javascript.svg";
+import pythonicon from "../../../images/svgs/python.svg";
+import javaicon from "../../../images/svgs/java.svg";
+import cicon from "../../../images/svgs/c.svg";
+import mysqlicon from "../../../images/svgs/mysql.svg";
+import androidstudioicon from "../../../images/svgs/androidstudio.svg";
+import awsicon from "../../../images/svgs/aws.svg";
+import firebase from "../../../images/svgs/firebase.svg";
+import quiz from "../../../images/quiz.svg";
+
+//images to gallery of projects
+
+import d1 from "../../../images/Imagesapplications/ditapp/dit1.png";
+import d2 from "../../../images/Imagesapplications/ditapp/dit2.png";
+import d3 from "../../../images/Imagesapplications/ditapp/dit3.png";
+
+import inst1 from "../../../images/Imagesapplications/insta/inst1.png";
+import inst2 from "../../../images/Imagesapplications/insta/inst2.png";
+import inst3 from "../../../images/Imagesapplications/insta/inst3.png";
+import inst4 from "../../../images/Imagesapplications/insta/inst4.png";
+import inst5 from "../../../images/Imagesapplications/insta/inst5.png";
+
+import p1 from "../../../images/Imagesapplications/package/p1.png";
+import p2 from "../../../images/Imagesapplications/package/p2.png";
+import p3 from "../../../images/Imagesapplications/package/p3.png";
+import p4 from "../../../images/Imagesapplications/package/p4.png";
+import p5 from "../../../images/Imagesapplications/package/p5.png";
+import p6 from "../../../images/Imagesapplications/package/p6.png";
+import p7 from "../../../images/Imagesapplications/package/p7.png";
+import p8 from "../../../images/Imagesapplications/package/p8.png";
+
+import reduxreact1 from "../../../images/Imagesapplications/reduxandreact/reduxreact1.png";
+import reduxreact2 from "../../../images/Imagesapplications/reduxandreact/reduxreact2.png";
+import reduxreact3 from "../../../images/Imagesapplications/reduxandreact/reduxreact3.png";
+
+import shen1 from "../../../images/Imagesapplications/shenzen/shen1.png";
+import shen2 from "../../../images/Imagesapplications/shenzen/shen2.png";
+import shen3 from "../../../images/Imagesapplications/shenzen/shen3.png";
+import shen4 from "../../../images/Imagesapplications/shenzen/shen4.png";
+import shen5 from "../../../images/Imagesapplications/shenzen/shen5.png";
+
+import shop1 from "../../../images/Imagesapplications/Shop/shop1.png";
+import shop2 from "../../../images/Imagesapplications/Shop/shop2.png";
+import shop3 from "../../../images/Imagesapplications/Shop/shop3.png";
+import shop4 from "../../../images/Imagesapplications/Shop/shop4.png";
+import shop5 from "../../../images/Imagesapplications/Shop/shop5.png";
+import shop6 from "../../../images/Imagesapplications/Shop/shop6.png";
+import shop7 from "../../../images/Imagesapplications/Shop/shop7.png";
+// import shop8 from "../../../images/Imagesapplications/Shop/shop8.png";
+
+import space1 from "../../../images/Imagesapplications/spacegame/space1.png";
+import space2 from "../../../images/Imagesapplications/spacegame/space2.png";
+import space3 from "../../../images/Imagesapplications/spacegame/space3.png";
+import space4 from "../../../images/Imagesapplications/spacegame/space4.png";
+import space5 from "../../../images/Imagesapplications/spacegame/space5.png";
+import space6 from "../../../images/Imagesapplications/spacegame/space6.png";
+import space7 from "../../../images/Imagesapplications/spacegame/space7.png";
 
 export const DataEnglish = {
   homeObjOne: {
-    id: "whoweare",
+    id: "probackground",
     lightBg: true,
     lightText: false,
     lightTextDesc: true,
-    topLine: "about us",
-    //headLine: "Simplify the process of accounting between businesses",
+    topLine: "So...",
     description:
-      "ContoTeq is an innovative fintech platform that streamlines business processes between suppliers and customers. We bring a complete and simple solution to all payment processes and collection between supplier and customer (AR). In the future we will manage additional processes between suppliers and customers. Small and medium-sized businesses, fintech and online systems and finance. ",
-    buttonLabel: "Start Now",
+      "Right now I have one last semester left for a degree in software engineering, I am studying independent online enrichment courses, in addition to offering private lessons and small projects for companies. I specialize in mobile and web development. User interface development for me is beyond the profession The artistic and creative side of me. ",
+    buttonLabel: "Start",
     imgStart: false,
-    img: smartransaction,
+    img: codeman,
+    circleimg: false,
     alt: "Car",
     dark: true,
     primary: true,
@@ -42,37 +95,19 @@ export const DataEnglish = {
   },
 
   homeObjTwo: {
-    id: "technology",
-    lightBg: false,
-    lightText: true,
-    lightTextDesc: false,
-    topLine: "Technology",
-    //headLine: "Interfaces in a simple way",
-    description:
-      "<br> The ContoTeq system operates as a SAAS online service and allows access to the process for both suppliers and customers. It is built on a number of main principles:</br> <br> 1. Maintaining full online real-time contact between the supplier and the customer at all stages of the process. </br> <br> 2. Full tracking of transaction and payment history, based on blockchain ledger, which allows reliable and secure tracking of every transaction performed.</br> <br> 3. Integrates advanced fintech technologies including NLP and OCR systems.</br>",
-    buttonLabel: "Start Now",
-    imgStart: true,
-    img: checklistpayment,
-    alt: "Car",
-    dark: false,
-    primary: false,
-    darkText: false,
-    rtl: false,
-    routerlink: true,
-  },
-
-  homeObjThree: {
-    id: "prices",
+    id: "whoiam",
     lightBg: true,
     lightText: false,
     lightTextDesc: true,
-    topLine: "Prices?",
-    headLine: "Free use of the system",
+    topLine: "A little beyond ...",
+    headLine: "Who am I?",
     description:
-      "At this point the use of the system will be done without charge",
-    buttonLabel: "Start Now",
-    imgStart: false,
-    img: peoplewithcard,
+      "I, Yahel Barnoam, grew up in Moshav Neve Yarak in the center of the country, very fond of music, playing, surfing and traveling in Israel and around the world. Eldest brother to 5 brothers. I served in the army in combat engineering. Then I decided to start studying software engineering at Afeka College. ",
+    buttonLabel: "Start",
+    imgStart: true,
+    img: yahelphoto,
+    circleimg: true,
+
     alt: "Car",
     dark: true,
     primary: true,
@@ -82,392 +117,211 @@ export const DataEnglish = {
   },
 
   homeObjFour: {
-    id: "signup",
+    id: "privatelessons",
     lightBg: false,
     lightText: true,
     lightTextDesc: false,
-    topLine: "Sign up",
-    headLine: "Sign up now for a free trial",
-    // description:
-    //   "Register and experience our services in your business or as a customer.",
-    buttonLabel: "Start Now",
+    topLine: "Need help with lessons?",
+    headLine: "private lessons",
+    description:
+      "From basic languages ​​(Java, C, Python) to more advanced languages ​​and libraries (Javascript, CSS, Html, Android studio, Reactjs) and more. During the lesson I will focus on and analyze the root of the problem, Your chances of success. Favorable prices! You can meet frontally / zoom, according to your personal preference.",
+    buttonLabel: "התחל עכשיו",
     imgStart: true,
-    img: checklistpayment,
+    img: quiz,
     alt: "Car",
     dark: false,
-    primary: false,
+    primary: true,
     darkText: false,
     rtl: false,
     routerlink: true,
   },
+
   navBar: {
     rtl: false,
     links: [
-      { content: "Why ContoTeq?", to: "advantages" },
-      { content: "Our services", to: "services" },
       {
-        content: "Company",
+        content: "Professional",
         dropdown: [
-          { content: "About us", to: "whoweare" },
-          { content: "Technology", to: "technology" },
-          { content: "Inventors", to: "inventors" },
+          { content: "Background", to: "probackground" },
+          { content: "Languages ​​/ Technologies", to: "technologylanguage" },
+
+          { content: "Projects", to: "myprojects" },
         ],
       },
-      // { content: "Technology", to: "technology" },
-      { content: "Prices", to: "prices" },
+      { content: "Who am I?", to: "whoiam" },
+      { content: "Private lessons", to: "privatelessons" },
+      { content: "Web Development", to: "webdev" },
     ],
-    loginbutton: "Log in",
-    logoutbutton: "Log out",
-
-    goToApp: "Go to Application",
   },
 
   heroSection: {
-    heroh1: "Transactions between businesses have become easier",
-    herop: "Feel free to try us - sign up now",
-    button: "Start now",
+    heroh1: "Welcome to my site",
+    herop: "Hear a little about me",
+    button: "Start",
   },
   contactus: {
     rtl: false,
-    formh1: "The service will be up soon",
+    formh1: " Contact Us",
     formlabel1: "Full name",
     forminput1: "text",
     formlabel2: "E-mail",
     forminput2: "email",
-    formlabel3: "Phone",
+    formlabel3: "Telephone",
     forminput3: "text",
     formbutton: "Send",
-    text: "For any question you can contact ",
-    email: "contoteq@gmail.com",
+    text: "For any question you can contact",
+    email: "yahelbn3123@gmail.com",
+
     text2:
-      "Thank you for your interest,<br> please leave details and we will contact you soon:",
-  },
-  signin: {
-    rtl: false,
-    formh1: "Sign in to your account",
-    formlabel1: "Email",
-    forminput1: "email",
-    formlabel2: "Password",
-    forminput2: "password",
-
-    formbutton: "Sign in",
-    text: "Forgot password",
-  },
-  location: {
-    rtl: false,
-    formh1: "Where we are located?",
-    content: [
-      { header: "Mailbox", info: "  Neve-Yarak 49945 " },
-      { header: "Office address:", info: "Atir-Yeda 20, Kfar-Sava" },
-    ],
-  },
-  signup: {
-    rtl: false,
-    formh1: "Create your account",
-    formlabel1: "First name",
-    forminput1: "text",
-    formlabel2: "Last name",
-    forminput2: "text",
-    formlabel3: "E-mail",
-    forminput3: "email",
-    formlabel4: "Password",
-    forminput4: "password",
-    formlabel5: "re-password",
-    forminput5: "password",
-    formlabel6: "Phone Number",
-    forminput6: "tel",
-    formlabel7: "Pid (Optional)",
-    forminput7: "number",
-
-    formbutton: "Sign up",
-    //text: "שכחתי סיסמא",
-    modalconfirm: {
-      rtl: false,
-      header: "Please check your email",
-      p1: "Just click the link to complete the sign-up proccess",
-      p2b: "Haven't received an email?",
-      p2: "Please check your spam folder to make sure it's not in there",
-    },
+      "Thank you for your interest, <br> Please leave details and contact us soon:",
   },
 
-  initorjoin: {
-    rtl: false,
-    formh1: "Company",
-    formlabel1: "Company name",
-    forminput1: "text",
-    formlabel2: "Type of company",
-    forminput2: "text",
-    formlabel3: "CID",
-    forminput3: "number",
-    formlabel4: "Address",
-    forminput4: "text",
-    optionsSelect: ["Type", "LTD", "עוסק פטור"],
-
-    buttonContent1: "Create Company",
-    buttonContent2: "Join Company",
-    //text: "שכחתי סיסמא",
-  },
-
-  prices: {
-    tab1: "Customer",
-    tab2: "Vendor",
-    header: {
-      content: "Our prices",
-      rtl: false,
-    },
-
-    cards: [
-      {
-        greymode: false,
-        rtl: false,
-        icon: Icon1,
-        servicesh2: "תוכנית ניסיונית",
-        servicesh3: "ניהול....",
-        price: "ללא תשלום",
-        servicesp:
-          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
-        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
-        primary: true,
-        dark: true,
-        dark2: true,
-        buttonLabel: "בחר",
-      },
-      {
-        greymode: true,
-
-        rtl: false,
-        icon: Icon1,
-        servicesh2: "תוכנית ניסיונית",
-        servicesh3: "ניהול....",
-        price: "ללא תשלום",
-        servicesp:
-          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
-        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
-        primary: true,
-        dark: true,
-        dark2: true,
-        buttonLabel: "בחר",
-      },
-      {
-        greymode: true,
-
-        rtl: false,
-        icon: Icon1,
-        servicesh2: "תוכנית ניסיונית",
-        servicesh3: "ניהול....",
-        price: "ללא תשלום",
-        servicesp:
-          "ניהול שוטף וקל של תהליכי עבודה עסקיים מול לקוחות כגון דרישה וגבית תשלומים.",
-        included: ["בלה בלה בלה", "בלה בלה בלה", "בלה בלה בלה"],
-        primary: true,
-        dark: true,
-        dark2: true,
-        buttonLabel: "בחר",
-      },
-
-      // {
-      //   rtl: true,
-      //   icon: Icon3,
-      //   servicesh2: "מיכון מלא של תהליכי חיוב זיכוי בין מערכות וחברות",
-      //   servicesp: "התממשקותם של מערכות קיימות כגון:ORACLE,PRIORITY,SAP",
-      // },
-    ],
-  },
-  services: {
-    header: {
-      content: "Our services",
-      rtl: false,
-      button: "Continue",
-    },
-
-    cards: [
-      {
-        rtl: false,
-        icon: Icon1,
-        servicesh2: "For suppliers",
-        servicesp:
-          "Ongoing and easy management of business work processes with customers such as demand and collection of payments.",
-        modalinfo: {
-          rtl: false,
-          header: "System services for suppliers",
-          button: "Continue",
-
-          content: [
-            { header: "Client management", content: "" },
-            {
-              header:
-                "Create, upload and send tax invoices, transaction invoices, and receipts inclusive",
-              content:
-                "Process management, obtaining customer approval of the contents and the amount to be charged, and performing real-time interaction between the parties",
-            },
-            {
-              header: "Tracking approvals, payments and collection",
-              content: "",
-            },
-            { header: "Sending reminders", content: "" },
-            {
-              header: "Create periodic reports in different sections",
-              content: "",
-            },
-            {
-              header: "Transparency and information sharing",
-              content:
-                "The system allows all parties involved in the process, at the supplier and the customer, to work on the same information platform. Information recovery",
-            },
-          ],
-        },
-      },
-
-      {
-        rtl: false,
-        icon: Icon2,
-        servicesh2: "For customers",
-        servicesp:
-          "Continuous monitoring of payment requirements: receipt, approval and execution In front of a variety of suppliers.",
-        modalinfo: {
-          rtl: true,
-          header: "System services for customers",
-          button: "Continue",
-          content: [
-            {
-              header:
-                "Receiving documents for viewing, and downloading, approving and paying online",
-              content: "",
-            },
-            {
-              header:
-                "View all charges, futures and histories, payments, receipts and more",
-              content: "",
-            },
-            {
-              header: "Payment through the system",
-              content:
-                "The system allows all parties involved in the process, at the supplier and the customer, to work on the same information platform",
-            },
-            { header: "Payment tracking", content: "" },
-            { header: "Information recovery", content: "" },
-          ],
-        },
-      },
-      // {
-      //   rtl: false,
-      //   icon: Icon3,
-      //   servicesh2:
-      //     "Full automation of credit billing processes between systems and companies",
-      //   servicesp:
-      //     "Interface of existing systems such as: ORACLE, PRIORITY, SAP",
-      // },
-    ],
-  },
   advantages: {
     header: {
-      content: "Why ContoTeq?",
+      content: "The main languages ​​and technologies",
       rtl: false,
     },
 
     cards: [
       {
         rtl: false,
-        icon: Thunder,
-        servicesh2: "Saving time",
-        servicesp:
-          "Automating tedious processes that give you time to focus on your business",
+        icon: reacticon,
+        servicesh2: "React Js",
       },
 
       {
         rtl: false,
-        icon: ConnectionPeople,
-        servicesh2: "Improving relationships between suppliers and customers",
-        servicesp:
-          "Direct, reliable, and simple communication regarding payment, collection and tracking processes.",
+        icon: nodejsicon,
+        servicesh2: "Node Js",
       },
       {
         rtl: false,
-        icon: Web,
-        servicesh2: "Prevention of human error",
-        servicesp:
-          "Instant alerts when any information appears to be incorrect that allows immediate correction before confirmation, sending or payment",
+        icon: htmlicon,
+        servicesh2: "Html",
       },
       {
         rtl: false,
-        icon: Interactive,
-        servicesh2: "Simple end-to-end process management",
-        servicesp:
-          "From creating invoices, certificates, payment and issuing receipts while interacting in real time between supplier and customer. Generate historical reports in various sections within minutes",
+        icon: cssicon,
+        servicesh2: "Css",
       },
       {
         rtl: false,
-        icon: Payday,
-        servicesh2: "Improving and streamlining payment and collection",
-        servicesp:
-          "Track payments, send reminders, and the option to pay instantly online.",
+        icon: javascripticon,
+        servicesh2: "Java Script",
       },
       {
         rtl: false,
-        icon: Synchronize,
-        servicesh2: "Full synchronization with money management software",
-        servicesp:
-          "The system is automatically synchronized with advanced accounting systems (such as Accounting, Profitable and Priority) - Future",
+        icon: pythonicon,
+        servicesh2: "Python",
       },
       {
         rtl: false,
-        icon: Clock,
-        servicesh2: "Registration and start of work within minutes",
-        servicesp:
-          "The system operates online and the registration process until the start of work takes minutes",
+        icon: javaicon,
+        servicesh2: "Java",
       },
       {
         rtl: false,
-        icon: Customerservice,
-        servicesh2: "Need Help? Excellent customer support",
-        servicesp:
-          "The system provides ongoing customer support and answers to any question at the touch of a button.",
+        icon: cicon,
+        servicesh2: "C",
+      },
+      {
+        rtl: false,
+        icon: firebase,
+        servicesh2: "Firebase",
+      },
+      {
+        rtl: false,
+        icon: awsicon,
+        servicesh2: "AWS",
+      },
+      {
+        rtl: false,
+        icon: androidstudioicon,
+        servicesh2: "Android Studio",
+      },
+      {
+        rtl: false,
+        icon: mysqlicon,
+        servicesh2: "SQL",
       },
     ],
-  },
-  forgotPassword: {
-    rtl: false,
-    formh1: "Renew Password",
-    sendCode: {
-      formlabel1: "insert your verified E-mail address",
-      forminput1: "email",
-      formbutton: "Send code",
-    },
-    resetPassword: {
-      formlabel2: "Enter verification code",
-      forminput2: "email",
-
-      formlabel3: "Enter new password",
-      forminput3: "password",
-
-      formlabel4: "Re-Enter new password",
-      forminput4: "password",
-
-      formbutton2: "Renew Password",
-      passwordsDontMatch: "Passwords do not match",
-      passwordNotSupported:
-        "Password must be at least 8 characters, lowercase, uppercase, and numbers for greater security",
-      invalidCode: "Invalid Code was entered, or an old one",
-    },
   },
 
   whoweare: {
     header: {
-      content: "Inventors",
+      content: "My projects",
       rtl: false,
+      text1:
+        "There are several other projects that exist on Github and on the computer that have not been shown.",
+      text2: `Some of the details presented above are hidden due to customer privacy concerns`,
     },
 
     cards: [
       {
-        img: yahelphoto,
-        headercard: "Yahel Barnoam",
-        subtitle: "Software Engineer",
+        headercard: `Web Application -"Communicato" `,
+        subtitle: "Supplier contact app between customers and customers",
         content:
-          "Software Engineering With Specialization in Software For Mobile and Web Systems.",
+          "This app was developed using client-side libraries -ReactJs server-side -NodeJs. Authentication and database management using AWS services. Developed for Shen-Zen.",
+        languagesicons: [reacticon, awsicon, nodejsicon, cssicon, htmlicon],
+        gitlink: "/",
         rtl: false,
+        images: [shen1, shen2, shen3, shen4],
+      },
+      {
+        headercard: `Mobile Application- "PackageCenter"`,
+        subtitle: "A mission tracking app and couriers in the company",
+        content:
+          "The Android-based mobile app aims to track couriers by scanning a barcode that appears on the package, which during the scan will store relevant information about the package collection, in addition, tasks can be given to couriers through the app and they can view them.",
+        languagesicons: [firebase, androidstudioicon, javaicon],
+        gitlink:
+          "https://github.com/yahelbn/PackageCenter-Android-Application-java-",
+        rtl: false,
+        images: [p1, p2, p3, p4],
+      },
+      {
+        headercard: `Mobile Application- "Shopy"`,
+        subtitle: "A store app with an emphasis on design",
+        content:
+          "The store app, which takes the store data from Api shows the products and sorts when needed according to the customer's classification, the app was created for the benefit of design and development practice in React native which is very similar to React.",
+        languagesicons: [reacticon, htmlicon, cssicon],
+        gitlink: "https://github.com/yahelbn/ShopApp/tree/yahel",
+        rtl: false,
+        images: [shop1, shop2, shop3, shop4],
+      },
+      {
+        headercard: `Mobile Game- "Galaxy Guard"`,
+        subtitle: "Game -space in space",
+        content:
+          "A game I developed as part of an application development course during the degree, during which you can choose to play with difficulty levels: easy or hard and you can play using a displacement sensor of the cellphone and the spacecraft moves accordingly. It will reach the results screen and the results will appear according to the players' rank and position. ",
+        languagesicons: [reacticon, htmlicon, cssicon],
+        gitlink:
+          "https://github.com/yahelbn/GalaxyGuard-Application-Android-game-java-",
+        rtl: false,
+        images: [space1, space2, space3, space4],
+      },
+
+      {
+        headercard: `CRUD -Location and Categories"`,
+        subtitle: "Category management app by location",
+        content:
+          "The user will be presented with two screens that he can switch between at any time, the categories screen - which handles viewing, adding, deleting and editing categories to the list. That he could select the address on it by clicking. ",
+        languagesicons: [reacticon, htmlicon, cssicon],
+        gitlink: "https://github.com/yahelbn/ReactReduxCRUD/tree/yahel",
+        rtl: false,
+        images: [reduxreact1, reduxreact2, reduxreact3],
+      },
+      {
+        headercard: `Insta Image"`,
+        subtitle: "Photo management and sharing app",
+        content:
+          "The user can upload photos from his gallery and in addition to taking photos through the app, the apps will be shared with all users of the system, by clicking on a photo you can view comments and comment.",
+        languagesicons: [firebase, androidstudioicon, javaicon],
+        // gitlink: "https://github.com/yahelbn/ReactReduxCRUD/tree/yahel",
+        rtl: false,
+        images: [inst1, inst2, inst3, inst4],
       },
     ],
   },
 
-  footer: [["About us ", "Contact", "Address", "Terms of services"]],
+  footer: [[{ name: "More info" }, { name: "Contact Us", link: "contactus" }]],
 };
