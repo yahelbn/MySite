@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import LangRouter from "./LandingPage/components/LangRouter";
+//
 
 ReactDOM.render(
   <React.StrictMode>
