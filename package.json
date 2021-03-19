@@ -8,7 +8,7 @@
     "start": "node app.js",
     "dev": "env-cmd -f src/config/.env nodemon app.js"
   },
-  "author": "ofir assulin",
+  "author": "yahel barnoam",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
